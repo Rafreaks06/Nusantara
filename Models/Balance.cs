@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nusantara.Models
 {
-    class Balance
+    public class Balance
     {
         public int Id { get; set; }
         public Member Member { get; set; }
