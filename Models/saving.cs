@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Nusantara.Models
 {
-    internal class Saving
+    public class Saving
     {
         public int id { get; set; }
         [Required] public int MemberId { get; set; }
