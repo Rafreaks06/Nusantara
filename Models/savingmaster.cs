@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Nusantara.Models
 {
-    internal class savingmaster
+    public class SavingMaster
     {
         public int id { get; set; }
         public string name { get; set; }
