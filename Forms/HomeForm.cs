@@ -106,7 +106,7 @@ namespace Nusantara.Forms
 
         private void definitionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //route(new TerminologiPage(loggedMember));
+            route(new TerminologiPage(loggedMember));
         }
         private void manualToolStripMenuItem_Click(object sender, EventArgs e)
         {

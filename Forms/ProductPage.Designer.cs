@@ -28,14 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBoxTenor = new TextBox();
+            textTenor = new TextBox();
             textBoxName = new TextBox();
             textBoxMode = new TextBox();
-            textBoxAdminFee = new TextBox();
-            textBoxInterest = new TextBox();
-            textBoxMinimumAmount = new TextBox();
-            textBoxInterestFine = new TextBox();
-            textBoxMaximumAmount = new TextBox();
+            textAdminFee = new TextBox();
+            textInterest = new TextBox();
+            textMinAmount = new TextBox();
+            textFine = new TextBox();
+            textMaxAmount = new TextBox();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -46,21 +46,22 @@
             label8 = new Label();
             buttonSubmit = new Button();
             buttonNew = new Button();
-            labelError = new Label();
-            dataGridViewMasterLoan = new DataGridView();
-            dataGridViewMasterSaving = new DataGridView();
+            labelId = new Label();
+            dataGridViewLoan = new DataGridView();
+            dataGridViewSaving = new DataGridView();
             label10 = new Label();
             label11 = new Label();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewMasterLoan).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewMasterSaving).BeginInit();
+            comboBoxMode = new ComboBox();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewLoan).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewSaving).BeginInit();
             SuspendLayout();
             // 
-            // textBoxTenor
+            // textTenor
             // 
-            textBoxTenor.Location = new Point(26, 130);
-            textBoxTenor.Name = "textBoxTenor";
-            textBoxTenor.Size = new Size(310, 31);
-            textBoxTenor.TabIndex = 8;
+            textTenor.Location = new Point(26, 130);
+            textTenor.Name = "textTenor";
+            textTenor.Size = new Size(310, 31);
+            textTenor.TabIndex = 8;
             // 
             // textBoxName
             // 
@@ -76,40 +77,40 @@
             textBoxMode.Size = new Size(335, 31);
             textBoxMode.TabIndex = 11;
             // 
-            // textBoxAdminFee
+            // textAdminFee
             // 
-            textBoxAdminFee.Location = new Point(342, 130);
-            textBoxAdminFee.Name = "textBoxAdminFee";
-            textBoxAdminFee.Size = new Size(335, 31);
-            textBoxAdminFee.TabIndex = 10;
+            textAdminFee.Location = new Point(342, 130);
+            textAdminFee.Name = "textAdminFee";
+            textAdminFee.Size = new Size(335, 31);
+            textAdminFee.TabIndex = 10;
             // 
-            // textBoxInterest
+            // textInterest
             // 
-            textBoxInterest.Location = new Point(749, 54);
-            textBoxInterest.Name = "textBoxInterest";
-            textBoxInterest.Size = new Size(310, 31);
-            textBoxInterest.TabIndex = 13;
+            textInterest.Location = new Point(749, 54);
+            textInterest.Name = "textInterest";
+            textInterest.Size = new Size(310, 31);
+            textInterest.TabIndex = 13;
             // 
-            // textBoxMinimumAmount
+            // textMinAmount
             // 
-            textBoxMinimumAmount.Location = new Point(749, 130);
-            textBoxMinimumAmount.Name = "textBoxMinimumAmount";
-            textBoxMinimumAmount.Size = new Size(310, 31);
-            textBoxMinimumAmount.TabIndex = 12;
+            textMinAmount.Location = new Point(749, 130);
+            textMinAmount.Name = "textMinAmount";
+            textMinAmount.Size = new Size(310, 31);
+            textMinAmount.TabIndex = 12;
             // 
-            // textBoxInterestFine
+            // textFine
             // 
-            textBoxInterestFine.Location = new Point(1065, 54);
-            textBoxInterestFine.Name = "textBoxInterestFine";
-            textBoxInterestFine.Size = new Size(332, 31);
-            textBoxInterestFine.TabIndex = 15;
+            textFine.Location = new Point(1065, 54);
+            textFine.Name = "textFine";
+            textFine.Size = new Size(332, 31);
+            textFine.TabIndex = 15;
             // 
-            // textBoxMaximumAmount
+            // textMaxAmount
             // 
-            textBoxMaximumAmount.Location = new Point(1065, 130);
-            textBoxMaximumAmount.Name = "textBoxMaximumAmount";
-            textBoxMaximumAmount.Size = new Size(332, 31);
-            textBoxMaximumAmount.TabIndex = 14;
+            textMaxAmount.Location = new Point(1065, 130);
+            textMaxAmount.Name = "textMaxAmount";
+            textMaxAmount.Size = new Size(332, 31);
+            textMaxAmount.TabIndex = 14;
             // 
             // label1
             // 
@@ -201,32 +202,32 @@
             buttonNew.Text = "New";
             buttonNew.UseVisualStyleBackColor = true;
             // 
-            // labelError
+            // labelId
             // 
-            labelError.AutoSize = true;
-            labelError.Location = new Point(283, 193);
-            labelError.Name = "labelError";
-            labelError.Size = new Size(24, 25);
-            labelError.TabIndex = 26;
-            labelError.Text = "...";
+            labelId.AutoSize = true;
+            labelId.Location = new Point(283, 193);
+            labelId.Name = "labelId";
+            labelId.Size = new Size(24, 25);
+            labelId.TabIndex = 26;
+            labelId.Text = "...";
             // 
-            // dataGridViewMasterLoan
+            // dataGridViewLoan
             // 
-            dataGridViewMasterLoan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewMasterLoan.Location = new Point(24, 282);
-            dataGridViewMasterLoan.Name = "dataGridViewMasterLoan";
-            dataGridViewMasterLoan.RowHeadersWidth = 62;
-            dataGridViewMasterLoan.Size = new Size(651, 440);
-            dataGridViewMasterLoan.TabIndex = 27;
+            dataGridViewLoan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewLoan.Location = new Point(24, 282);
+            dataGridViewLoan.Name = "dataGridViewLoan";
+            dataGridViewLoan.RowHeadersWidth = 62;
+            dataGridViewLoan.Size = new Size(651, 440);
+            dataGridViewLoan.TabIndex = 27;
             // 
-            // dataGridViewMasterSaving
+            // dataGridViewSaving
             // 
-            dataGridViewMasterSaving.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewMasterSaving.Location = new Point(747, 282);
-            dataGridViewMasterSaving.Name = "dataGridViewMasterSaving";
-            dataGridViewMasterSaving.RowHeadersWidth = 62;
-            dataGridViewMasterSaving.Size = new Size(648, 440);
-            dataGridViewMasterSaving.TabIndex = 28;
+            dataGridViewSaving.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewSaving.Location = new Point(747, 282);
+            dataGridViewSaving.Name = "dataGridViewSaving";
+            dataGridViewSaving.RowHeadersWidth = 62;
+            dataGridViewSaving.Size = new Size(648, 440);
+            dataGridViewSaving.TabIndex = 28;
             // 
             // label10
             // 
@@ -246,16 +247,25 @@
             label11.TabIndex = 30;
             label11.Text = "Master Saving";
             // 
+            // comboBoxMode
+            // 
+            comboBoxMode.FormattingEnabled = true;
+            comboBoxMode.Location = new Point(405, 188);
+            comboBoxMode.Name = "comboBoxMode";
+            comboBoxMode.Size = new Size(182, 33);
+            comboBoxMode.TabIndex = 31;
+            // 
             // ProductPage
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonFace;
+            Controls.Add(comboBoxMode);
             Controls.Add(label11);
             Controls.Add(label10);
-            Controls.Add(dataGridViewMasterSaving);
-            Controls.Add(dataGridViewMasterLoan);
-            Controls.Add(labelError);
+            Controls.Add(dataGridViewSaving);
+            Controls.Add(dataGridViewLoan);
+            Controls.Add(labelId);
             Controls.Add(buttonNew);
             Controls.Add(buttonSubmit);
             Controls.Add(label8);
@@ -266,32 +276,32 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(textBoxInterestFine);
-            Controls.Add(textBoxMaximumAmount);
-            Controls.Add(textBoxInterest);
-            Controls.Add(textBoxMinimumAmount);
+            Controls.Add(textFine);
+            Controls.Add(textMaxAmount);
+            Controls.Add(textInterest);
+            Controls.Add(textMinAmount);
             Controls.Add(textBoxMode);
-            Controls.Add(textBoxAdminFee);
+            Controls.Add(textAdminFee);
             Controls.Add(textBoxName);
-            Controls.Add(textBoxTenor);
+            Controls.Add(textTenor);
             Name = "ProductPage";
             Size = new Size(1442, 845);
-            ((System.ComponentModel.ISupportInitialize)dataGridViewMasterLoan).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewMasterSaving).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewLoan).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewSaving).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private TextBox textBoxTenor;
+        private TextBox textTenor;
         private TextBox textBoxName;
         private TextBox textBoxMode;
-        private TextBox textBoxAdminFee;
-        private TextBox textBoxInterest;
-        private TextBox textBoxMinimumAmount;
-        private TextBox textBoxInterestFine;
-        private TextBox textBoxMaximumAmount;
+        private TextBox textAdminFee;
+        private TextBox textInterest;
+        private TextBox textMinAmount;
+        private TextBox textFine;
+        private TextBox textMaxAmount;
         private Label label1;
         private Label label2;
         private Label label3;
@@ -302,10 +312,11 @@
         private Label label8;
         private Button buttonSubmit;
         private Button buttonNew;
-        private Label labelError;
-        private DataGridView dataGridViewMasterLoan;
-        private DataGridView dataGridViewMasterSaving;
+        private Label labelId;
+        private DataGridView dataGridViewLoan;
+        private DataGridView dataGridViewSaving;
         private Label label10;
         private Label label11;
+        private ComboBox comboBoxMode;
     }
 }

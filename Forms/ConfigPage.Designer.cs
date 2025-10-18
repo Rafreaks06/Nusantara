@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            richTerminologi1 = new RichTextBox();
-            richTerminologi2 = new RichTextBox();
             label2 = new Label();
-            richTerminologi3 = new RichTextBox();
+            txtTerminologi3 = new RichTextBox();
             label3 = new Label();
-            textExchange = new TextBox();
+            textExchangeRate = new TextBox();
             label4 = new Label();
             label5 = new Label();
             textInhouseFee = new TextBox();
             label6 = new Label();
             textAccrossFee = new TextBox();
             buttonUpdate = new Button();
+            txtTerminologi1 = new RichTextBox();
+            textTerminologi2 = new RichTextBox();
             SuspendLayout();
             // 
             // label1
@@ -52,22 +52,6 @@
             label1.TabIndex = 0;
             label1.Text = "Terminologi 1";
             // 
-            // richTerminologi1
-            // 
-            richTerminologi1.Location = new Point(34, 62);
-            richTerminologi1.Name = "richTerminologi1";
-            richTerminologi1.Size = new Size(292, 396);
-            richTerminologi1.TabIndex = 1;
-            richTerminologi1.Text = "";
-            // 
-            // richTerminologi2
-            // 
-            richTerminologi2.Location = new Point(373, 62);
-            richTerminologi2.Name = "richTerminologi2";
-            richTerminologi2.Size = new Size(296, 396);
-            richTerminologi2.TabIndex = 3;
-            richTerminologi2.Text = "";
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -77,13 +61,13 @@
             label2.TabIndex = 2;
             label2.Text = "Terminologi 2";
             // 
-            // richTerminologi3
+            // txtTerminologi3
             // 
-            richTerminologi3.Location = new Point(718, 62);
-            richTerminologi3.Name = "richTerminologi3";
-            richTerminologi3.Size = new Size(296, 396);
-            richTerminologi3.TabIndex = 5;
-            richTerminologi3.Text = "";
+            txtTerminologi3.Location = new Point(718, 62);
+            txtTerminologi3.Name = "txtTerminologi3";
+            txtTerminologi3.Size = new Size(296, 396);
+            txtTerminologi3.TabIndex = 5;
+            txtTerminologi3.Text = "";
             // 
             // label3
             // 
@@ -94,12 +78,12 @@
             label3.TabIndex = 4;
             label3.Text = "Terminologi 3";
             // 
-            // textExchange
+            // textExchangeRate
             // 
-            textExchange.Location = new Point(34, 515);
-            textExchange.Name = "textExchange";
-            textExchange.Size = new Size(292, 31);
-            textExchange.TabIndex = 6;
+            textExchangeRate.Location = new Point(34, 515);
+            textExchangeRate.Name = "textExchangeRate";
+            textExchangeRate.Size = new Size(292, 31);
+            textExchangeRate.TabIndex = 6;
             // 
             // label4
             // 
@@ -146,29 +130,46 @@
             // 
             buttonUpdate.BackColor = SystemColors.MenuHighlight;
             buttonUpdate.ForeColor = SystemColors.Control;
-            buttonUpdate.Location = new Point(373, 591);
+            buttonUpdate.Location = new Point(373, 587);
             buttonUpdate.Name = "buttonUpdate";
-            buttonUpdate.Size = new Size(324, 50);
+            buttonUpdate.Size = new Size(296, 38);
             buttonUpdate.TabIndex = 12;
             buttonUpdate.Text = "Update";
             buttonUpdate.UseVisualStyleBackColor = false;
+            buttonUpdate.Click += buttonUpdate_Click;
+            // 
+            // txtTerminologi1
+            // 
+            txtTerminologi1.Location = new Point(34, 62);
+            txtTerminologi1.Name = "txtTerminologi1";
+            txtTerminologi1.Size = new Size(292, 396);
+            txtTerminologi1.TabIndex = 1;
+            txtTerminologi1.Text = "";
+            // 
+            // textTerminologi2
+            // 
+            textTerminologi2.Location = new Point(377, 62);
+            textTerminologi2.Name = "textTerminologi2";
+            textTerminologi2.Size = new Size(292, 396);
+            textTerminologi2.TabIndex = 13;
+            textTerminologi2.Text = "";
             // 
             // ConfigPage
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(textTerminologi2);
             Controls.Add(buttonUpdate);
             Controls.Add(label6);
             Controls.Add(textAccrossFee);
             Controls.Add(label5);
             Controls.Add(textInhouseFee);
             Controls.Add(label4);
-            Controls.Add(textExchange);
-            Controls.Add(richTerminologi3);
+            Controls.Add(textExchangeRate);
+            Controls.Add(txtTerminologi3);
             Controls.Add(label3);
-            Controls.Add(richTerminologi2);
             Controls.Add(label2);
-            Controls.Add(richTerminologi1);
+            Controls.Add(txtTerminologi1);
             Controls.Add(label1);
             Name = "ConfigPage";
             Size = new Size(1041, 705);
@@ -183,14 +184,16 @@
         private RichTextBox richTerminologi1;
         private RichTextBox richTerminologi2;
         private Label label2;
-        private RichTextBox richTerminologi3;
+        private RichTextBox txtTerminologi3;
         private Label label3;
-        private TextBox textExchange;
+        private TextBox textExchangeRate;
         private Label label4;
         private Label label5;
         private TextBox textInhouseFee;
         private Label label6;
         private TextBox textAccrossFee;
         private Button buttonUpdate;
+        private RichTextBox txtTerminologi1;
+        private RichTextBox textTerminologi2;
     }
 }
