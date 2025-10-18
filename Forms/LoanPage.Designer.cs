@@ -148,6 +148,7 @@
             textInterest.Name = "textInterest";
             textInterest.Size = new Size(204, 23);
             textInterest.TabIndex = 8;
+            textInterest.TextChanged += textInterest_TextChanged;
             // 
             // txtAmount
             // 
@@ -164,6 +165,7 @@
             btnktp.TabIndex = 15;
             btnktp.Text = "Browse";
             btnktp.UseVisualStyleBackColor = true;
+            btnktp.Click += btnktp_Click;
             // 
             // btnShowKtp
             // 
@@ -191,6 +193,7 @@
             btnKK.TabIndex = 17;
             btnKK.Text = "Browse";
             btnKK.UseVisualStyleBackColor = true;
+            btnKK.Click += btnKK_Click;
             // 
             // btnShowGaji
             // 
@@ -209,6 +212,7 @@
             btnGaji.TabIndex = 19;
             btnGaji.Text = "Browse";
             btnGaji.UseVisualStyleBackColor = true;
+            btnGaji.Click += btnGaji_Click;
             // 
             // btnNewLoan
             // 
@@ -218,6 +222,7 @@
             btnNewLoan.TabIndex = 22;
             btnNewLoan.Text = "New Loan";
             btnNewLoan.UseVisualStyleBackColor = true;
+            btnNewLoan.Click += btnNewLoan_Click;
             // 
             // btnApplyLoan
             // 
@@ -352,6 +357,7 @@
             datagridLoan.Name = "datagridLoan";
             datagridLoan.Size = new Size(453, 347);
             datagridLoan.TabIndex = 37;
+            datagridLoan.CellContentClick += datagridLoan_CellContentClick;
             // 
             // btnReload
             // 
@@ -361,6 +367,7 @@
             btnReload.TabIndex = 38;
             btnReload.Text = "Reload";
             btnReload.UseVisualStyleBackColor = true;
+            btnReload.Click += btnReload_Click;
             // 
             // label2
             // 
@@ -378,6 +385,7 @@
             comboLoanType.Name = "comboLoanType";
             comboLoanType.Size = new Size(204, 23);
             comboLoanType.TabIndex = 40;
+            comboLoanType.SelectedIndexChanged += comboLoanType_SelectedIndexChanged;
             // 
             // lblId
             // 
@@ -434,6 +442,7 @@
             Controls.Add(txtLoan);
             Name = "LoanPage";
             Size = new Size(1026, 521);
+            Load += LoanPage_Load;
             ((System.ComponentModel.ISupportInitialize)datagridLoan).EndInit();
             ResumeLayout(false);
             PerformLayout();
