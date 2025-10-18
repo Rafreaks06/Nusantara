@@ -11,6 +11,7 @@ namespace Nusantara.Models
     {
         public int id { get; set; }
         [Required] public int MemberId { get; set; }
+        public Member Member { get; set; }
         public DateTime SavingDate { get; set; }
         public decimal Amount { get; set; }
         public decimal Fine { get; set; }

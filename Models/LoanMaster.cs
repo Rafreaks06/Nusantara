@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nusantara.Models
 {
-    internal class LoanMaster
+    public class LoanMaster
     {
         public int Id { get; set; }
         public string Name { get; set; }

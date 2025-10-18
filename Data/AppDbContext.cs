@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Nusantara.Models;
 using System;
 using System.Collections.Generic;
@@ -8,17 +9,18 @@ using System.Threading.Tasks;
 
 namespace Nusantara.Data
 {
-    internal class AppDbContext : DbContext
+    // Rafi
+    public class AppDbContext : DbContext
     {
         public DbSet<Member> Members => Set<Member>();
         public DbSet<Access> Accesses => Set<Access>();
-        public DbSet<Configuration> Configurations => DbSet<Configuration>();
+        public DbSet<Configuration> Configurations => Set<Configuration>();
         public DbSet<LoanMaster> LoanMaster => Set<LoanMaster>();
-        public DbSet<Loan> Loans => Set<LoanMaster>();
-        public DbSet<Installment> Instalments => Set<Insallment>();
+        public DbSet<Loan> Loans => Set<Loan>();
+        //public DbSet<Installment> Instalments => Set<Installment>();
         public DbSet<Saving> Savings => Set<Saving>();
-        public DbSet<Inhouse> Inhouses => Set<Inhouse>();
-        public DbSet<Exchange> Exchanges => Set<Exchange>();
+        //public DbSet<Inhouse> Inhouses => Set<Inhouse>();
+        //public DbSet<Exchange> Exchanges => Set<Exchange>();
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
         {
@@ -26,51 +28,57 @@ namespace Nusantara.Data
                 .SetBasePath(AppContext.BaseDirectory)
                 .AddJsonFile("appsettings.json")
                 .Build();
-            optionsBuilder.UseNpgsql(config.GetconnectionString("Default"));
+            optionsBuilder.UseNpgsql(config.GetConnectionString("Default"));
 
         }
-        protected override void OnModelCreating(ModelBuilder modlBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Loan>()
-                .Hashone(l => l.Member)
+                .HasOne(l => l.Member)
                 .WithMany(m => m.Loans)
                 .HasForeignKey(l => l.MemberId);
-            modelBuilder.Entity<Installment>()
-                .Hashone(i => i.Loan)
+
+            /*modelBuilder.Entity<Installment>()
+                .HasOne(i => i.Loan)
                 .WithMany(l => l.Installment)
-                .HasForeignKey(i => i.LoanId);
+                .HasForeignKey(i => i.LoanId);*/
+            
             modelBuilder.Entity<Access>()
-                .Hashone(a => a.Member)
-                .WithMany(m => m.Access)
+                .HasOne(a => a.Member)
+                .WithMany(m => m.Accesses)
                 .HasForeignKey(a => a.MemberId);
+            
             modelBuilder.Entity<Saving>()
-                .Hashone(s => s.Member)
-                .WithMany(m => m.Saving)
+                .HasOne(s => s.Member)
+                .WithMany(m => m.Savings)
                 .HasForeignKey(s => s.MemberId);
-            modelBuilder.Entity<Inhouse>()
-                .Hashone(x => x.Origin)
+            
+            /*modelBuilder.Entity<Inhouse>()
+                .HasOne(x => x.Origin)
                 .WithMany(m => m.OriginTransactions)
                 .HasForeignKey(x => x.Origin);
+            
             modelBuilder.Entity<Inhouse>()
-                .Hashone(x => x.Destination)
+                .HasOne(x => x.Destination)
                 .WithMany(m => m.DestionationTransactions)
                 .HasForeignKey(x => x.DestionationId);
+            
             modelBuilder.Entity<Exchange>()
-                .Hashone(x => x.Member)
+                .HasOne(x => x.Member)
                 .WithMany(m => m.Exchanges)
                 .HasForeignKey(x => x.MemberId);
-
+            */
             foreach (var entity in modelBuilder.Model.GetEntityTypes())
             {
                 var idrop = entity.FindProperty("id");
                 if (idrop != null)
                 {
                     idrop.SetValueGenerationStrategy(
-                        NpgsqlValueGenerationStrategy.SerialColum
+                        Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlValueGenerationStrategy.SerialColumn
                         );
                 }
             }
+            base.OnModelCreating(modelBuilder);
         }
-        Base.OnmodelCreating(ModelBuilder);
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Nusantara.Models
 {
-    internal class Loan
+    public class Loan
     {
         public int id { get; set; }
         [Required] public int MemberId { get; set; }
