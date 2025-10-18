@@ -32,21 +32,21 @@
             label1 = new Label();
             buttonSubmit = new Button();
             GroupBox = new GroupBox();
-            labelFullName = new Label();
-            labelJoinDate = new Label();
-            labelEmail = new Label();
-            labelPhone = new Label();
-            labelPhoneAlt = new Label();
-            labelAddress = new Label();
-            lblFullName = new Label();
-            lblJoinDate = new Label();
-            lblEmail = new Label();
-            lblPhoneAlt = new Label();
+            lblPhone = new Label();
             lblAddress = new Label();
+            lblPhoneAlt = new Label();
+            lblEmail = new Label();
+            lblJoinDate = new Label();
+            lblFullName = new Label();
+            labelAddress = new Label();
+            labelPhoneAlt = new Label();
+            labelPhone = new Label();
+            labelEmail = new Label();
+            labelJoinDate = new Label();
+            labelFullName = new Label();
             dataGridViewAccess = new DataGridView();
             label8 = new Label();
             checkedListBoxAccess = new CheckedListBox();
-            lblPhone = new Label();
             GroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAccess).BeginInit();
             SuspendLayout();
@@ -58,6 +58,7 @@
             comboboxMember.Name = "comboboxMember";
             comboboxMember.Size = new Size(289, 33);
             comboboxMember.TabIndex = 0;
+            comboboxMember.SelectedIndexChanged += comboboxMember_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -77,6 +78,7 @@
             buttonSubmit.TabIndex = 2;
             buttonSubmit.Text = "Submit";
             buttonSubmit.UseVisualStyleBackColor = true;
+            buttonSubmit.Click += buttonSubmit_Click;
             // 
             // GroupBox
             // 
@@ -99,95 +101,14 @@
             GroupBox.TabStop = false;
             GroupBox.Text = "Details";
             // 
-            // labelFullName
+            // lblPhone
             // 
-            labelFullName.AutoSize = true;
-            labelFullName.Location = new Point(13, 37);
-            labelFullName.Name = "labelFullName";
-            labelFullName.Size = new Size(86, 25);
-            labelFullName.TabIndex = 0;
-            labelFullName.Text = "FullName";
-            // 
-            // labelJoinDate
-            // 
-            labelJoinDate.AutoSize = true;
-            labelJoinDate.Location = new Point(16, 79);
-            labelJoinDate.Name = "labelJoinDate";
-            labelJoinDate.Size = new Size(80, 25);
-            labelJoinDate.TabIndex = 1;
-            labelJoinDate.Text = "JoinDate";
-            // 
-            // labelEmail
-            // 
-            labelEmail.AutoSize = true;
-            labelEmail.Location = new Point(16, 122);
-            labelEmail.Name = "labelEmail";
-            labelEmail.Size = new Size(54, 25);
-            labelEmail.TabIndex = 2;
-            labelEmail.Text = "Email";
-            // 
-            // labelPhone
-            // 
-            labelPhone.AutoSize = true;
-            labelPhone.Location = new Point(16, 166);
-            labelPhone.Name = "labelPhone";
-            labelPhone.Size = new Size(62, 25);
-            labelPhone.TabIndex = 3;
-            labelPhone.Text = "Phone";
-            // 
-            // labelPhoneAlt
-            // 
-            labelPhoneAlt.AutoSize = true;
-            labelPhoneAlt.Location = new Point(17, 206);
-            labelPhoneAlt.Name = "labelPhoneAlt";
-            labelPhoneAlt.Size = new Size(84, 25);
-            labelPhoneAlt.TabIndex = 4;
-            labelPhoneAlt.Text = "PhoneAlt";
-            // 
-            // labelAddress
-            // 
-            labelAddress.AutoSize = true;
-            labelAddress.Location = new Point(14, 248);
-            labelAddress.Name = "labelAddress";
-            labelAddress.Size = new Size(77, 25);
-            labelAddress.TabIndex = 5;
-            labelAddress.Text = "Address";
-            // 
-            // lblFullName
-            // 
-            lblFullName.AutoSize = true;
-            lblFullName.Location = new Point(217, 37);
-            lblFullName.Name = "lblFullName";
-            lblFullName.Size = new Size(24, 25);
-            lblFullName.TabIndex = 6;
-            lblFullName.Text = "...";
-            // 
-            // lblJoinDate
-            // 
-            lblJoinDate.AutoSize = true;
-            lblJoinDate.Location = new Point(217, 79);
-            lblJoinDate.Name = "lblJoinDate";
-            lblJoinDate.Size = new Size(24, 25);
-            lblJoinDate.TabIndex = 7;
-            lblJoinDate.Text = "...";
-            // 
-            // lblEmail
-            // 
-            lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(217, 122);
-            lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(24, 25);
-            lblEmail.TabIndex = 8;
-            lblEmail.Text = "...";
-            // 
-            // lblPhoneAlt
-            // 
-            lblPhoneAlt.AutoSize = true;
-            lblPhoneAlt.Location = new Point(217, 206);
-            lblPhoneAlt.Name = "lblPhoneAlt";
-            lblPhoneAlt.Size = new Size(24, 25);
-            lblPhoneAlt.TabIndex = 10;
-            lblPhoneAlt.Text = "...";
+            lblPhone.AutoSize = true;
+            lblPhone.Location = new Point(217, 166);
+            lblPhone.Name = "lblPhone";
+            lblPhone.Size = new Size(24, 25);
+            lblPhone.TabIndex = 12;
+            lblPhone.Text = "...";
             // 
             // lblAddress
             // 
@@ -198,6 +119,96 @@
             lblAddress.TabIndex = 11;
             lblAddress.Text = "...";
             // 
+            // lblPhoneAlt
+            // 
+            lblPhoneAlt.AutoSize = true;
+            lblPhoneAlt.Location = new Point(217, 206);
+            lblPhoneAlt.Name = "lblPhoneAlt";
+            lblPhoneAlt.Size = new Size(24, 25);
+            lblPhoneAlt.TabIndex = 10;
+            lblPhoneAlt.Text = "...";
+            // 
+            // lblEmail
+            // 
+            lblEmail.AutoSize = true;
+            lblEmail.Location = new Point(217, 122);
+            lblEmail.Name = "lblEmail";
+            lblEmail.Size = new Size(24, 25);
+            lblEmail.TabIndex = 8;
+            lblEmail.Text = "...";
+            // 
+            // lblJoinDate
+            // 
+            lblJoinDate.AutoSize = true;
+            lblJoinDate.Location = new Point(217, 79);
+            lblJoinDate.Name = "lblJoinDate";
+            lblJoinDate.Size = new Size(24, 25);
+            lblJoinDate.TabIndex = 7;
+            lblJoinDate.Text = "...";
+            // 
+            // lblFullName
+            // 
+            lblFullName.AutoSize = true;
+            lblFullName.Location = new Point(217, 37);
+            lblFullName.Name = "lblFullName";
+            lblFullName.Size = new Size(24, 25);
+            lblFullName.TabIndex = 6;
+            lblFullName.Text = "...";
+            // 
+            // labelAddress
+            // 
+            labelAddress.AutoSize = true;
+            labelAddress.Location = new Point(14, 248);
+            labelAddress.Name = "labelAddress";
+            labelAddress.Size = new Size(77, 25);
+            labelAddress.TabIndex = 5;
+            labelAddress.Text = "Address";
+            // 
+            // labelPhoneAlt
+            // 
+            labelPhoneAlt.AutoSize = true;
+            labelPhoneAlt.Location = new Point(17, 206);
+            labelPhoneAlt.Name = "labelPhoneAlt";
+            labelPhoneAlt.Size = new Size(84, 25);
+            labelPhoneAlt.TabIndex = 4;
+            labelPhoneAlt.Text = "PhoneAlt";
+            // 
+            // labelPhone
+            // 
+            labelPhone.AutoSize = true;
+            labelPhone.Location = new Point(16, 166);
+            labelPhone.Name = "labelPhone";
+            labelPhone.Size = new Size(62, 25);
+            labelPhone.TabIndex = 3;
+            labelPhone.Text = "Phone";
+            // 
+            // labelEmail
+            // 
+            labelEmail.AutoSize = true;
+            labelEmail.Location = new Point(16, 122);
+            labelEmail.Name = "labelEmail";
+            labelEmail.Size = new Size(54, 25);
+            labelEmail.TabIndex = 2;
+            labelEmail.Text = "Email";
+            // 
+            // labelJoinDate
+            // 
+            labelJoinDate.AutoSize = true;
+            labelJoinDate.Location = new Point(16, 79);
+            labelJoinDate.Name = "labelJoinDate";
+            labelJoinDate.Size = new Size(80, 25);
+            labelJoinDate.TabIndex = 1;
+            labelJoinDate.Text = "JoinDate";
+            // 
+            // labelFullName
+            // 
+            labelFullName.AutoSize = true;
+            labelFullName.Location = new Point(13, 37);
+            labelFullName.Name = "labelFullName";
+            labelFullName.Size = new Size(86, 25);
+            labelFullName.TabIndex = 0;
+            labelFullName.Text = "FullName";
+            // 
             // dataGridViewAccess
             // 
             dataGridViewAccess.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -206,6 +217,7 @@
             dataGridViewAccess.RowHeadersWidth = 62;
             dataGridViewAccess.Size = new Size(963, 713);
             dataGridViewAccess.TabIndex = 11;
+            dataGridViewAccess.CellContentClick += dataGridViewAccess_CellContentClick;
             // 
             // label8
             // 
@@ -225,15 +237,7 @@
             checkedListBoxAccess.Name = "checkedListBoxAccess";
             checkedListBoxAccess.Size = new Size(573, 256);
             checkedListBoxAccess.TabIndex = 13;
-            // 
-            // lblPhone
-            // 
-            lblPhone.AutoSize = true;
-            lblPhone.Location = new Point(217, 166);
-            lblPhone.Name = "lblPhone";
-            lblPhone.Size = new Size(24, 25);
-            lblPhone.TabIndex = 12;
-            lblPhone.Text = "...";
+            checkedListBoxAccess.SelectedIndexChanged += checkedListBoxAccess_SelectedIndexChanged;
             // 
             // AccessPage
             // 

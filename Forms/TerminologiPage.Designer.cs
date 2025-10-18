@@ -69,6 +69,7 @@
             Controls.Add(labelExchangeRate);
             Name = "TerminologiPage";
             Size = new Size(1211, 755);
+            Load += TerminologiPage_Load;
             ResumeLayout(false);
             PerformLayout();
         }
