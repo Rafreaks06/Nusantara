@@ -221,6 +221,7 @@
             button1.TabIndex = 18;
             button1.Text = "Update";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // lblUpdate
             // 
@@ -239,6 +240,7 @@
             dataGridMemberPage.RowHeadersWidth = 62;
             dataGridMemberPage.Size = new Size(590, 425);
             dataGridMemberPage.TabIndex = 20;
+            dataGridMemberPage.CellContentClick += dataGridMemberPage_CellContentClick;
             // 
             // MemberPage
             // 

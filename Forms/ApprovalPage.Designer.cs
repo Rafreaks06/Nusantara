@@ -50,6 +50,7 @@
             cmbProduct.Name = "cmbProduct";
             cmbProduct.Size = new Size(351, 33);
             cmbProduct.TabIndex = 1;
+            cmbProduct.SelectedIndexChanged += cmbProduct_SelectedIndexChanged;
             // 
             // dataGridApprovalPage
             // 
@@ -59,6 +60,7 @@
             dataGridApprovalPage.RowHeadersWidth = 62;
             dataGridApprovalPage.Size = new Size(644, 225);
             dataGridApprovalPage.TabIndex = 2;
+            dataGridApprovalPage.CellContentClick += dataGridApprovalPage_CellContentClick;
             // 
             // ApprovalPage
             // 
@@ -69,6 +71,7 @@
             Controls.Add(lblProduct);
             Name = "ApprovalPage";
             Size = new Size(787, 441);
+            Load += ApprovalPage_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridApprovalPage).EndInit();
             ResumeLayout(false);
             PerformLayout();
