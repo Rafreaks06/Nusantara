@@ -59,7 +59,7 @@
             // 
             // richBalance
             // 
-            richBalance.BackColor = SystemColors.ActiveCaption;
+            richBalance.BackColor = Color.LightSkyBlue;
             richBalance.Location = new Point(39, 206);
             richBalance.Name = "richBalance";
             richBalance.Size = new Size(334, 167);
@@ -69,46 +69,50 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = SystemColors.ActiveCaption;
+            label1.BackColor = Color.LightSkyBlue;
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label1.Location = new Point(56, 229);
             label1.Name = "label1";
-            label1.Size = new Size(71, 25);
+            label1.Size = new Size(102, 32);
             label1.TabIndex = 2;
             label1.Text = "Balance";
             // 
             // lblBalance
             // 
             lblBalance.AutoSize = true;
-            lblBalance.BackColor = SystemColors.ActiveCaption;
+            lblBalance.BackColor = Color.LightSkyBlue;
+            lblBalance.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblBalance.Location = new Point(318, 326);
             lblBalance.Name = "lblBalance";
-            lblBalance.Size = new Size(22, 25);
+            lblBalance.Size = new Size(28, 32);
             lblBalance.TabIndex = 3;
             lblBalance.Text = "0";
             // 
             // lblLoan
             // 
             lblLoan.AutoSize = true;
-            lblLoan.BackColor = SystemColors.ActiveCaption;
+            lblLoan.BackColor = Color.Tomato;
+            lblLoan.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblLoan.Location = new Point(670, 326);
             lblLoan.Name = "lblLoan";
-            lblLoan.Size = new Size(22, 25);
+            lblLoan.Size = new Size(28, 32);
             lblLoan.TabIndex = 6;
             lblLoan.Text = "0";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.BackColor = SystemColors.ActiveCaption;
+            label3.BackColor = Color.Tomato;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label3.Location = new Point(408, 229);
             label3.Name = "label3";
-            label3.Size = new Size(50, 25);
+            label3.Size = new Size(69, 32);
             label3.TabIndex = 5;
             label3.Text = "Loan";
             // 
             // richLoan
             // 
-            richLoan.BackColor = SystemColors.ActiveCaption;
+            richLoan.BackColor = Color.Tomato;
             richLoan.Location = new Point(391, 206);
             richLoan.Name = "richLoan";
             richLoan.Size = new Size(334, 167);
@@ -118,26 +122,28 @@
             // lblSaving
             // 
             lblSaving.AutoSize = true;
-            lblSaving.BackColor = SystemColors.ActiveCaption;
+            lblSaving.BackColor = Color.MediumSeaGreen;
+            lblSaving.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblSaving.Location = new Point(1036, 326);
             lblSaving.Name = "lblSaving";
-            lblSaving.Size = new Size(22, 25);
+            lblSaving.Size = new Size(28, 32);
             lblSaving.TabIndex = 9;
             lblSaving.Text = "0";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.BackColor = SystemColors.ActiveCaption;
+            label5.BackColor = Color.MediumSeaGreen;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label5.Location = new Point(774, 229);
             label5.Name = "label5";
-            label5.Size = new Size(65, 25);
+            label5.Size = new Size(90, 32);
             label5.TabIndex = 8;
             label5.Text = "Saving";
             // 
             // richSaving
             // 
-            richSaving.BackColor = SystemColors.ActiveCaption;
+            richSaving.BackColor = Color.MediumSeaGreen;
             richSaving.Location = new Point(743, 206);
             richSaving.Name = "richSaving";
             richSaving.Size = new Size(334, 167);
@@ -147,26 +153,28 @@
             // lblExchange
             // 
             lblExchange.AutoSize = true;
-            lblExchange.BackColor = SystemColors.ActiveCaption;
+            lblExchange.BackColor = Color.DeepPink;
+            lblExchange.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblExchange.Location = new Point(1036, 526);
             lblExchange.Name = "lblExchange";
-            lblExchange.Size = new Size(22, 25);
+            lblExchange.Size = new Size(28, 32);
             lblExchange.TabIndex = 18;
             lblExchange.Text = "0";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.BackColor = SystemColors.ActiveCaption;
+            label7.BackColor = Color.DeepPink;
+            label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label7.Location = new Point(774, 429);
             label7.Name = "label7";
-            label7.Size = new Size(86, 25);
+            label7.Size = new Size(122, 32);
             label7.TabIndex = 17;
             label7.Text = "Exchange";
             // 
             // richExcgan
             // 
-            richExcgan.BackColor = SystemColors.ActiveCaption;
+            richExcgan.BackColor = Color.DeepPink;
             richExcgan.Location = new Point(743, 406);
             richExcgan.Name = "richExcgan";
             richExcgan.Size = new Size(334, 167);
@@ -176,26 +184,28 @@
             // lblAccrossTransactions
             // 
             lblAccrossTransactions.AutoSize = true;
-            lblAccrossTransactions.BackColor = SystemColors.ActiveCaption;
+            lblAccrossTransactions.BackColor = Color.BlueViolet;
+            lblAccrossTransactions.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblAccrossTransactions.Location = new Point(670, 526);
             lblAccrossTransactions.Name = "lblAccrossTransactions";
-            lblAccrossTransactions.Size = new Size(22, 25);
+            lblAccrossTransactions.Size = new Size(28, 32);
             lblAccrossTransactions.TabIndex = 15;
             lblAccrossTransactions.Text = "0";
             // 
             // label9
             // 
             label9.AutoSize = true;
-            label9.BackColor = SystemColors.ActiveCaption;
+            label9.BackColor = Color.BlueViolet;
+            label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label9.Location = new Point(408, 429);
             label9.Name = "label9";
-            label9.Size = new Size(174, 25);
+            label9.Size = new Size(252, 32);
             label9.TabIndex = 14;
             label9.Text = "Accross Transactions";
             // 
             // richAccrossTransaction
             // 
-            richAccrossTransaction.BackColor = SystemColors.ActiveCaption;
+            richAccrossTransaction.BackColor = Color.BlueViolet;
             richAccrossTransaction.Location = new Point(391, 406);
             richAccrossTransaction.Name = "richAccrossTransaction";
             richAccrossTransaction.Size = new Size(334, 167);
@@ -205,26 +215,28 @@
             // lblInhouseTransaction
             // 
             lblInhouseTransaction.AutoSize = true;
-            lblInhouseTransaction.BackColor = SystemColors.ActiveCaption;
+            lblInhouseTransaction.BackColor = Color.LightSeaGreen;
+            lblInhouseTransaction.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             lblInhouseTransaction.Location = new Point(318, 526);
             lblInhouseTransaction.Name = "lblInhouseTransaction";
-            lblInhouseTransaction.Size = new Size(22, 25);
+            lblInhouseTransaction.Size = new Size(28, 32);
             lblInhouseTransaction.TabIndex = 12;
             lblInhouseTransaction.Text = "0";
             // 
             // label11
             // 
             label11.AutoSize = true;
-            label11.BackColor = SystemColors.ActiveCaption;
+            label11.BackColor = Color.LightSeaGreen;
+            label11.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
             label11.Location = new Point(56, 429);
             label11.Name = "label11";
-            label11.Size = new Size(168, 25);
+            label11.Size = new Size(244, 32);
             label11.TabIndex = 11;
             label11.Text = "Inhouse Transaction";
             // 
             // richInhouseTransactions
             // 
-            richInhouseTransactions.BackColor = SystemColors.ActiveCaption;
+            richInhouseTransactions.BackColor = Color.LightSeaGreen;
             richInhouseTransactions.Location = new Point(39, 406);
             richInhouseTransactions.Name = "richInhouseTransactions";
             richInhouseTransactions.Size = new Size(334, 167);
@@ -256,6 +268,7 @@
             Controls.Add(richTextBox1);
             Name = "DashboardPage";
             Size = new Size(1121, 628);
+            Load += DashboardPage_Load;
             ResumeLayout(false);
             PerformLayout();
         }
