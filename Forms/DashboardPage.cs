@@ -18,7 +18,7 @@ namespace Nusantara.Forms
         public DashboardPage(Member member)
         {
             InitializeComponent();
-            loggedMember= member;
+            loggedMember = member;
 
 
         }
@@ -28,3 +28,5 @@ namespace Nusantara.Forms
 
         }
     }
+
+}

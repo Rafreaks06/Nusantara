@@ -104,4 +104,7 @@ namespace Nusantara.Forms
                         cmbProduct.SelectedIndex = 1;
                     }
                 }
+            }
+        }
     }
+}
