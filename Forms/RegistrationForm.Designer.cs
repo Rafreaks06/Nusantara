@@ -306,6 +306,7 @@
             Controls.Add(textFullname);
             Name = "RegistrationForm";
             Text = "RegistrationForm";
+            Load += RegistrationForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
