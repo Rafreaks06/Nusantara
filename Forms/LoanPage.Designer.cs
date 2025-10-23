@@ -97,7 +97,6 @@
             txtInterestFine.Name = "txtInterestFine";
             txtInterestFine.Size = new Size(204, 23);
             txtInterestFine.TabIndex = 4;
-            txtInterestFine.TextChanged += txtIntrestFine_TextChanged;
             // 
             // txtDueDate
             // 
@@ -247,7 +246,7 @@
             label1.AutoSize = true;
             label1.Location = new Point(46, 80);
             label1.Name = "label1";
-            label1.Size = new Size(60, 15);
+            label1.Size = new Size(61, 15);
             label1.TabIndex = 25;
             label1.Text = "Loan Type";
             // 
@@ -319,7 +318,7 @@
             label10.AutoSize = true;
             label10.Location = new Point(296, 134);
             label10.Name = "label10";
-            label10.Size = new Size(36, 15);
+            label10.Size = new Size(37, 15);
             label10.TabIndex = 33;
             label10.Text = "Tenor";
             // 
@@ -328,7 +327,7 @@
             label11.AutoSize = true;
             label11.Location = new Point(296, 186);
             label11.Name = "label11";
-            label11.Size = new Size(77, 15);
+            label11.Size = new Size(76, 15);
             label11.TabIndex = 34;
             label11.Text = "Max Amount";
             // 
@@ -409,7 +408,6 @@
             Controls.Add(datagridLoan);
             Controls.Add(label13);
             Controls.Add(label12);
-            Controls.Add(label11);
             Controls.Add(label10);
             Controls.Add(label9);
             Controls.Add(label8);
@@ -440,6 +438,7 @@
             Controls.Add(txtMinAmount);
             Controls.Add(txtAdminFee);
             Controls.Add(txtLoan);
+            Controls.Add(label11);
             Name = "LoanPage";
             Size = new Size(1026, 521);
             Load += LoanPage_Load;
