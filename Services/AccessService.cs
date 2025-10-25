@@ -4,6 +4,8 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Nusantara.Data;
 using Nusantara.Models;
 
 namespace Nusantara.Services
@@ -15,20 +17,20 @@ namespace Nusantara.Services
         
         public async Task<Access?> GetAccess(int memberId)
         {
-            var access = await _db.accesses.FirstOrDefaultAsync(
+            var access = await _db.Accesses.FirstOrDefaultAsync(
                  x => x.MemberId == memberId);
                 return access;
 
         }
         public object setGridView()
         {
-            var grid = _db.accesses.OrderBy(x => x.MemberId)
+            var grid = _db.Accesses.OrderBy(x => x.MemberId)
                 .Select(x => new
                 {
-                    x.id,
+                    x.Id,
                     DisplayMember = x.Member.MemberId + "-" + x.Member.FullName,
                     x.AccessList,
-                    x.updateON
+                    x.updateOn
                 }).ToList();
             return grid;
         }
@@ -39,7 +41,7 @@ namespace Nusantara.Services
         public async Task update(Access access, string accessList)
         {
             access.AccessList = accessList;
-            access.updateON = DateTime.Now;
+            access.updateOn = DateTime.Now;
             _db.Accesses.Update(access);
             await _db.SaveChangesAsync();
         }
@@ -49,7 +51,7 @@ namespace Nusantara.Services
             {
                 MemberId = member.Id,
                 AccessList = accessList,
-                updateON = DateTime.Now
+                updateOn = DateTime.Now
             };
             _db.Add(a);
             await _db.SaveChangesAsync();

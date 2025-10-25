@@ -75,13 +75,13 @@ namespace Nusantara.Services
             }
 
             sm.UpdateOn = DateTime.UtcNow;
-            sm.Fine = decimal.Parse(fine.Replace(".", ","));
-            sm.Interest = decimal.Parse(interest.Replace(".", ","));
+            sm.fine = decimal.Parse(fine.Replace(".", ","));
+            sm.interest = decimal.Parse(interest.Replace(".", ","));
             sm.AdminFee = decimal.Parse(adminFee);
-            sm.MaxAmount = decimal.Parse(maxAmount);
+            sm.maxAmount = decimal.Parse(maxAmount);
             sm.MinAmount = decimal.Parse(minAmount);
-            sm.Name = name;
-            sm.Description = "-";
+            sm.name = name;
+            sm.description = "-";
             sm.Tenor = int.Parse(tenor);
 
             if (isNew)
