@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nusantara.Data;
 using Nusantara.Models;
+using Nusantara.Services;
 
 namespace Nusantara.Forms
 {
@@ -99,7 +100,7 @@ namespace Nusantara.Forms
         private void loadAccessList(AppDbContext db)
         {
             var acessService = new AccessService(db);
-            accessBindingSource.DataSource = accessService.setGridView();
+            accessBindingSource.DataSource = AccessService.setGridView();
             dataGridViewAccess.Columns[0].DataPropertyName = "id";
             dataGridViewAccess.Columns[0].Visible = false;
             dataGridViewAccess.Columns[1].DataPropertyName = "DisplayMember";
