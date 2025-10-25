@@ -20,7 +20,7 @@ namespace Nusantara.Services
 
         public List<LoanMaster> LoadLoanGrid()
         {
-            return _db.LoanMasters.OrderByDescending(x => x.UpdateOn).ToList();
+            return _db.LoanMaster.OrderByDescending(x => x.Update0n).ToList();
         }
 
         public List<SavingMaster> LoadSavingGrid()
@@ -39,10 +39,10 @@ namespace Nusantara.Services
             {
                 isNew = false;
                 int idLoanMaster = int.Parse(id);
-                lm = _db.LoanMasters.FirstOrDefault(lm => lm.Id == idLoanMaster);
+                lm = _db.LoanMaster.FirstOrDefault(lm => lm.Id == idLoanMaster);
             }
 
-            lm.UpdateOn = DateTime.UtcNow;
+            lm.Update0n = DateTime.UtcNow;
             lm.Fine = decimal.Parse(fine.Replace(".", ","));
             lm.Interest = decimal.Parse(interest.Replace(".", ","));
             lm.AdminFee = decimal.Parse(adminFee);
@@ -53,9 +53,9 @@ namespace Nusantara.Services
             lm.Tenor = int.Parse(tenor);
 
             if (isNew)
-                _db.LoanMasters.Add(lm);
+                _db.LoanMaster.Add(lm);
             else
-                _db.LoanMasters.Update(lm);
+                _db.LoanMaster.Update(lm);
 
             await _db.SaveChangesAsync();
         }
@@ -71,7 +71,7 @@ namespace Nusantara.Services
             {
                 isNew = false;
                 int idSavingMaster = int.Parse(id);
-                sm = _db.SavingMasters.FirstOrDefault(sm => sm.Id == idSavingMaster);
+                sm = _db.SavingMasters.FirstOrDefault(sm => sm.id == idSavingMaster);
             }
 
             sm.UpdateOn = DateTime.UtcNow;
@@ -94,17 +94,17 @@ namespace Nusantara.Services
 
         public async Task<LoanMaster?> findLoanById(int id)
         {
-            return await _db.LoanMasters.FirstOrDefaultAsync(lm => lm.Id == id);
+            return await _db.LoanMaster.FirstOrDefaultAsync(lm => lm.Id == id);
         }
 
         public async Task<SavingMaster?> findSavingById(int id)
         {
-            return await _db.SavingMasters.FirstOrDefaultAsync(sm => sm.Id == id);
+            return await _db.SavingMasters.FirstOrDefaultAsync(sm => sm.id == id);
         }
 
         public object SetDropDownLoan()
         {
-            var data = _db.LoanMasters
+            var data = _db.LoanMaster
                 .OrderBy(x => x.Name)
                 .Select(x => new
                 {
