@@ -51,11 +51,11 @@ namespace Nusantara.Services
                 Address = address,
                 Phone = phone,
                 PhoneAlt = phonealt,
-                CardId = cardId,
+                IdCard = cardId,
                 ReferenceId = referenceid,
                 Level = "public",
                 IsActive = true,
-                State = "public",
+                Status = "public",
                 quest1 = quest1,
                 quest2 = quest2,
                 MemberId = memberId
