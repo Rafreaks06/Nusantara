@@ -20,7 +20,7 @@ namespace Nusantara.Forms
             loggedMember = member;
             InitializeComponent();
             this.Text = "Nusantara Cooperation(Administrator: " +
-                loggedMember.MemberID + " _ " + loggedMember.FullName + ")";
+                loggedMember.MemberId + " _ " + loggedMember.FullName + ")";
         }
         public void route(System.Windows.Forms.Control control)
         {
@@ -30,18 +30,18 @@ namespace Nusantara.Forms
         }
         private void admin_form_Load(object sender, EventArgs e)
         {
-            route(new DashboardAdminpage(loggedMember));
+            route(new DashboardAdminPage(loggedMember));
 
         }
 
         private void accesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            route(new Accesspage(loggedMember));
+            route(new AccessPage(loggedMember));
         }
 
         private void configurationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            route(new Configpage());
+            route(new ConfigPage());
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -49,7 +49,7 @@ namespace Nusantara.Forms
             loggedMember = null;
             this.Hide();
             LoginForm loginForm = new LoginForm();
-            loginForm.showdialog();
+            loginForm.ShowDialog();
         }
 
         private void memberToolStripMenuItem_Click(object sender, EventArgs e)
@@ -64,7 +64,7 @@ namespace Nusantara.Forms
 
         private void acrossCooperationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            route(new Acrosspage());
+            route(new AcrossPage());
         }
 
         private void approvalToolStripMenuItem_Click(object sender, EventArgs e)

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Nusantara.Data;
+using Nusantara.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,7 +37,7 @@ namespace Nusantara.Forms
         private void buttonBack_Click(object sender, EventArgs e)
         {
             this.Hide();
-            loginForm loginForm = new LoginForm();
+            LoginForm loginForm = new LoginForm();
             loginForm.ShowDialog();
         }
 

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Nusantara.Data;
+using Nusantara.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -28,7 +30,7 @@ namespace Nusantara.Forms
             {
                 this.Hide();
                 LoginForm loginForm = new LoginForm();
-                loginForm.setSuccesAlert("Registration Succes! Please Login....");
+                loginForm.SetSuccessAlert("Registration Succes! Please Login....");
                 loginForm.ShowDialog();
             }
             else

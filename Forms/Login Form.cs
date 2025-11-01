@@ -1,4 +1,6 @@
-﻿using Nusantara.Models;
+﻿using Nusantara.Data;
+using Nusantara.Models;
+using Nusantara.Services;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -39,7 +41,7 @@ namespace Nusantara.Forms
             {
                 LoggedInUser = user;
 
-                if (LoggedInUser.level == "admin")
+                if (LoggedInUser.Level == "admin")
                 {
                     this.Hide();
                     var form = new AdminForm(LoggedInUser);

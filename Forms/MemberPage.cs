@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Reflection.Emit;
-using BraveHeroCooperation.Services;
+using Nusantara.Services;
 using Nusantara.Data;
 using Nusantara.Models;
 
@@ -24,7 +24,7 @@ namespace Nusantara.Forms
         private void MemberPage_Load(object sender, EventArgs e)
         {
             loadGridMember();
-            string? id = labelId.Text;
+            string? id = lblMemberId.Text;
             if (id == null || id == "" || id == "...")
             {
                 button1.Visible = false;
@@ -46,7 +46,7 @@ namespace Nusantara.Forms
         {
             AppDbContext db = new AppDbContext();
             MemberService service = new MemberService(db);
-            int memberId = int.Parse(lblId.Text);
+            int memberId = int.Parse(lblMemberId.Text);
             Member? member = service.FindById(memberId);
             if (member != null)
             {
@@ -63,7 +63,7 @@ namespace Nusantara.Forms
 
         private void dataGridMemberPage_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            int memberId = int.Parse(dataGridViewMember.Rows[e.RowIndex].Cells[0].Value.ToString()!);
+            int memberId = int.Parse(dataGridViewMemberPage.Rows[e.RowIndex].Cells[0].Value.ToString()!);
             AppDbContext db = new AppDbContext();
             MemberService service = new MemberService(db);
             Member? member = service.FindById(memberId);
