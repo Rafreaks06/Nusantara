@@ -1,9 +1,9 @@
-﻿using BraveHeroCooperation.Data;
-using BraveHeroCooperation.Models;
+﻿using Nusantara.Data;
+using Nusantara.Models;
 using Nusantara.Data;
 using Nusantara.Models;
 
-namespace BraveHeroCooperation.Services
+namespace Nusantara.Services
 {
     public class MemberService
     {

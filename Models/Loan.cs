@@ -17,7 +17,7 @@ namespace Nusantara.Models
         public decimal Outstanding {  get; set; }
         public decimal Fine { get; set; }
         public int Tenorleft { get; set; }
-        public DateTime Created0n { get; set; } = DateTime.UtcNow;
+        public DateTime Createdo0n { get; set; } = DateTime.UtcNow;
         [Required, MaxLength(20)] public string Status { get; set; } = "Pending";
         public decimal Interest { get; set; }
         public decimal InterestFine { get; set; }

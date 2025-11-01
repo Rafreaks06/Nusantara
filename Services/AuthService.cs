@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Nusantara.Data;
 using Nusantara.Models;
 
@@ -29,13 +30,13 @@ namespace Nusantara.Services
             {
                 Username = username,
                 PasswordHash = hash,
-                Fullname = fullname,
+                FullName = fullname,
             };
             _db.Members.Add(m);
             await _db.SaveChangesAsync();
         }
 
-        public async Task RegisterAsync(string address, string cardid, string email, string fullname,
+        public async Task RegisterAsync(string address, string cardId, string email, string fullname,
             string password, string phone, string phonealt, string referenceid, string username,
             string quest1, string quest2)
         {
@@ -45,18 +46,18 @@ namespace Nusantara.Services
             {
                 Username = username,
                 PasswordHash = hash,
-                Fullname = fullname,
+                FullName = fullname,
                 Email = email,
                 Address = address,
                 Phone = phone,
                 PhoneAlt = phonealt,
-                CardId = cardid,
+                IdCard = cardId,
                 ReferenceId = referenceid,
                 Level = "public",
                 IsActive = true,
-                State = "public",
-                Quest1 = quest1,
-                Quest2 = quest2,
+                Status = "public",
+                quest1 = quest1,
+                quest2 = quest2,
                 MemberId = memberId
             };
 
@@ -66,7 +67,7 @@ namespace Nusantara.Services
 
         public async Task<string> ResetPasswordAsync(string username, string quest1, string quest2)
         {
-            var user = await _db.Members.FirstOrDefaultAsync(x => x.Username == username && x.IsActive && x.Quest1 == quest1.Trim() && x.Quest2 == quest2.Trim());
+            var user = await _db.Members.FirstOrDefaultAsync(x => x.Username == username && x.IsActive && x.quest1 == quest1.Trim() && x.quest2 == quest2.Trim());
             if (user != null)
             {
                 string password = RandomNumberGenerator.GetHexString(6, false);

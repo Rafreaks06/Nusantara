@@ -19,16 +19,18 @@ namespace Nusantara.Data
         public DbSet<Loan> Loans => Set<Loan>();
         //public DbSet<Installment> Instalments => Set<Installment>();
         public DbSet<Saving> Savings => Set<Saving>();
+        public DbSet<SavingMaster> SavingMasters => Set<SavingMaster>();
         //public DbSet<Inhouse> Inhouses => Set<Inhouse>();
         //public DbSet<Exchange> Exchanges => Set<Exchange>();
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
         {
-            var config = new ConfigurationBuilder()
-                .SetBasePath(AppContext.BaseDirectory)
-                .AddJsonFile("appsettings.json")
-                .Build();
-            optionsBuilder.UseNpgsql(config.GetConnectionString("Default"));
+            //var config = new ConfigurationBuilder()
+            //    .SetBasePath(AppContext.BaseDirectory)
+            //    .AddJsonFile("appsettings.json")
+            //    .Build();
+            //optionsBuilder.UseNpgsql(config.GetConnectionString("Default"));
+            optionsBuilder.UseNpgsql("Host=103.82.242.90;Port=5434;Database=vb2_nusantara;Username=postgres;Password=12Qpalzmxn");
 
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -77,7 +79,9 @@ namespace Nusantara.Data
                         Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlValueGenerationStrategy.SerialColumn
                         );
                 }
+                                
             }
+            modelBuilder.UseSerialColumns();
             base.OnModelCreating(modelBuilder);
         }
     }
