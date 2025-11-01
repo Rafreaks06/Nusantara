@@ -107,6 +107,7 @@ namespace Nusantara.Forms
 
 
             }
+        }
 
         private void btnNewLoan_Click(object sender, EventArgs e)
         {
@@ -169,7 +170,7 @@ namespace Nusantara.Forms
         {
             if (e.RowIndex >= 0)
             {
-                int Id = int.Parse(datagridLoan.Rows[e.RowIndex].Cells[0].Value.ToString();
+                int Id = int.Parse(datagridLoan.Rows[e.RowIndex].Cells[0].Value.ToString());
                 AppDbContext db = new AppDbContext();
                 LoanService loanService = new LoanService(db);
                 Loan? loan = await loanService.findBy(Id);
@@ -205,6 +206,9 @@ namespace Nusantara.Forms
                         HideInstallment();
 
                     }
+                    
+
+
                 else
                     {
                         HideInstallment();
@@ -271,4 +275,4 @@ namespace Nusantara.Forms
             LoaddatagridLoan(db);
             HideInstallment();
         }
-    }
+    } }
