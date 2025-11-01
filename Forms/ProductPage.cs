@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nusantara.Data;
 using Nusantara.Models;
+using Nusantara.Services;
 
 namespace Nusantara.Forms
 {
@@ -91,7 +92,7 @@ namespace Nusantara.Forms
                 labelId.Text = dataGridViewLoan.Rows[e.RowIndex].Cells[0].Value.ToString();
                 AppDbContext db = new AppDbContext();
                 ProductService service = new ProductService(db);
-                LoanMaster loanMaster = await service.FindLoanById(labelId.Text);
+                LoanMaster loanMaster = await service.findLoanById(labelId.Text);
 
                 labelId.Text = loanMaster.Id.ToString();
                 textAdminFee.Text = loanMaster.AdminFee.ToString();
@@ -113,14 +114,14 @@ namespace Nusantara.Forms
                 labelId.Text = dataGridViewSaving.Rows[e.RowIndex].Cells[0].Value.ToString();
                 AppDbContext db = new AppDbContext();
                 ProductService service = new ProductService(db);
-                SavingMaster savingMaster = await service.FindSavingById(labelId.Text);
+                SavingMaster savingMaster = await service.findSavingById(labelId.Text);
 
-                labelId.Text = savingMaster.Id.ToString();
+                labelId.Text = savingMaster.id.ToString();
                 textAdminFee.Text = savingMaster.AdminFee.ToString();
-                textBoxName.Text = savingMaster.Name.ToString();
-                textFine.Text = savingMaster.Fine.ToString();
-                textInterest.Text = savingMaster.Interest.ToString();
-                textMaxAmount.Text = savingMaster.MaxAmount.ToString();
+                textBoxName.Text = savingMaster.name.ToString();
+                textFine.Text = savingMaster.fine.ToString();
+                textInterest.Text = savingMaster.interest.ToString();
+                textMaxAmount.Text = savingMaster.maxAmount.ToString();
                 textMinAmount.Text = savingMaster.MinAmount.ToString();
                 textTenor.Text = savingMaster.Tenor.ToString();
                 comboBoxMode.SelectedIndex = 1;

@@ -142,7 +142,7 @@ namespace Nusantara.Forms
                 int accessId = int.Parse(dataGridViewAccess.Rows[e.RowIndex].Cells[0].Value.ToString());
                 AppDbContext db = new AppDbContext();
                 AccessService accessService = new AccessService(db);
-                Access? access = accessService.findById(accessId);
+                Access? access = accessService.findByMemberId(accessId);
                 if (access != null) { 
                     comboboxMember.SelectedValue = access.MemberId;
                     string[] accessList = access.AccessList.Split(',');

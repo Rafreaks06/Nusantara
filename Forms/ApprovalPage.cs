@@ -16,7 +16,7 @@ namespace Nusantara.Forms
     {
         public ApprovalPage()
         {
-            loggedMember = member;
+            loggedMember = Member;
             InitializeComponent();
         }
 
