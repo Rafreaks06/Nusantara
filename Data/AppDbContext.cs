@@ -54,7 +54,7 @@ namespace Nusantara.Data
                 .HasOne(s => s.Member)
                 .WithMany(m => m.Savings)
                 .HasForeignKey(s => s.MemberId);
-            
+
             /*modelBuilder.Entity<Inhouse>()
                 .HasOne(x => x.Origin)
                 .WithMany(m => m.OriginTransactions)
