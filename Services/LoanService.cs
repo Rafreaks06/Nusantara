@@ -114,18 +114,18 @@ namespace Nusantara.Services
             }
         }
 
-        //public async Task saveOrUpdateInstallment(int loanId, string amount, string path)
-        //{
-        //    Installment i = new Installment
-        //    {
-        //        LoanId = loanId,
-        //        Amount = decimal.Parse(amount),
-        //        PatmentDate = DateTime.UtcNow,
-        //        proofPath = path
-        //    };
-        //    _db.Set<Installment>().Add(i);
-        //    await _db.SaveChangesAsync();
-        //}
+        public async Task saveOrUpdateInstallment(int loanId, string amount, string path)
+        {
+            Installment i = new Installment
+            {
+                LoanId = loanId,
+                Amount = decimal.Parse(amount),
+                PatmentDate = DateTime.UtcNow,
+                proofPath = path
+            };
+            _db.Set<Installment>().Add(i);
+            await _db.SaveChangesAsync();
+        }
 
         public async Task recalculateLoan(int loanId, string amount, string path)
         {

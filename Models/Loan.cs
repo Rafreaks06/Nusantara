@@ -30,7 +30,8 @@ namespace Nusantara.Models
 
         public string? KtpPath { get; set; }
         public string? KkpPath { get; set; }
-        public string? Path { get; set; }
+        public string? SlipGajiPath { get; set; }
+        public ICollection<Installment> Installments { get; set; } = new List<Installment>();
 
 
     }
