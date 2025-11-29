@@ -32,7 +32,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Api\Connectors\" />
     <Folder Include="Api\Models\" />
   </ItemGroup>
+
 
 </Project>

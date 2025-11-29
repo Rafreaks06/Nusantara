@@ -70,7 +70,7 @@
             Controls.Add(cmbProduct);
             Controls.Add(lblProduct);
             Name = "ApprovalPage";
-            Size = new Size(787, 441);
+            Size = new Size(928, 527);
             Load += ApprovalPage_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridApprovalPage).EndInit();
             ResumeLayout(false);
