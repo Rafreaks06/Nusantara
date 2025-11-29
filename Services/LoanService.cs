@@ -57,7 +57,7 @@ namespace Nusantara.Services
                 InterestFine = decInterestFine,
                 KkpPath = KK,
                 KtpPath = Ktp,
-                Path = gaji,
+                SlipGajiPath = gaji,
                 LoanId = int.Parse(loanId),
                 Tenor = tenorleft,
                 Tenorleft = tenorleft,
