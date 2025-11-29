@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -25,8 +24,8 @@ namespace Nusantara.Forms
         private async void TerminologiPage_Load(object sender, EventArgs e)
         {
             AppDbContext context = new AppDbContext();
-            ConfigurationService configService = new ConfigurationService(db);
-            Configuration configuration = await service.GetConfig();
+            ConfigurationService configService = new ConfigurationService(context);
+            Configuration configuration = await configService.GetConfig();
             if (configuration != null)
             {
                 labelTerminologi1.Text = configuration.terminologi1;
