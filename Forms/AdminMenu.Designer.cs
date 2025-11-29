@@ -77,13 +77,13 @@
             // configurationToolStripMenuItem
             // 
             configurationToolStripMenuItem.Name = "configurationToolStripMenuItem";
-            configurationToolStripMenuItem.Size = new Size(270, 34);
+            configurationToolStripMenuItem.Size = new Size(223, 34);
             configurationToolStripMenuItem.Text = "Configuration";
             // 
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(270, 34);
+            logoutToolStripMenuItem.Size = new Size(223, 34);
             logoutToolStripMenuItem.Text = "Logout";
             // 
             // memberToolStripMenuItem
