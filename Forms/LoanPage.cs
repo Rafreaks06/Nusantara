@@ -51,7 +51,7 @@ namespace Nusantara.Forms
         private void SetLoanDropDown(AppDbContext db)
         {
             ProductService productService = new ProductService(db);
-            loanMasterBindingSource.DataSource = productService.SetDropDownLoan();
+            //loanMasterBindingSource.DataSource = productService.SetDropDownLoan();
             comboLoanType.DataSource = productService.SetDropDownLoan();
             comboLoanType.DisplayMember = "DisplayName";
             comboLoanType.ValueMember = "Id";
@@ -138,7 +138,7 @@ namespace Nusantara.Forms
         private async void LoadLoanGrid(AppDbContext db)
         {
             LoanService loanService = new LoanService(db);
-            loanBindingSource.DataSource = await loanService.LoadLoanGridByMemberIdAsync(LoggedMember.Id);
+            //loanBindingSource.DataSource = await loanService.LoadLoanGridByMemberIdAsync(LoggedMember.Id);
             datagridLoan.Columns[0].DataPropertyName = "id";
             datagridLoan.Columns[1].DataPropertyName = "LoanId";
             datagridLoan.Columns[2].DataPropertyName = "Outstanding";
@@ -168,7 +168,7 @@ namespace Nusantara.Forms
                             SetChosenField();
                             txtDocumentKK.Text = loan.KkpPath ?? "";
                             txtDocumentKtp.Text = loan.KtpPath ?? "";
-                            txtDocumentGaji.Text = loan.Path ?? "";
+                            txtDocumentGaji.Text = loan.SlipGajiPath ?? "";
                             txtDueDate.Text = loan.DueDate.ToString();
                             txtInterestFine.Text = loan.InterestFine.ToString();
                             txtAmount.Text = loan.Amount.ToString();
@@ -179,11 +179,11 @@ namespace Nusantara.Forms
                             lblId.Text = loan.id.ToString();
                             comboLoanType.SelectedIndex = 0;
                             comboLoanType.Enabled = false;
-                            if (installmentForm == null)
-                                installmentForm = new InstallmentForm(LoggedMember, loan.id);
-                            installmentForm.SetLoan(loan.id);
-                            installmentForm.Show();
-                            btnApplyLoan.Enabled = false;
+                            //if (installmentForm == null)
+                            //    installmentForm = new InstallmentForm(LoggedMember, loan.id);
+                            //installmentForm.SetLoan(loan.id);
+                            //installmentForm.Show();
+                            //btnApplyLoan.Enabled = false;
                         }
                         else
                         {
@@ -229,10 +229,10 @@ namespace Nusantara.Forms
 
         private void HideInstallment()
         {
-            if (installmentForm == null)
-                installmentForm = new InstallmentForm(LoggedMember, 0);
-            installmentForm.SetLoan(0);
-            installmentForm.Hide();
+            //if (installmentForm == null)
+            //    installmentForm = new InstallmentForm(LoggedMember, 0);
+            //installmentForm.SetLoan(0);
+            //installmentForm.Hide();
         }
 
         private void ResetDropDown()
