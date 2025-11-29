@@ -24,101 +24,17 @@ namespace Nusantara.Forms
 
         private void btnrefresh_Click(object sender, EventArgs e)
         {
-            LoadData();
+           // LoadData();
         }
         private void AcrossPage_Load(object sender, EventArgs e)
         {
-            LoadData();
+           // LoadData();
         }
-        private async void LoadData()
+       
+
+        private void AdminMenu_Load(object sender, EventArgs e)
         {
-            AppDbContext appDbContext = new AppDbContext();
-            ConfigurationService configurationService = new ConfigurationService(appDbContext);
-            Configuration? configuration = await configurationService.GetConfig();
 
-            string message = "";
-
-            connectorGet connectorGet = new ConnectorGet();
-            CoopApiResponse? coopApiResponse = await connectorGet.GetCoopAsync();
-
-            if (coopApiResponse != null && coopApiResponse.ResponseCode == "00")
-            {
-                dgvCoop.Rows.Clear();
-
-                foreach (var coop in coopApiResponse.CoopList)
-                {
-                    dgvCoop.Rows.Add(
-                        coop.Code,
-                        coop.Name,
-                        coop.Address
-                    );
-                }
-            }
-            else
-            {
-                message =
-                    coopApiResponse != null
-                    ? coopApiResponse.ResponseCode + " - " + coopApiResponse.ResponseMessage
-                    : "Did not get data";
-            }
-            BalanceApiResponse? balanceApiResponse =
-    await connectorGet.GetBalancesByCoopAsync(configuration.terminologi3);
-
-            if (balanceApiResponse != null && balanceApiResponse.ResponseCode == "00")
-            {
-                dgvBalance.Rows.Clear();
-
-                foreach (var balance in balanceApiResponse.BalanceList)
-                {
-                    dgvBalance.Rows.Add(
-                        balance.Member.Code,
-                        balance.Member.Name,
-                        balance.Amount
-                    );
-                }
-            }
-            else
-            {
-                message =
-                    balanceApiResponse != null
-                    ? balanceApiResponse.ResponseCode + " - " + balanceApiResponse.ResponseMessage
-                    : "Did not get data";
-            }
-
-
-            TransferApiResponse? transferApiResponse =
-                await connectorGet.GetTransfersByCoopAsync(configuration.terminologi3);
-
-            if (transferApiResponse != null && transferApiResponse.ResponseCode == "00")
-            {
-                dgvTransfer.Rows.Clear();
-
-                foreach (var transfer in transferApiResponse.TransferList)
-                {
-                    dgvTransfer.Rows.Add(
-                        transfer.Code,
-                        transfer.CoopCode,
-                        transfer.CodeOrigin,
-                        transfer.CodeBenef,
-                        transfer.Amount,
-                        transfer.Remarks
-                    );
-                }
-            }
-            else
-            {
-                message =
-                    transferApiResponse != null
-                    ? transferApiResponse.ResponseCode + " - " + transferApiResponse.ResponseMessage
-                    : "Did not get data";
-            }
-            if (message != "")
-            {
-                MessageBox.Show("Failed to load data from API.\nError: " + message);
-            }
         }
-
-
-
     }
 }
