@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Nusantara.Api.Models;
 
 namespace Nusantara.Api.Connectors
 {
@@ -14,10 +15,8 @@ namespace Nusantara.Api.Connectors
         private String _baseUrl = "hhtp://localhost20254/";
 
 
-       
-}
-    internal class Api_Connectors_ConnectorGet
-    {
+
+
         public async Task<CoopApiResponse?> GetCoopAsync()
         {
             var response = await _httpClient.GetAsync(_baseUrl + "coop/list");
@@ -179,12 +178,6 @@ namespace Nusantara.Api.Connectors
 
             return JsonSerializer.Deserialize<TransferApiResponse>(json, options);
         }
-
-
-
-
-
-
     }
-
 }
+
