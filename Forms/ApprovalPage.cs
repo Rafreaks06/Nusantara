@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Nusantara.Models;
 using Nusantara.Data;
 using Nusantara.Services;
+using BraveHeroCooperation.Utils;
 
 namespace Nusantara.Forms
 {
@@ -32,38 +33,38 @@ namespace Nusantara.Forms
             if (cmbProduct.SelectedIndex == 1)
             {
                 loanService loanService = new LoanService(db);
-                dataGridViewApproval.AutoGenerateColumns = true;
-                dataGridViewApproval.DataSource = await loanService.LoadsApproval();
+                dataGridApprovalPage.AutoGenerateColumns = true;
+                dataGridApprovalPage.DataSource = await loanService.LoadsApproval();
 
-                dataGridViewApproval.Columns[0].DataPropertyName = "Id";
-                dataGridViewApproval.Columns[1].DataPropertyName = "LoanId";
-                dataGridViewApproval.Columns[2].DataPropertyName = "CreatedOn";
-                dataGridViewApproval.Columns[3].DataPropertyName = "Amount";
-                dataGridViewApproval.Columns[4].DataPropertyName = "Outstanding";
-                dataGridViewApproval.Columns[5].DataPropertyName = "Interest";
-                dataGridViewApproval.Columns[6].DataPropertyName = "Tenor";
-                dataGridViewApproval.Columns[7].DataPropertyName = "Member";
-                dataGridViewApproval.Columns[8].DataPropertyName = "KtpPath";
-                dataGridViewApproval.Columns[9].DataPropertyName = "KkPath";
-                dataGridViewApproval.Columns[10].DataPropertyName = "SlipGajiPath";
-                dataGridViewApproval.Columns[11].DataPropertyName = "Amount";
+                dataGridApprovalPage.Columns[0].DataPropertyName = "Id";
+                dataGridApprovalPage.Columns[1].DataPropertyName = "LoanId";
+                dataGridApprovalPage.Columns[2].DataPropertyName = "CreatedOn";
+                dataGridApprovalPage.Columns[3].DataPropertyName = "Amount";
+                dataGridApprovalPage.Columns[4].DataPropertyName = "Outstanding";
+                dataGridApprovalPage.Columns[5].DataPropertyName = "Interest";
+                dataGridApprovalPage.Columns[6].DataPropertyName = "Tenor";
+                dataGridApprovalPage.Columns[7].DataPropertyName = "Member";
+                dataGridApprovalPage.Columns[8].DataPropertyName = "KtpPath";
+                dataGridApprovalPage.Columns[9].DataPropertyName = "KkPath";
+                dataGridApprovalPage.Columns[10].DataPropertyName = "SlipGajiPath";
+                dataGridApprovalPage.Columns[11].DataPropertyName = "Amount";
 
-                dataGridViewApproval.Columns[0].Visible = false;
-                dataGridViewApproval.Columns[1].HeaderText = "Loan Id";
-                dataGridViewApproval.Columns[2].HeaderText = "Created On";
-                dataGridViewApproval.Columns[3].HeaderText = "Amount";
-                dataGridViewApproval.Columns[4].HeaderText = "Outstanding";
-                dataGridViewApproval.Columns[5].HeaderText = "Interest";
-                dataGridViewApproval.Columns[6].HeaderText = "Tenor";
-                dataGridViewApproval.Columns[7].HeaderText = "Member";
-                dataGridViewApproval.Columns[8].HeaderText = "Ktp";
-                dataGridViewApproval.Columns[9].HeaderText = "Kk";
-                dataGridViewApproval.Columns[10].HeaderText = "Slip Gaji";
-                dataGridViewApproval.Columns[11].HeaderText = "Join Date";
+                dataGridApprovalPage.Columns[0].Visible = false;
+                dataGridApprovalPage.Columns[1].HeaderText = "Loan Id";
+                dataGridApprovalPage.Columns[2].HeaderText = "Created On";
+                dataGridApprovalPage.Columns[3].HeaderText = "Amount";
+                dataGridApprovalPage.Columns[4].HeaderText = "Outstanding";
+                dataGridApprovalPage.Columns[5].HeaderText = "Interest";
+                dataGridApprovalPage.Columns[6].HeaderText = "Tenor";
+                dataGridApprovalPage.Columns[7].HeaderText = "Member";
+                dataGridApprovalPage.Columns[8].HeaderText = "Ktp";
+                dataGridApprovalPage.Columns[9].HeaderText = "Kk";
+                dataGridApprovalPage.Columns[10].HeaderText = "Slip Gaji";
+                dataGridApprovalPage.Columns[11].HeaderText = "Join Date";
 
-                for (int i = 11; i < dataGridViewApproval.Columns.Count; i++)
+                for (int i = 11; i < dataGridApprovalPage.Columns.Count; i++)
                 {
-                    dataGridViewApproval.Columns[i].Visible = false;
+                    dataGridApprovalPage.Columns[i].Visible = false;
                 }
             }
         }
@@ -78,24 +79,24 @@ namespace Nusantara.Forms
                     string path;
                     if (e.ColumnIndex == 8)
                     {
-                        path = dataGridViewApproval.Rows[e.RowIndex].Cells[8].Value.ToString();
+                        path = dataGridApprovalPage.Rows[e.RowIndex].Cells[8].Value.ToString();
                         FileHelper.ShowFile(path);
                     }
                     else if (e.ColumnIndex == 9)
                     {
-                        path = dataGridViewApproval.Rows[e.RowIndex].Cells[9].Value.ToString();
+                        path = dataGridApprovalPage.Rows[e.RowIndex].Cells[9].Value.ToString();
                         FileHelper.ShowFile(path);
                     }
                     else if (e.ColumnIndex == 10)
                     {
-                        path = dataGridViewApproval.Rows[e.RowIndex].Cells[10].Value.ToString();
+                        path = dataGridApprovalPage.Rows[e.RowIndex].Cells[10].Value.ToString();
                         FileHelper.ShowFile(path);
                     }
                     else
                     {
                         LoanService loanService = new LoanService(db);
                         DialogResult result = MessageBox.Show("Approve?", "Decision", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                        int idLoan = int.Parse(dataGridViewApproval.Rows[e.RowIndex].Cells[0].Value.ToString());
+                        int idLoan = int.Parse(dataGridApprovalPage.Rows[e.RowIndex].Cells[0].Value.ToString());
                         if (result == DialogResult.Yes)
                             loanService.SetApproval(idLoan, true);
                         else if (result == DialogResult.No)
