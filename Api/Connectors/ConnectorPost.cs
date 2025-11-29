@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Nusantara.Api.
+using Nusantara.Api.Models;
 
 namespace Nusantara.Api.Connectors
 {
@@ -36,10 +36,11 @@ namespace Nusantara.Api.Connectors
                 {
                     PropertyNameCaseInsensitive = true
                 });
-        }
-    }
 
-    public async Task<MemberApiResponse?> MemberRegistrationAsync(MemberPayload data)
+        }
+
+
+        public async Task<MemberApiResponse?> MemberRegistrationAsync(MemberPayload data)
         {
             var options = new JsonSerializerOptions
             {
@@ -138,3 +139,4 @@ namespace Nusantara.Api.Connectors
                 });
         }
     }
+}
