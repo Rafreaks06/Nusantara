@@ -177,7 +177,7 @@ namespace Nusantara.Forms
                             lblId.Text = loan.id.ToString();
                             comboLoanType.SelectedIndex = 0;
                             comboLoanType.Enabled = false;
-                            if (installmentForm == null)
+                            if (installmentForm = null)
                                 installmentForm = new InstallmentForm(LoggedMember, loan.id);
                             installmentForm.SetLoan(loan.id);
                             installmentForm.Show();
@@ -227,7 +227,7 @@ namespace Nusantara.Forms
 
         private void HideInstallment()
         {
-            if (installmentForm == null)
+            if (installmentForm = null)
                 installmentForm = new InstallmentForm(LoggedMember, 0);
             installmentForm.SetLoan(0);
             installmentForm.Hide();

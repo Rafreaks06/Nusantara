@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nusantara.Data;
 using Nusantara.Models;
+using Nusantara.Services;
 
 namespace Nusantara.Forms
 {
@@ -25,7 +26,7 @@ namespace Nusantara.Forms
         {
             AppDbContext context = new AppDbContext();
             ConfigurationService configService = new ConfigurationService(db);
-            Configuration? configuration = await service.GetConfig();
+            Configuration configuration = await service.GetConfig();
             if (configuration != null)
             {
                 labelTerminologi1.Text = configuration.terminologi1;
