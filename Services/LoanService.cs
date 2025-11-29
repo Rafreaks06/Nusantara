@@ -23,12 +23,12 @@ namespace Nusantara.Services
             return await _db.Loans.FirstOrDefaultAsync(x => x.id == id);
         }
 
-        //public async Task<List<Installment>> LoadInstallmentGrid(int loanId)
-        //{
-        //    return await _db.Set<Installment>().Where(x => x.LoanId == loanId)
-        //        .OrderBy(x => x.DueDate)
-        //        .ToListAsync();
-        //}
+        public async Task<List<Installment>> LoadInstallmentGrid(int loanId)
+        {
+            return await _db.Set<Installment>().Where(x => x.LoanId == loanId)
+                .OrderBy(x => x.DueDate)
+                .ToListAsync();
+        }
 
         public async Task<List<Loan>> LoadLoanGridByMemberIdAsync(int memberId)
         {
@@ -78,7 +78,7 @@ namespace Nusantara.Services
         //        .OrderByDescending(x => x.CreatedOn)
         //        .Select(x => new
         //        {
-        //            x.Id,
+        //            x.id,
         //            MemberData = x.Member.MemberId + " - " + x.Member.FullName,
         //            JoinDate = x.Member.JoinDate.ToString("f"),
         //            x.LoanId,
@@ -87,7 +87,7 @@ namespace Nusantara.Services
         //            RequestDate = x.CreatedOn.ToString("f"),
         //            x.Tenor,
         //            x.Interest,
-        //            Kk = x.KkPath,
+        //            Kk = x.KkpPath,
         //            Ktp = x.KtpPath,
         //            Slip = x.SlipGajiPath
         //        })
