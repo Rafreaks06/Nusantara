@@ -20,7 +20,7 @@ namespace Nusantara.Services
 
         public List<LoanMaster> LoadLoanGrid()
         {
-            return _db.LoanMaster.OrderByDescending(x => x.Update0n).ToList();
+            return _db.LoanMaster.OrderByDescending(x => x.UpdateOn).ToList();
         }
 
         public List<SavingMaster> LoadSavingGrid()
@@ -42,7 +42,7 @@ namespace Nusantara.Services
                 lm = _db.LoanMaster.FirstOrDefault(lm => lm.Id == idLoanMaster);
             }
 
-            lm.Update0n = DateTime.UtcNow;
+            lm.UpdateOn = DateTime.UtcNow;
             lm.Fine = decimal.Parse(fine.Replace(".", ","));
             lm.Interest = decimal.Parse(interest.Replace(".", ","));
             lm.AdminFee = decimal.Parse(adminFee);

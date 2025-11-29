@@ -17,7 +17,7 @@ namespace Nusantara.Models
         public decimal MinAmount { get; set; } = 0;
         public decimal MaxAmount { get; set; } = 0;
         public decimal AdminFee { get; set; } = 0;
-        public DateTime Update0n { get; set; }
+        public DateTime UpdateOn { get; set; }
 
 
     }

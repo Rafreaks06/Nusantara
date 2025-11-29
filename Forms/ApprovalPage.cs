@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nusantara.Models;
 using Nusantara.Data;
+using Nusantara.Services;
 
 namespace Nusantara.Forms
 {
@@ -30,7 +31,7 @@ namespace Nusantara.Forms
             AppDbContext db = new AppDbContext();
             if (cmbProduct.SelectedIndex == 1)
             {
-                LoanService loanService = new LoanService(db);
+                loanService loanService = new LoanService(db);
                 dataGridViewApproval.AutoGenerateColumns = true;
                 dataGridViewApproval.DataSource = await loanService.LoadsApproval();
 

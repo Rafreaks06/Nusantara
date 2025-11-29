@@ -17,20 +17,21 @@ namespace Nusantara.Models
         public decimal Outstanding {  get; set; }
         public decimal Fine { get; set; }
         public int Tenorleft { get; set; }
-        public DateTime Createdo0n { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
         [Required, MaxLength(20)] public string Status { get; set; } = "Pending";
         public decimal Interest { get; set; }
         public decimal InterestFine { get; set; }
         public decimal Tenor {  get; set; }
         public int DueDate { get; set; }
         [Required] public decimal TotalAmount { get; set; }
-        public bool IsAppoved { get; set; } = false;
-        public DateTime? Approvedo0n { get; set; }
+        public bool IsApproved { get; set; } = false;
+        public DateTime? ApprovedOn { get; set; }
         public decimal AdminFee { get; set; }
 
         public string? KtpPath { get; set; }
         public string? KkpPath { get; set; }
-        public string? Path { get; set; }
+        public string? SlipGajiPath { get; set; }
+        public ICollection<Installment> Installments { get; set; } = new List<Installment>();
 
 
     }

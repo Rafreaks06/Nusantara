@@ -3,6 +3,7 @@ using BraveHeroCooperation.Utils;
 using Nusantara.Data;
 using Nusantara.Models;
 using Nusantara.Services;
+using Nusantara.Forms;
 
 namespace Nusantara.Forms
 {
@@ -43,13 +44,14 @@ namespace Nusantara.Forms
             SetLoanDropDown(db);
             SetDefaultField();
             ResetField();
-            await LoadLoanGrid(db);
+            LoadLoanGrid(db);
             HideInstallment();
         }
 
         private void SetLoanDropDown(AppDbContext db)
         {
             ProductService productService = new ProductService(db);
+            loanMasterBindingSource.DataSource = productService.SetDropDownLoan();
             comboLoanType.DataSource = productService.SetDropDownLoan();
             comboLoanType.DisplayMember = "DisplayName";
             comboLoanType.ValueMember = "Id";
@@ -71,7 +73,7 @@ namespace Nusantara.Forms
                     LoanMaster? loanMaster = await productService.findLoanById(idLoanMaster);
                     if (loanMaster != null)
                     {
-                        textInterest.Text = loanMaster.Interest.ToString();
+                        txtInterest.Text = loanMaster.Interest.ToString();
                         txtInterestFine.Text = loanMaster.Fine.ToString();
                         txtTenor.Text = loanMaster.Tenor.ToString();
                         txtAdminFee.Text = loanMaster.AdminFee.ToString();
@@ -133,7 +135,7 @@ namespace Nusantara.Forms
             lblId.Text = "";
         }
 
-        private async Task LoadLoanGrid(AppDbContext db)
+        private async void LoadLoanGrid(AppDbContext db)
         {
             LoanService loanService = new LoanService(db);
             loanBindingSource.DataSource = await loanService.LoadLoanGridByMemberIdAsync(LoggedMember.Id);
@@ -158,10 +160,10 @@ namespace Nusantara.Forms
                     int id = int.Parse(cellValue.ToString()!);
                     AppDbContext db = new AppDbContext();
                     LoanService loanService = new LoanService(db);
-                    Loan? loan = await loanService.FindByIdAsync(id);
+                    Loan? loan = await loanService.findById(id);
                     if (loan != null)
                     {
-                        if (loan.IsAppoved)
+                        if (loan.IsApproved)
                         {
                             SetChosenField();
                             txtDocumentKK.Text = loan.KkpPath ?? "";
@@ -210,7 +212,7 @@ namespace Nusantara.Forms
             }
             else
             {
-                await loanService.SaveOrUpdateAsync(
+                await loanService.saveOrUpdate( 
                     LoggedMember,
                     txtAmount.Text,
                     txtDocumentKK.Text,
@@ -220,7 +222,7 @@ namespace Nusantara.Forms
                     txtTenor.Text,
                     txtAdminFee.Text
                 );
-                await LoadLoanGrid(db);
+                LoadLoanGrid(db);
                 ResetField();
             }
         }
@@ -236,13 +238,13 @@ namespace Nusantara.Forms
         private void ResetDropDown()
         {
             txtInterestFine.Text = "";
-            textInterest.Text = "";
+            txtInterest.Text = "";
             txtTenor.Text = "";
             txtAdminFee.Text = "";
             txtMinAmount.Text = "";
             txtMaxAmount.Text = "";
         }
-        
+
 
         private void textInterest_TextChanged(object sender, EventArgs e) { }
 
@@ -252,8 +254,13 @@ namespace Nusantara.Forms
             SetLoanDropDown(db);
             SetDefaultField();
             ResetField();
-            await LoadLoanGrid(db);
+            LoadLoanGrid(db);
             HideInstallment();
+        }
+
+        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -34,11 +34,11 @@ namespace Nusantara.Services
         {
             return await _db.Loans
                 .Where(x => x.MemberId == memberId)
-                .OrderByDescending(x => x.Createdo0n)
+                .OrderByDescending(x => x.CreatedOn)
                 .ToListAsync();
         }
 
-        public async Task saveOrupdate(Member member, string amount, string Ktp, string KK, string gaji, string dueDate,
+        public async Task saveOrUpdate(Member member, string amount, string Ktp, string KK, string gaji, string dueDate,
             string interest, string interestFine, string loanId, string tenor, string adminFee)
         {
             int tenorleft = int.Parse(tenor);
@@ -51,13 +51,13 @@ namespace Nusantara.Services
             Loan l = new Loan
             {
                 Amount = decamount,
-                Createdo0n = DateTime.UtcNow,
+                CreatedOn = DateTime.UtcNow,
                 DueDate = int.Parse(dueDate),
                 Interest = decinterest,
                 InterestFine = decInterestFine,
                 KkpPath = KK,
                 KtpPath = Ktp,
-                Path = gaji,
+                SlipGajiPath = gaji,
                 LoanId = int.Parse(loanId),
                 Tenor = tenorleft,
                 Tenorleft = tenorleft,
@@ -71,34 +71,34 @@ namespace Nusantara.Services
             await _db.SaveChangesAsync();
         }
 
-        /*public object LoadApproval()
-        {
-            return _db.Loans.Where(x => x.ApprovedOn == null)
-                .Include(x => x.Member)
-                .OrderByDescending(x => x.CreatedOn)
-                .Select(x => new
-                {
-                    x.Id,
-                    MemberData = x.Member.MemberId + " - " + x.Member.FullName,
-                    JoinDate = x.Member.JoinDate.ToString("f"),
-                    x.LoanId,
-                    x.Amount,
-                    x.Outstanding,
-                    RequestDate = x.CreatedOn.ToString("f"),
-                    x.Tenor,
-                    x.Interest,
-                    Kk = x.KkPath,
-                    Ktp = x.KtpPath,
-                    Slip = x.SlipGajiPath
-                })
-                .ToList();
-        }*/
+        //public object LoadApproval()
+        //{
+        //    return _db.Loans.Where(x => x.ApprovedOn == null)
+        //        .Include(x => x.Member)
+        //        .OrderByDescending(x => x.CreatedOn)
+        //        .Select(x => new
+        //        {
+        //            x.Id,
+        //            MemberData = x.Member.MemberId + " - " + x.Member.FullName,
+        //            JoinDate = x.Member.JoinDate.ToString("f"),
+        //            x.LoanId,
+        //            x.Amount,
+        //            x.Outstanding,
+        //            RequestDate = x.CreatedOn.ToString("f"),
+        //            x.Tenor,
+        //            x.Interest,
+        //            Kk = x.KkPath,
+        //            Ktp = x.KtpPath,
+        //            Slip = x.SlipGajiPath
+        //        })
+        //        .ToList();
+        //}
 
         public async Task<List<Loan>> LoadsApproval()
         {
             return await _db.Loans
-                .Where(x => x.Approvedo0n == null)
-                .OrderByDescending(x => x.Createdo0n)
+                .Where(x => x.ApprovedOn == null)
+                .OrderByDescending(x => x.CreatedOn)
                 .ToListAsync();
         }
 
@@ -107,25 +107,25 @@ namespace Nusantara.Services
             var l = await _db.Loans.FirstOrDefaultAsync(x => x.id == id);
             if (l != null)
             {
-                l.Approvedo0n = DateTime.UtcNow;
-                l.IsAppoved = isApprove;
+                l.ApprovedOn = DateTime.UtcNow;
+                l.IsApproved = isApprove;
                 _db.Loans.Update(l);
                 await _db.SaveChangesAsync();
             }
         }
 
-        //public async Task saveOrUpdateInstallment(int loanId, string amount, string path)
-        //{
-        //    Installment i = new Installment
-        //    {
-        //        LoanId = loanId,
-        //        Amount = decimal.Parse(amount),
-        //        PatmentDate = DateTime.UtcNow,
-        //        proofPath = path
-        //    };
-        //    _db.Set<Installment>().Add(i);
-        //    await _db.SaveChangesAsync();
-        //}
+        public async Task saveOrUpdateInstallment(int loanId, string amount, string path)
+        {
+            Installment i = new Installment
+            {
+                LoanId = loanId,
+                Amount = decimal.Parse(amount),
+                PatmentDate = DateTime.UtcNow,
+                proofPath = path
+            };
+            _db.Set<Installment>().Add(i);
+            await _db.SaveChangesAsync();
+        }
 
         public async Task recalculateLoan(int loanId, string amount, string path)
         {

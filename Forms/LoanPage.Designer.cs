@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             txtLoan = new TextBox();
             txtAdminFee = new TextBox();
             txtMinAmount = new TextBox();
@@ -38,7 +39,7 @@
             txtDocumentKtp = new TextBox();
             txtMaxAmount = new TextBox();
             txtTenor = new TextBox();
-            textInterest = new TextBox();
+            txtInterest = new TextBox();
             txtAmount = new TextBox();
             btnktp = new Button();
             btnShowKtp = new Button();
@@ -66,7 +67,9 @@
             label2 = new Label();
             comboLoanType = new ComboBox();
             lblId = new Label();
+            bindingSource1 = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)datagridLoan).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             SuspendLayout();
             // 
             // txtLoan
@@ -141,13 +144,13 @@
             txtTenor.Size = new Size(204, 23);
             txtTenor.TabIndex = 9;
             // 
-            // textInterest
+            // txtInterest
             // 
-            textInterest.Location = new Point(296, 98);
-            textInterest.Name = "textInterest";
-            textInterest.Size = new Size(204, 23);
-            textInterest.TabIndex = 8;
-            textInterest.TextChanged += textInterest_TextChanged;
+            txtInterest.Location = new Point(296, 98);
+            txtInterest.Name = "txtInterest";
+            txtInterest.Size = new Size(204, 23);
+            txtInterest.TabIndex = 8;
+            txtInterest.TextChanged += textInterest_TextChanged;
             // 
             // txtAmount
             // 
@@ -397,6 +400,10 @@
             lblId.Visible = false;
             lblId.Click += label14_Click;
             // 
+            // bindingSource1
+            // 
+            bindingSource1.CurrentChanged += bindingSource1_CurrentChanged;
+            // 
             // LoanPage
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -430,7 +437,7 @@
             Controls.Add(txtDocumentKtp);
             Controls.Add(txtMaxAmount);
             Controls.Add(txtTenor);
-            Controls.Add(textInterest);
+            Controls.Add(txtInterest);
             Controls.Add(txtAmount);
             Controls.Add(txtDocumentKK);
             Controls.Add(txtDueDate);
@@ -443,6 +450,7 @@
             Size = new Size(1026, 521);
             Load += LoanPage_Load;
             ((System.ComponentModel.ISupportInitialize)datagridLoan).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -460,7 +468,7 @@
         private TextBox txtDocumentKtp;
         private TextBox txtMaxAmount;
         private TextBox txtTenor;
-        private TextBox textInterest;
+        private TextBox txtInterest;
         private TextBox txtAmount;
         private Button btnktp;
         private Button btnShowKtp;
@@ -488,5 +496,6 @@
         private Label label2;
         private ComboBox comboLoanType;
         private Label lblId;
+        private BindingSource bindingSource1;
     }
 }
