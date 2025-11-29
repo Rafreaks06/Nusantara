@@ -96,7 +96,7 @@
             // 
             // btnrefresh
             // 
-            btnrefresh.Location = new Point(546, 712);
+            btnrefresh.Location = new Point(567, 712);
             btnrefresh.Margin = new Padding(4, 5, 4, 5);
             btnrefresh.Name = "btnrefresh";
             btnrefresh.Size = new Size(107, 38);

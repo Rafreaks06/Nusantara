@@ -143,7 +143,7 @@ namespace Nusantara.Forms
                         CoopApiResponse coopApiResponse = await connectorPost.CoopRegistrationAsync(
                             new CoopPayload
                             {
-                                name = "Brave Hero Cooperation",
+                              name = "Brave Hero Cooperation",
                                 address = "Jakarta",
                                 code = ""
                             }
