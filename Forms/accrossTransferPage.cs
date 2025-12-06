@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿
 using Nusantara.Data;
 using Nusantara.Models;
 using Nusantara.Api.Connectors;
@@ -27,7 +19,7 @@ namespace Nusantara.Forms
 
         private async void accrossTransferPage_Load(object sender, EventArgs e)
         {
-            timerInBox.Enabled = false;
+            timerInbox.Enabled = false;
             if (loggedMember.ReferenceId == null || loggedMember.ReferenceId == "" || loggedMember.ReferenceId == "~-")
             {
                 DialogResult result = MessageBox.Show("You do not have a privilege to Use Across Transfer. Registration Now?", "Invalid", MessageBoxButtons.YesNo);
@@ -43,7 +35,7 @@ namespace Nusantara.Forms
             }
             else
             {
-                timerInBox.Enabled = true;
+                timerInbox.Enabled = true;
             }
         }
 
@@ -64,9 +56,9 @@ namespace Nusantara.Forms
 
             try
             {
-                var loggedMember = memberService.GetLoggedMember();
-                if (loggedMember == null)
-                    return "No logged member.";
+                //var loggedMember = memberService.GetLoggedMember();
+                //if (loggedMember == null)
+                //    return "No logged member.";
 
                 MemberApiResponse? memberApiResponse = await connectorPost.MemberRegistrationAsync(
                     new MemberPayload
@@ -83,7 +75,7 @@ namespace Nusantara.Forms
                     loggedMember.ReferenceId = configuration.terminologi3;
                     memberService.Update(loggedMember);
 
-                    Balance balanceService = new balanceService(db);
+                    BalanceService balanceService = new BalanceService(db);
                     balanceService.setBalance(loggedMember.MemberId);
 
                     timerInbox.Enabled = true;
@@ -108,18 +100,18 @@ namespace Nusantara.Forms
             ConfigurationService configService = new ConfigurationService(db);
             Configuration? config2 = await configService.GetConfig();
             ConnectorPost connectorPost = new ConnectorPost();
-            double transferAmount = Double.Parse(textAmount.Text);
+            double transferAmount = Double.Parse(txtAmount.Text);
 
             TransferApiResponse? response = await connectorPost.TransferAsync(
                 new TransferPayload
                 {
                     amount = transferAmount,
-                    beneCode = textBenef.Text,
+                    beneCode = txtBeneficiary.Text,
                     coopCode = loggedMember.ReferenceId,
                     memberCode = loggedMember.MemberId,
                     fee = Double.Parse(config2.transferAcrossFee.ToString()),
-                    remarks = textRemarks.Text,
-                    transferRef = textTransRef.Text,
+                    remarks = txtRemarks.Text,
+                    transferRef = txtTransfer.Text,
                 }
             );
 
