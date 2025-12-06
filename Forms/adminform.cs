@@ -71,5 +71,10 @@ namespace Nusantara.Forms
         {
             route(new ApprovalPage(loggedMember));
         }
+
+        private void paneldisplay_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
