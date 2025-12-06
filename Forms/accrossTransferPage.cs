@@ -101,5 +101,56 @@ namespace Nusantara.Forms
             return message;
         }
 
+        private async void buttonSubmit_Click(object sender, EventArgs e)
+        {
+            AppDbContext db = new AppDbContext();
+            ConfigurationService configService = new ConfigurationService(db);
+            Configuration? config2 = await configService.GetConfig();
+            ConnectorPost connectorPost = new ConnectorPost();
+            double transferAmount = Double.Parse(textAmount.Text);
+
+            TransferApiResponse2? response = await connectorPost.TransferAsync(
+                new TransferPayload
+                {
+                    amount = transferAmount,
+                    benefCode = textBenef.Text,
+                    coopCode = loggedMember.ReferenceId,
+                    memberCode = loggedMember.MemberId,
+                    fee = Double.Parse(config2.transferAcrossFee.ToString()),
+                    remarks = textRemarks.Text,
+                    transRef = textTransRef.Text,
+                }
+            );
+
+            if (response != null && response.ResponseCode == "00")
+            {
+                BalanceService balanceService = new BalanceService(db);
+                Balance? balance = await balanceService.getBalance(loggedMember.MemberId);
+
+                if (balance != null)
+                {
+                    balance.Amount = Decimal.Parse(transferAmount.ToString());
+                    balance.UpdateOn = DateTime.Now;
+                    balance.TransactionName = "Across Transfer";
+                    balance.Flow = "OUT";
+                    balanceService.Update(balance);
+
+                    BalanceApiResponse? balanceApiResponse =
+                        await connectorPost.BalanceUpdateAsync(
+                            new BalancePayload
+                            {
+                                amount = Double.Parse(balance.Amount.ToString()),
+                                memberCode = loggedMember.MemberId,
+                            }
+                        );
+
+                    if (balanceApiResponse != null && balanceApiResponse.ResponseCode == "00")
+                    {
+                        MessageBox.Show("Transfer Successful", "Success");
+                    }
+                }
+            }
+        }
+
     }
 }
