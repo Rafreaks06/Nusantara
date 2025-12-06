@@ -101,7 +101,7 @@ namespace Nusantara.Forms
             return message;
         }
 
-        private async void buttonSubmit_Click(object sender, EventArgs e)
+        private async void btnSubmit_Click(object sender, EventArgs e)
         {
             AppDbContext db = new AppDbContext();
             ConfigurationService configService = new ConfigurationService(db);
@@ -151,13 +151,6 @@ namespace Nusantara.Forms
                 }
             }
         }
-
-<<<<<<< HEAD
-        private void btnSubmit_Click(object sender, EventArgs e)
-        {
-
-=======
-
         private void timerInbox_Tick(object sender, EventArgs e)
         {
             timerInbox.Stop();
