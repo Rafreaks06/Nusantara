@@ -32,7 +32,7 @@ namespace Nusantara.Forms
                 textTerminologi3.Text = config.terminologi3;
                 textExchangeRate.Text = config.exchangeRate.ToString();
                 textInhouseFee.Text = config.transferInhouseFee.ToString();
-                textAccrossFee.Text = config.transferAccrossFee.ToString();
+                textAccrossFee.Text = config.transferAcrossFee.ToString();
             }
         }
 

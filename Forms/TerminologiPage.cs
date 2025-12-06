@@ -31,9 +31,10 @@ namespace Nusantara.Forms
                 labelTerminologi1.Text = configuration.terminologi1;
                 labelTerminologi2.Text = configuration.terminologi2;
                 labelTerminologi3.Text = configuration.terminologi3;
-                labelExchangeRate.Text += "" + configuration.exchangeRate.ToString();
-                labelAccessFee.Text += "" + configuration.transferInhousefee.ToString();
-                labelInhouseFee.Text += "" + configuration.transferAccrossFee.ToString();
+                labelTerminologi1.Text += configuration.exchangeRate.ToString();
+                labelTerminologi3.Text += configuration.transferInhouseFee.ToString();
+                labelTerminologi2.Text += configuration.transferAcrossFee.ToString();
+
             }
         }
     }

@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace Nusantara.Forms
 {
-    public partial class accrossTransferPage: UserControl
+    public partial class accrossTransferPage : UserControl
     {
         public accrossTransferPage()
         {
             InitializeComponent();
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

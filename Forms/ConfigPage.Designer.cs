@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
-            label2 = new Label();
+            textTerminologi1 = new Label();
+            labelTerminologi2 = new Label();
             txtTerminologi3 = new RichTextBox();
-            label3 = new Label();
+            textTerminologi3 = new Label();
             textExchangeRate = new TextBox();
             label4 = new Label();
             label5 = new Label();
@@ -43,23 +43,23 @@
             textTerminologi2 = new RichTextBox();
             SuspendLayout();
             // 
-            // label1
+            // textTerminologi1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(34, 25);
-            label1.Name = "label1";
-            label1.Size = new Size(120, 25);
-            label1.TabIndex = 0;
-            label1.Text = "Terminologi 1";
+            textTerminologi1.AutoSize = true;
+            textTerminologi1.Location = new Point(34, 25);
+            textTerminologi1.Name = "textTerminologi1";
+            textTerminologi1.Size = new Size(120, 25);
+            textTerminologi1.TabIndex = 0;
+            textTerminologi1.Text = "Terminologi 1";
             // 
-            // label2
+            // labelTerminologi2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(373, 25);
-            label2.Name = "label2";
-            label2.Size = new Size(120, 25);
-            label2.TabIndex = 2;
-            label2.Text = "Terminologi 2";
+            labelTerminologi2.AutoSize = true;
+            labelTerminologi2.Location = new Point(373, 25);
+            labelTerminologi2.Name = "labelTerminologi2";
+            labelTerminologi2.Size = new Size(120, 25);
+            labelTerminologi2.TabIndex = 2;
+            labelTerminologi2.Text = "Terminologi 2";
             // 
             // txtTerminologi3
             // 
@@ -69,14 +69,14 @@
             txtTerminologi3.TabIndex = 5;
             txtTerminologi3.Text = "";
             // 
-            // label3
+            // textTerminologi3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(718, 25);
-            label3.Name = "label3";
-            label3.Size = new Size(120, 25);
-            label3.TabIndex = 4;
-            label3.Text = "Terminologi 3";
+            textTerminologi3.AutoSize = true;
+            textTerminologi3.Location = new Point(718, 25);
+            textTerminologi3.Name = "textTerminologi3";
+            textTerminologi3.Size = new Size(120, 25);
+            textTerminologi3.TabIndex = 4;
+            textTerminologi3.Text = "Terminologi 3";
             // 
             // textExchangeRate
             // 
@@ -167,10 +167,10 @@
             Controls.Add(label4);
             Controls.Add(textExchangeRate);
             Controls.Add(txtTerminologi3);
-            Controls.Add(label3);
-            Controls.Add(label2);
+            Controls.Add(textTerminologi3);
+            Controls.Add(labelTerminologi2);
             Controls.Add(txtTerminologi1);
-            Controls.Add(label1);
+            Controls.Add(textTerminologi1);
             Name = "ConfigPage";
             Size = new Size(1041, 705);
             Load += ConfigPage_Load;
@@ -180,12 +180,12 @@
 
         #endregion
 
-        private Label label1;
+        private Label textTerminologi1;
         private RichTextBox richTerminologi1;
         private RichTextBox richTerminologi2;
-        private Label label2;
+        private Label labelTerminologi2;
         private RichTextBox txtTerminologi3;
-        private Label label3;
+        private Label textTerminologi3;
         private TextBox textExchangeRate;
         private Label label4;
         private Label label5;
