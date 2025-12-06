@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             lblBalance = new Label();
             textBox1 = new TextBox();
             lblBeneficiary = new Label();
@@ -44,6 +45,7 @@
             dgvOutgoing = new DataGridView();
             btnSubmit = new Button();
             btnClear = new Button();
+            timerInbox = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)dgvIncoming).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvOutgoing).BeginInit();
             SuspendLayout();
@@ -172,6 +174,7 @@
             btnSubmit.TabIndex = 14;
             btnSubmit.Text = "Submit";
             btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
             // 
             // btnClear
             // 
@@ -181,6 +184,10 @@
             btnClear.TabIndex = 15;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
+            // 
+            // timerInbox
+            // 
+            timerInbox.Tick += timerInbox_Tick;
             // 
             // accrossTransferPage
             // 
@@ -229,5 +236,6 @@
         private DataGridView dgvOutgoing;
         private Button btnSubmit;
         private Button btnClear;
+        private System.Windows.Forms.Timer timerInbox;
     }
 }
