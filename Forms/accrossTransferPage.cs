@@ -17,19 +17,20 @@ namespace Nusantara.Forms
 {
     public partial class accrossTransferPage : UserControl
     {
+        Member loggedMember;
         public accrossTransferPage(Member member)
         {
-            loggedMmember = member;
+            loggedMember = member;
             InitializeComponent();
         }
 
 
-        private void accrossTransferPage_Load(object sender, EventArgs e)
+        private async void accrossTransferPage_Load(object sender, EventArgs e)
         {
             timerInBox.Enabled = false;
-            if (LoggedMember.ReferenceId == null || LoggedMember.ReferenceId == "" || LoggedMember.ReferenceId == "~-")
+            if (loggedMember.ReferenceId == null || loggedMember.ReferenceId == "" || loggedMember.ReferenceId == "~-")
             {
-                DialogResult result = MessageBox.Show("You do not have a privilege to Use Across Transfer. Registration Now?", "Invalid", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                DialogResult result = MessageBox.Show("You do not have a privilege to Use Across Transfer. Registration Now?", "Invalid", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
                     String message;
