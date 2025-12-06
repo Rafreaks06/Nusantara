@@ -20,15 +20,14 @@ namespace Nusantara.Services
 
         public async Task<Loan?> findById(int id)
         {
-            return await _db.Loans.FirstOrDefaultAsync(x => x.id == id);
+            return await _db.Loans.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<List<Installment>> LoadInstallmentGrid(int loanId)
-        {
-            return await _db.Set<Installment>().Where(x => x.LoanId == loanId)
-                .OrderBy(x => x.DueDate)
-                .ToListAsync();
-        }
+        //public async Task<List<Installment>> LoadInstallmentsGrid(int loanId)
+        //{
+        //    return await _db.Installments.Where(x => x.LoanId == loanId)
+        //                                 .ToListAsync();
+        //}
 
         public async Task<List<Loan>> LoadLoanGridByMemberIdAsync(int memberId)
         {
@@ -60,7 +59,7 @@ namespace Nusantara.Services
                 SlipGajiPath = gaji,
                 LoanId = int.Parse(loanId),
                 Tenor = tenorleft,
-                Tenorleft = tenorleft,
+                TenorLeft = tenorleft,
                 AdminFee = decAdminFee,
                 MemberId = member.Id,
                 Outstanding = outstanding,
@@ -104,7 +103,7 @@ namespace Nusantara.Services
 
         public async Task SetApproval(int id, bool isApprove)
         {
-            var l = await _db.Loans.FirstOrDefaultAsync(x => x.id == id);
+            var l = await _db.Loans.FirstOrDefaultAsync(x => x.Id == id);
             if (l != null)
             {
                 l.ApprovedOn = DateTime.UtcNow;
@@ -120,8 +119,8 @@ namespace Nusantara.Services
             {
                 LoanId = loanId,
                 Amount = decimal.Parse(amount),
-                PatmentDate = DateTime.UtcNow,
-                proofPath = path
+                PaymentDate = DateTime.UtcNow,
+                ProofPath = path
             };
             _db.Set<Installment>().Add(i);
             await _db.SaveChangesAsync();
@@ -131,7 +130,7 @@ namespace Nusantara.Services
         {
             decimal payment = decimal.Parse(amount);
             int todaysDate = DateTime.UtcNow.Day;
-            var l = await _db.Loans.FirstOrDefaultAsync(x => x.id == loanId);
+            var l = await _db.Loans.FirstOrDefaultAsync(x => x.Id == loanId);
             if (l != null)
             {
                 if (todaysDate > l.DueDate)
@@ -143,15 +142,15 @@ namespace Nusantara.Services
                 l.TotalAmount -= payment;
                 if (l.Outstanding <= 0 && l.TotalAmount > 0)
                 {
-                    l.Tenorleft = 1;
+                    l.TenorLeft = 1;
                 }
                 else if (l.Outstanding > 0)
                 {
-                    l.Tenorleft = l.Tenorleft - 1;
+                    l.TenorLeft = l.TenorLeft - 1;
                 }
                 else
                 {
-                    l.Tenorleft = 0;
+                    l.TenorLeft = 0;
                 }
                 _db.Loans.Update(l);
                 await _db.SaveChangesAsync();
