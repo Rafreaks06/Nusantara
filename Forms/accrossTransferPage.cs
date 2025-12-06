@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nusantara.Data;
 using Nusantara.Models;
+using Nusantara.Api.Connectors;
+using Nusantara.Api.Models;
+using Nusantara.Services;
 
 namespace Nusantara.Forms
 {
@@ -19,6 +22,7 @@ namespace Nusantara.Forms
             loggedMmember = member;
             InitializeComponent();
         }
+
 
         private void accrossTransferPage_Load(object sender, EventArgs e)
         {
@@ -41,5 +45,61 @@ namespace Nusantara.Forms
                 timerInBox.Enabled = true;
             }
         }
+
+        private async Task<string> MemberRegistration(AppDbContext db)
+        {
+            string message = "Success";
+
+            MemberService memberService = new MemberService(db);
+            ConnectorPost connectorPost = new ConnectorPost();
+            ConfigurationService configurationService = new ConfigurationService(db);
+
+            Configuration? configuration = await configurationService.GetConfig();
+            if (configuration == null)
+                return "Configuration not found";
+
+            if (configuration.terminologi3 == null || configuration.terminologi3 == "")
+                return "Coop not registered to Across System. Please contact administrator.";
+
+            try
+            {
+                var loggedMember = memberService.GetLoggedMember();
+                if (loggedMember == null)
+                    return "No logged member.";
+
+                MemberApiResponse? memberApiResponse = await connectorPost.MemberRegistrationAsync(
+                    new MemberPayload
+                    {
+                        name = loggedMember.FullName,
+                        address = loggedMember.Address,
+                        code = loggedMember.MemberId,
+                        coopCode = configuration.terminologi3
+                    }
+                );
+
+                if (memberApiResponse != null && memberApiResponse.ResponseCode == "00")
+                {
+                    loggedMember.ReferenceId = configuration.terminologi3;
+                    memberService.Update(loggedMember);
+
+                    balanceService balanceService = new balanceService(db);
+                    balanceService.setBalance(loggedMember.MemberId);
+
+                    timerInbox.Enabled = true;
+                }
+                else
+                {
+                    message = "Failed to register member to across system: "
+                              + memberApiResponse?.ResponseMessage;
+                }
+            }
+            catch (Exception ex)
+            {
+                message = ex.Message;
+            }
+
+            return message;
+        }
+
     }
 }
