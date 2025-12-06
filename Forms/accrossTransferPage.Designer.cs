@@ -205,6 +205,7 @@
             Controls.Add(lblBalance);
             Name = "accrossTransferPage";
             Size = new Size(713, 491);
+            Load += accrossTransferPage_Load;
             ((System.ComponentModel.ISupportInitialize)dgvIncoming).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvOutgoing).EndInit();
             ResumeLayout(false);

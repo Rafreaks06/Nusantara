@@ -116,6 +116,7 @@
             paneldisplay.Name = "paneldisplay";
             paneldisplay.Size = new Size(1109, 533);
             paneldisplay.TabIndex = 1;
+            paneldisplay.Paint += paneldisplay_Paint;
             // 
             // NusantaraAdmin
             // 
