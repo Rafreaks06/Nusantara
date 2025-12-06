@@ -102,7 +102,7 @@ namespace Nusantara.Forms
             return message;
         }
 
-        private async void buttonSubmit_Click(object sender, EventArgs e)
+        private async void btnSubmit_Click(object sender, EventArgs e)
         {
             AppDbContext db = new AppDbContext();
             ConfigurationService configService = new ConfigurationService(db);
@@ -152,6 +152,54 @@ namespace Nusantara.Forms
                 }
             }
         }
-
+        private void timerInbox_Tick(object sender, EventArgs e)
+        {
+            timerInbox.Stop();
+            try 
+            {
+                //timerInbox.Start();
+                Console.WriteLine("Retrieving ... ");
+                ConnectorGet connectorGet = new ConnectorGet();
+                TransferApiResponse? responseOutgoing = await connectorGet.GetOutgoingByMemberAsync(loggedMember.MemberId);
+                if (responseOutgoing != null && responseOutgoing.ResponseCode == "00")
+                {
+                    dgvOutgoing.DataSource = responseOutgoing.TransferList;
+                    dgvOutgoing.Columns["Id"].Visible = false;
+                    dgvOutgoing.Columns["MemberCode"].Visible = false;
+                    dgvOutgoing.Columns["BenefCode"].HeaderText = "Beneficiary";
+                    dgvOutgoing.Columns["CoopCode"].Visible = false;
+                    dgvOutgoing.Columns["updateOn"].Visible = false;
+                    dgvOutgoing.Columns["TransferRef"].HeaderText = "Reference";
+                    dgvOutgoing.Columns["TransferDate"].HeaderText = "Date";
+                    dgvOutgoing.Columns["Amount"].HeaderText = "Amount";
+                    dgvOutgoing.Columns["Fee"].HeaderText = "Fee";
+                    dgvOutgoing.Columns["Remarks"].HeaderText = "Remarks";
+                    dgvOutgoing.Columns["TransactionCode"].HeaderText = "Transaction Code";
+                }
+                String benefCode = loggedMember.ReferenceId + "-" + LoggedMember.MemberId;
+                TransferApiResponse? responseIncoming = await connectorGet.GetIncomingByMemberAsync(loggedMember.MemberId);
+                if (responseOutgoing != null && responseOutgoing.ResponseCode == "00")
+                {
+                    dgvIncoming.Columns["Id"].Visible = false;
+                    dgvIncoming.Columns["MemberCode"].HeaderText = "Member Code";
+                    dgvIncoming.Columns["BenefCode"].Visible = false;
+                    dgvIncoming.Columns["CoopCode"].HeaderText = "Coop Code";
+                    dgvIncoming.Columns["updateOn"].Visible = false;
+                    dgvIncoming.Columns["TransferRef"].HeaderText = "Reference";
+                    dgvIncoming.Columns["TransferDate"].HeaderText = "Date";
+                    dgvIncoming.Columns["Amount"].HeaderText = "Amount";
+                    dgvIncoming.Columns["Fee"].HeaderText = "Fee";
+                    dgvIncoming.Columns["Remarks"].HeaderText = "Remarks";
+                    dgvIncoming.Columns["TransactionCode"].HeaderText = "Transaction Code";
+                }
+            } catch (Exception ex) {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+            finally
+            {
+                timerInbox.Start();
+            }
+>>>>>>> e500343f97d82dc85154671d715c4da5d91c46ef
+        }
     }
 }

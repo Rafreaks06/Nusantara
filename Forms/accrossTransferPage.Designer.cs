@@ -28,22 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             lblBalance = new Label();
-            textBox1 = new TextBox();
+            txtBalance = new TextBox();
             lblBeneficiary = new Label();
             lblAmount = new Label();
             lblTransfer = new Label();
             lblRemarks = new Label();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
+            txtBeneficiary = new TextBox();
+            txtAmount = new TextBox();
+            txtTransfer = new TextBox();
+            txtRemarks = new TextBox();
             lblIncoming = new Label();
             lblOutgoing = new Label();
             dgvIncoming = new DataGridView();
             dgvOutgoing = new DataGridView();
             btnSubmit = new Button();
             btnClear = new Button();
+            timerInbox = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)dgvIncoming).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvOutgoing).BeginInit();
             SuspendLayout();
@@ -57,12 +59,12 @@
             lblBalance.TabIndex = 0;
             lblBalance.Text = "Balance";
             // 
-            // textBox1
+            // txtBalance
             // 
-            textBox1.Location = new Point(20, 52);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(228, 31);
-            textBox1.TabIndex = 1;
+            txtBalance.Location = new Point(20, 52);
+            txtBalance.Name = "txtBalance";
+            txtBalance.Size = new Size(228, 31);
+            txtBalance.TabIndex = 1;
             // 
             // lblBeneficiary
             // 
@@ -100,33 +102,33 @@
             lblRemarks.TabIndex = 5;
             lblRemarks.Text = "Remarks";
             // 
-            // textBox2
+            // txtBeneficiary
             // 
-            textBox2.Location = new Point(25, 135);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(223, 31);
-            textBox2.TabIndex = 6;
+            txtBeneficiary.Location = new Point(25, 135);
+            txtBeneficiary.Name = "txtBeneficiary";
+            txtBeneficiary.Size = new Size(223, 31);
+            txtBeneficiary.TabIndex = 6;
             // 
-            // textBox3
+            // txtAmount
             // 
-            textBox3.Location = new Point(25, 197);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(223, 31);
-            textBox3.TabIndex = 7;
+            txtAmount.Location = new Point(25, 197);
+            txtAmount.Name = "txtAmount";
+            txtAmount.Size = new Size(223, 31);
+            txtAmount.TabIndex = 7;
             // 
-            // textBox4
+            // txtTransfer
             // 
-            textBox4.Location = new Point(25, 272);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(223, 31);
-            textBox4.TabIndex = 8;
+            txtTransfer.Location = new Point(25, 272);
+            txtTransfer.Name = "txtTransfer";
+            txtTransfer.Size = new Size(223, 31);
+            txtTransfer.TabIndex = 8;
             // 
-            // textBox5
+            // txtRemarks
             // 
-            textBox5.Location = new Point(25, 353);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(223, 31);
-            textBox5.TabIndex = 9;
+            txtRemarks.Location = new Point(25, 353);
+            txtRemarks.Name = "txtRemarks";
+            txtRemarks.Size = new Size(223, 31);
+            txtRemarks.TabIndex = 9;
             // 
             // lblIncoming
             // 
@@ -172,6 +174,7 @@
             btnSubmit.TabIndex = 14;
             btnSubmit.Text = "Submit";
             btnSubmit.UseVisualStyleBackColor = true;
+            btnSubmit.Click += btnSubmit_Click;
             // 
             // btnClear
             // 
@@ -181,6 +184,10 @@
             btnClear.TabIndex = 15;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
+            // 
+            // timerInbox
+            // 
+            //timerInbox.Tick += timerInbox_Tick;
             // 
             // accrossTransferPage
             // 
@@ -192,15 +199,15 @@
             Controls.Add(dgvIncoming);
             Controls.Add(lblOutgoing);
             Controls.Add(lblIncoming);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
+            Controls.Add(txtRemarks);
+            Controls.Add(txtTransfer);
+            Controls.Add(txtAmount);
+            Controls.Add(txtBeneficiary);
             Controls.Add(lblRemarks);
             Controls.Add(lblTransfer);
             Controls.Add(lblAmount);
             Controls.Add(lblBeneficiary);
-            Controls.Add(textBox1);
+            Controls.Add(txtBalance);
             Controls.Add(lblBalance);
             Name = "accrossTransferPage";
             Size = new Size(713, 491);
@@ -214,20 +221,21 @@
         #endregion
 
         private Label lblBalance;
-        private TextBox textBox1;
+        private TextBox txtBalance;
         private Label lblBeneficiary;
         private Label lblAmount;
         private Label lblTransfer;
         private Label lblRemarks;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
+        private TextBox txtBeneficiary;
+        private TextBox txtAmount;
+        private TextBox txtTransfer;
+        private TextBox txtRemarks;
         private Label lblIncoming;
         private Label lblOutgoing;
         private DataGridView dgvIncoming;
         private DataGridView dgvOutgoing;
         private Button btnSubmit;
         private Button btnClear;
+        private System.Windows.Forms.Timer timerInbox;
     }
 }
