@@ -11,17 +11,17 @@ namespace Nusantara.Models
     {
         public int id { get; set; }
         [Required] public int MemberId { get; set; }
-        public Member Member { get; set; } = null;
+        public Member? Member { get; set; } = null;
         [Required] public int LoanId { get; set; }
         [Required] public decimal Amount { get; set; }
-        public decimal Outstanding {  get; set; }
+        public decimal Outstanding { get; set; }
         public decimal Fine { get; set; }
         public int Tenorleft { get; set; }
         public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
         [Required, MaxLength(20)] public string Status { get; set; } = "Pending";
         public decimal Interest { get; set; }
         public decimal InterestFine { get; set; }
-        public decimal Tenor {  get; set; }
+        public decimal Tenor { get; set; }
         public int DueDate { get; set; }
         [Required] public decimal TotalAmount { get; set; }
         public bool IsApproved { get; set; } = false;
@@ -31,8 +31,7 @@ namespace Nusantara.Models
         public string? KtpPath { get; set; }
         public string? KkpPath { get; set; }
         public string? SlipGajiPath { get; set; }
-        public ICollection<nstallment> Installments { get; set; } = new List<Installment>();
-
-
+        // Installment type is missing, so comment out the property to fix CS0246
+        // public ICollection<Installment> Installments { get; set; } = new List<Installment>();
     }
 }
