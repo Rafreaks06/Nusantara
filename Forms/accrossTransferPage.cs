@@ -117,7 +117,7 @@ namespace Nusantara.Forms
 
             if (response.code != null && response.ResponseCode == "00")
             {
-                BalanceService balanceService = new BalanceService(db);
+                balanceService balanceService = new BalanceService(db);
                 Balance? balance = await balanceService.getBalance(loggedMember.MemberId);
 
                 if (balance != null)

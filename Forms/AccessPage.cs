@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.Design.Serialization;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nusantara.Data;
 using Nusantara.Models;
@@ -19,6 +10,7 @@ namespace Nusantara.Forms
     public partial class AccessPage : UserControl
     {
         private Member? loggedMember;
+
         public AccessPage(Member? member)
         {
             InitializeComponent();
@@ -27,39 +19,47 @@ namespace Nusantara.Forms
 
         private async void buttonSubmit_Click(object sender, EventArgs e)
         {
-            AppDbContext context = new AppDbContext();
-            MemberRelationshipService memberService = new MemberService(db);
+            using var db = new AppDbContext();
+
+            MemberService memberService = new MemberService(db);
             AccessService accessService = new AccessService(db);
+
             string accessList = string.Join(",", checkedListBoxAccess.CheckedItems.Cast<string>());
-            int id = comboboxMember.SelectedValue as int? ?? 0;
+
+            int id = comboboxMember.SelectedValue != null ? Convert.ToInt32(comboboxMember.SelectedValue) : 0;
+
             Member? member = id != 0 ? memberService.FindById(id) : null;
-            if (member == null)
+
+            if (member != null)
             {
+                // ambil access by memberId
                 Access? access = accessService.findByMemberId(member.Id);
+
                 if (access != null)
                 {
                     await accessService.update(access, accessList);
-
                 }
                 else
                 {
-                    await accessService.newOne(access, accessList);
+                    await accessService.newOne(null, member, accessList);
                 }
+
                 loadAccessList(db);
                 clearField();
             }
             else
             {
-                MessageBox.Show("invalid member", "validation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Invalid member", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void clearField()
         {
             for (int i = 0; i < checkedListBoxAccess.Items.Count; i++)
-            {
                 checkedListBoxAccess.SetItemChecked(i, false);
-            }
-            comboboxMember.SelectedIndex = null;
+
+            comboboxMember.SelectedIndex = -1;
+
             labelFullName.Text = "-";
             labelAddress.Text = "-";
             labelEmail.Text = "-";
@@ -70,51 +70,69 @@ namespace Nusantara.Forms
 
         private void checkedListBoxAccess_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bool n = checkedListBoxAccess.GetItemChecked(0);
-            if (n)
+            if (checkedListBoxAccess.Items.Count > 0 && checkedListBoxAccess.GetItemChecked(0))
             {
                 for (int i = 1; i < checkedListBoxAccess.Items.Count; i++)
-                {
                     checkedListBoxAccess.SetItemChecked(i, true);
-                }
-                //checkedListBoxAccess.SetItemChecked(1, true);
-                //checkedListBoxAccess.SetItemChecked(2, true);
-                //checkedListBoxAccess.SetItemChecked(3, true);
-                //checkedListBoxAccess.SetItemChecked(4, true);
-                //checkedListBoxAccess.SetItemChecked(5, true);
             }
         }
+
         private void AccessPage_Load(object sender, EventArgs e)
         {
             using var db = new AppDbContext();
             loadMember(db);
             loadAccessList(db);
         }
+
         private void loadMember(AppDbContext db)
         {
             var memberService = new MemberService(db);
-            MemberBindingSource.DataSource = memberService.SetDropdown;
+
+            try
+            {
+                comboboxMember.DataSource = memberService.SetDropdown;
+            }
+            catch
+            {
+                comboboxMember.DataSource = db.Members
+                    .Select(m => new { m.Id, DisplayName = m.FullName })
+                    .ToList();
+            }
+
             comboboxMember.DisplayMember = "DisplayName";
             comboboxMember.ValueMember = "Id";
         }
+
         private void loadAccessList(AppDbContext db)
         {
-            var acessService = new AccessService(db);
-            accessBindingSource.DataSource = AccessService.setGridView();
-            dataGridViewAccess.Columns[0].DataPropertyName = "id";
-            dataGridViewAccess.Columns[0].Visible = false;
-            dataGridViewAccess.Columns[1].DataPropertyName = "DisplayMember";
-            dataGridViewAccess.Columns[2].DataPropertyName = "AccessList";
-            dataGridViewAccess.Columns[2].Width = 220;
-            dataGridViewAccess.Columns[3].DataPropertyName = "updateOn";
+            var accessService = new AccessService(db);
+
+            // gunakan instance method setGridView()
+            var grid = accessService.setGridView();
+            dataGridViewAccess.DataSource = grid;
+
+            if (dataGridViewAccess.Columns.Count >= 4)
+            {
+                dataGridViewAccess.Columns[0].DataPropertyName = "Id";
+                dataGridViewAccess.Columns[0].Visible = false;
+
+                dataGridViewAccess.Columns[1].DataPropertyName = "DisplayMember";
+
+                dataGridViewAccess.Columns[2].DataPropertyName = "AccessList";
+                dataGridViewAccess.Columns[2].Width = 220;
+
+                dataGridViewAccess.Columns[3].DataPropertyName = "updateOn";
+            }
         }
 
         private void comboboxMember_SelectedIndexChanged(object sender, EventArgs e)
         {
-            AppDbContext db = new AppDbContext();
-            MemberService memberService = new MemberService(db);
-            int id = comboboxMember.SelectedValue as int? ?? 0;
-            Member? member = id != 0 ? memberService.FindById(id) : null;
+            using var db = new AppDbContext();
+
+            int id = comboboxMember.SelectedValue != null ? Convert.ToInt32(comboboxMember.SelectedValue) : 0;
+
+            Member? member = id != 0 ? db.Members.Find(id) : null;
+
             if (member != null)
             {
                 labelFullName.Text = member.FullName;
@@ -138,34 +156,32 @@ namespace Nusantara.Forms
         private void dataGridViewAccess_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
-            { 
-                int accessId = int.Parse(dataGridViewAccess.Rows[e.RowIndex].Cells[0].Value.ToString());
-                AppDbContext db = new AppDbContext();
-                AccessService accessService = new AccessService(db);
-                Access? access = accessService.findByMemberId(accessId);
-                if (access != null) { 
-                    comboboxMember.SelectedValue = access.MemberId;
-                    string[] accessList = access.AccessList.Split(',');
-                    for (int i = 0; i < accessList.Length; i++) 
-                    {
-                        if (accessList[i].Trim() == "Grant All") 
-                        checkedListBoxAccess.SetItemChecked(0, true);
+            {
+                int accessId = Convert.ToInt32(dataGridViewAccess.Rows[e.RowIndex].Cells[0].Value);
 
-                        if (accessList[i].Trim() == "Loan") 
-                        checkedListBoxAccess.SetItemChecked(1, true);
-                        if (accessList[i].Trim() == "Saving") 
-                        checkedListBoxAccess.SetItemChecked(2, true);
-                        if (accessList[i].Trim() == "Transfer - Inhouse") 
-                        checkedListBoxAccess.SetItemChecked(3, true);
-                        if (accessList[i].Trim() == "Transfer - Accross") 
-                        checkedListBoxAccess.SetItemChecked(4, true);
-                        if (accessList[i].Trim() == "Exchange") 
-                        checkedListBoxAccess.SetItemChecked(5, true);
+                using var db = new AppDbContext();
+                Access? access = db.Accesses.Find(accessId); // by ID, bukan MemberId
+
+                if (access != null)
+                {
+                    comboboxMember.SelectedValue = access.MemberId;
+
+                    for (int i = 0; i < checkedListBoxAccess.Items.Count; i++)
+                        checkedListBoxAccess.SetItemChecked(i, false);
+
+                    foreach (var item in access.AccessList.Split(','))
+                    {
+                        string trimmed = item.Trim();
+
+                        if (trimmed == "Grant All") checkedListBoxAccess.SetItemChecked(0, true);
+                        if (trimmed == "Loan") checkedListBoxAccess.SetItemChecked(1, true);
+                        if (trimmed == "Saving") checkedListBoxAccess.SetItemChecked(2, true);
+                        if (trimmed == "Transfer - Inhouse") checkedListBoxAccess.SetItemChecked(3, true);
+                        if (trimmed == "Transfer - Accross") checkedListBoxAccess.SetItemChecked(4, true);
+                        if (trimmed == "Exchange") checkedListBoxAccess.SetItemChecked(5, true);
                     }
                 }
             }
         }
     }
-
 }
-
