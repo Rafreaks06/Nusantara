@@ -83,7 +83,7 @@ namespace Nusantara.Forms
                     loggedMember.ReferenceId = configuration.terminologi3;
                     memberService.Update(loggedMember);
 
-                    balanceService balanceService = new balanceService(db);
+                    Balance balanceService = new balanceService(db);
                     balanceService.setBalance(loggedMember.MemberId);
 
                     timerInbox.Enabled = true;
@@ -110,37 +110,37 @@ namespace Nusantara.Forms
             ConnectorPost connectorPost = new ConnectorPost();
             double transferAmount = Double.Parse(textAmount.Text);
 
-            TransferApiResponse2? response = await connectorPost.TransferAsync(
+            TransferApiResponse? response = await connectorPost.TransferAsync(
                 new TransferPayload
                 {
                     amount = transferAmount,
-                    benefCode = textBenef.Text,
+                    beneCode = textBenef.Text,
                     coopCode = loggedMember.ReferenceId,
                     memberCode = loggedMember.MemberId,
                     fee = Double.Parse(config2.transferAcrossFee.ToString()),
                     remarks = textRemarks.Text,
-                    transRef = textTransRef.Text,
+                    transferRef = textTransRef.Text,
                 }
             );
 
-            if (response != null && response.ResponseCode == "00")
+            if (response.code != null && response.ResponseCode == "00")
             {
                 BalanceService balanceService = new BalanceService(db);
                 Balance? balance = await balanceService.getBalance(loggedMember.MemberId);
 
                 if (balance != null)
                 {
-                    balance.Amount = Decimal.Parse(transferAmount.ToString());
-                    balance.UpdateOn = DateTime.Now;
-                    balance.TransactionName = "Across Transfer";
-                    balance.Flow = "OUT";
+                    balance.amount = Decimal.Parse(transferAmount.ToString());
+                    balance.updateOn = DateTime.Now;
+                    balance.transactionName = "Across Transfer";
+                    balance.flow = "OUT";
                     balanceService.Update(balance);
 
                     BalanceApiResponse? balanceApiResponse =
                         await connectorPost.BalanceUpdateAsync(
                             new BalancePayload
                             {
-                                amount = Double.Parse(balance.Amount.ToString()),
+                                amount = Double.Parse(balance.amount.ToString()),
                                 memberCode = loggedMember.MemberId,
                             }
                         );
@@ -152,14 +152,14 @@ namespace Nusantara.Forms
                 }
             }
         }
-        private void timerInbox_Tick(object sender, EventArgs e)
+        private async void timerInbox_Tick(object sender, EventArgs e)
         {
             timerInbox.Stop();
             try 
             {
                 //timerInbox.Start();
                 Console.WriteLine("Retrieving ... ");
-                ConnectorGet connectorGet = new ConnectorGet();
+                connectorGet connectorGet = new connectorGet();
                 TransferApiResponse? responseOutgoing = await connectorGet.GetOutgoingByMemberAsync(loggedMember.MemberId);
                 if (responseOutgoing != null && responseOutgoing.ResponseCode == "00")
                 {
@@ -176,7 +176,7 @@ namespace Nusantara.Forms
                     dgvOutgoing.Columns["Remarks"].HeaderText = "Remarks";
                     dgvOutgoing.Columns["TransactionCode"].HeaderText = "Transaction Code";
                 }
-                String benefCode = loggedMember.ReferenceId + "-" + LoggedMember.MemberId;
+                String benefCode = loggedMember.ReferenceId + "-" + loggedMember.MemberId;
                 TransferApiResponse? responseIncoming = await connectorGet.GetIncomingByMemberAsync(loggedMember.MemberId);
                 if (responseOutgoing != null && responseOutgoing.ResponseCode == "00")
                 {
@@ -199,7 +199,6 @@ namespace Nusantara.Forms
             {
                 timerInbox.Start();
             }
->>>>>>> e500343f97d82dc85154671d715c4da5d91c46ef
         }
     }
 }
