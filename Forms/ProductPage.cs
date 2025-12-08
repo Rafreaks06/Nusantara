@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Nusantara.Data;
+using Nusantara.Models;
+using Nusantara.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,9 +11,7 @@ using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Nusantara.Data;
-using Nusantara.Models;
-using Nusantara.Services;
+using System.Xml.Linq;
 
 namespace Nusantara.Forms
 {
@@ -52,15 +53,19 @@ namespace Nusantara.Forms
             ProductService service = new ProductService(db);
             if (comboBoxMode.SelectedIndex == 0) // Loan
             {
-                await service.saveOrUpdateLoan(labelId.Text, textAdminFee.Text, textBoxName.Text,
+                await service.saveOrUpdateLoan(labelId.Text,textFine.Text, textAdminFee.Text, textBoxName.Text,
                     textInterest.Text, textMaxAmount.Text,
                     textMinAmount.Text, textTenor.Text);
+
+                
             }
             else // Saving
             {
-                await service.saveOrUpdateSaving(labelId.Text, textAdminFee.Text, textBoxName.Text,
+                await service.saveOrUpdateSaving(labelId.Text, textFine.Text, textAdminFee.Text, textBoxName.Text,
                     textInterest.Text, textMaxAmount.Text,
                     textMinAmount.Text, textTenor.Text);
+
+              
             }
             clearField();
             LoadGrids(db);
@@ -89,10 +94,12 @@ namespace Nusantara.Forms
         {
             if (e.RowIndex >= 0)
             {
-                labelId.Text = dataGridViewLoan.Rows[e.RowIndex].Cells[0].Value.ToString();
+                int id = Convert.ToInt32(dataGridViewLoan.Rows[e.RowIndex].Cells[0].Value);
+                labelId.Text = id.ToString();
+
                 AppDbContext db = new AppDbContext();
                 ProductService service = new ProductService(db);
-                LoanMaster loanMaster = await service.findLoanById(labelId.Text);
+                LoanMaster loanMaster = await service.findLoanById(id);
 
                 labelId.Text = loanMaster.Id.ToString();
                 textAdminFee.Text = loanMaster.AdminFee.ToString();
@@ -111,10 +118,11 @@ namespace Nusantara.Forms
         {
             if (e.RowIndex >= 0)
             {
-                labelId.Text = dataGridViewSaving.Rows[e.RowIndex].Cells[0].Value.ToString();
+                int id = Convert.ToInt32(dataGridViewLoan.Rows[e.RowIndex].Cells[0].Value);
+                labelId.Text = id.ToString();
                 AppDbContext db = new AppDbContext();
                 ProductService service = new ProductService(db);
-                SavingMaster savingMaster = await service.findSavingById(labelId.Text);
+                SavingMaster savingMaster = await service.findSavingById(id);
 
                 labelId.Text = savingMaster.id.ToString();
                 textAdminFee.Text = savingMaster.AdminFee.ToString();

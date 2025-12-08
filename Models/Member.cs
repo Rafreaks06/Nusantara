@@ -14,7 +14,7 @@ namespace Nusantara.Models
         [Required] public String PasswordHash { get; set; } = String.Empty;
         [Required, MaxLength(200)] public string FullName { get; set; } = String.Empty;
         public bool IsActive { get; set; } = true;
-        public DateTime JoinData { get; set; } = DateTime.UtcNow;
+        public DateTime JoinDate { get; set; } = DateTime.UtcNow;
         public string MemberId { get; set; }
         public string IdCard { get; set; }
         public string Phone { get; set; }

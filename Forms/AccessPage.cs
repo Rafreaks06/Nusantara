@@ -138,7 +138,7 @@ namespace Nusantara.Forms
                 labelFullName.Text = member.FullName;
                 labelAddress.Text = member.Address;
                 labelEmail.Text = member.Email;
-                labelJoinDate.Text = member.JoinData.ToString("f");
+                labelJoinDate.Text = member.JoinDate.ToString("f");
                 labelPhone.Text = member.Phone;
                 labelPhoneAlt.Text = member.PhoneAlt;
             }

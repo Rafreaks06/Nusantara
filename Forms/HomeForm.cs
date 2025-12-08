@@ -62,7 +62,7 @@ namespace Nusantara.Forms
         {
             AppDbContext db = new AppDbContext();
             AccessService accessService = new AccessService(db);
-            Access? access = accessService.findByMemberId(loggedMember.MemberId);
+            Access? access = accessService.findByMemberId(Convert.ToInt32(loggedMember.MemberId));
             if (access != null)
             {
                 var listaccess = access.AccessList.Split(',');

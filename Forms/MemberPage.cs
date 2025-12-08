@@ -34,7 +34,7 @@ namespace Nusantara.Forms
         {
             AppDbContext db = new AppDbContext();
             MemberService service = new MemberService(db);
-            memberBindingSource.DataSource = service.SetGrid();
+            //memberBindingSource.DataSource = service.SetGrid();
             dataGridViewMemberPage.Columns[0].DataPropertyName = "Id";
             dataGridViewMemberPage.Columns[0].Visible = false;
             dataGridViewMemberPage.Columns[1].DataPropertyName = "MemberId";

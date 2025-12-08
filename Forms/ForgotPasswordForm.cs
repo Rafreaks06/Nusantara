@@ -19,7 +19,7 @@ namespace Nusantara.Forms
             InitializeComponent();
         }
 
-        private void buttonSubmit_Click(object sender, EventArgs e)
+        private async void  buttonSubmit_Click(object sender, EventArgs e)
         {
             using var db = new AppDbContext();
             var auth = new AuthService(db);//EA1C1B

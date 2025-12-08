@@ -25,13 +25,7 @@ namespace Nusantara.Data
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
         {
-            var config = new ConfigurationBuilder()
-                .SetBasePath(AppContext.BaseDirectory)
-                .AddJsonFile("appsettings.json")
-                .Build();
-            optionsBuilder.UseNpgsql(config.GetConnectionString("Default"));
-            optionsBuilder.UseNpgsql("Host=103.82.242.90;Port=5434;Database=vb2_nusantara;Username=postgres;Password=12Qpalzmxn");
-
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=vb2_nusantara;Username=postgres;Password=miftahulrizky");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -75,9 +69,7 @@ namespace Nusantara.Data
                 var idrop = entity.FindProperty("id");
                 if (idrop != null)
                 {
-                    idrop.SetValueGenerationStrategy(
-                        Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlValueGenerationStrategy.SerialColumn
-                        );
+                    idrop.SetValueGenerationStrategy(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlValueGenerationStrategy.SerialColumn);
                 }
                                 
             }

@@ -75,8 +75,8 @@ namespace Nusantara.Forms
                     loggedMember.ReferenceId = configuration.terminologi3;
                     memberService.Update(loggedMember);
 
-                    BalanceService balanceService = new BalanceService(db);
-                    balanceService.setBalance(loggedMember.MemberId);
+                    //BalanceService balanceService = new BalanceService(db);
+                    //balanceService.setBalance(loggedMember.MemberId);
 
                     timerInbox.Enabled = true;
                 }
@@ -94,55 +94,55 @@ namespace Nusantara.Forms
             return message;
         }
 
-        private async void btnSubmit_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
-            AppDbContext db = new AppDbContext();
-            ConfigurationService configService = new ConfigurationService(db);
-            Configuration? config2 = await configService.GetConfig();
-            ConnectorPost connectorPost = new ConnectorPost();
-            double transferAmount = Double.Parse(txtAmount.Text);
+            //AppDbContext db = new AppDbContext();
+            //ConfigurationService configService = new ConfigurationService(db);
+            //Configuration? config2 = await configService.GetConfig();
+            //ConnectorPost connectorPost = new ConnectorPost();
+            //double transferAmount = Double.Parse(txtAmount.Text);
 
-            TransferApiResponse? response = await connectorPost.TransferAsync(
-                new TransferPayload
-                {
-                    amount = transferAmount,
-                    beneCode = txtBeneficiary.Text,
-                    coopCode = loggedMember.ReferenceId,
-                    memberCode = loggedMember.MemberId,
-                    fee = Double.Parse(config2.transferAcrossFee.ToString()),
-                    remarks = txtRemarks.Text,
-                    transferRef = txtTransfer.Text,
-                }
-            );
+            //TransferApiResponse? response = await connectorPost.TransferAsync(
+            //    new TransferPayload
+            //    {
+            //        amount = transferAmount,
+            //        beneCode = txtBeneficiary.Text,
+            //        coopCode = loggedMember.ReferenceId,
+            //        memberCode = loggedMember.MemberId,
+            //        fee = Double.Parse(config2.transferAcrossFee.ToString()),
+            //        remarks = txtRemarks.Text,
+            //        transferRef = txtTransfer.Text,
+            //    }
+            //);
 
-            if (response.code != null && response.ResponseCode == "00")
-            {
-                balanceService balanceService = new BalanceService(db);
-                Balance? balance = await balanceService.getBalance(loggedMember.MemberId);
+            //if (response.code != null && response.ResponseCode == "00")
+            //{
+            //    balanceService balanceService = new BalanceService(db);
+            //    Balance? balance = await balanceService.getBalance(loggedMember.MemberId);
 
-                if (balance != null)
-                {
-                    balance.amount = Decimal.Parse(transferAmount.ToString());
-                    balance.updateOn = DateTime.Now;
-                    balance.transactionName = "Across Transfer";
-                    balance.flow = "OUT";
-                    balanceService.Update(balance);
+            //    if (balance != null)
+            //    {
+            //        balance.amount = Decimal.Parse(transferAmount.ToString());
+            //        balance.updateOn = DateTime.Now;
+            //        balance.transactionName = "Across Transfer";
+            //        balance.flow = "OUT";
+            //        balanceService.Update(balance);
 
-                    BalanceApiResponse? balanceApiResponse =
-                        await connectorPost.BalanceUpdateAsync(
-                            new BalancePayload
-                            {
-                                amount = Double.Parse(balance.amount.ToString()),
-                                memberCode = loggedMember.MemberId,
-                            }
-                        );
+            //        BalanceApiResponse? balanceApiResponse =
+            //            await connectorPost.BalanceUpdateAsync(
+            //                new BalancePayload
+            //                {
+            //                    amount = Double.Parse(balance.amount.ToString()),
+            //                    memberCode = loggedMember.MemberId,
+            //                }
+            //            );
 
-                    if (balanceApiResponse != null && balanceApiResponse.ResponseCode == "00")
-                    {
-                        MessageBox.Show("Transfer Successful", "Success");
-                    }
-                }
-            }
+            //        if (balanceApiResponse != null && balanceApiResponse.ResponseCode == "00")
+            //        {
+            //            MessageBox.Show("Transfer Successful", "Success");
+            //        }
+            //    }
+            //}
         }
         private async void timerInbox_Tick(object sender, EventArgs e)
         {
