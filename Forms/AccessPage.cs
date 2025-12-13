@@ -138,32 +138,38 @@ namespace Nusantara.Forms
         private void dataGridViewAccess_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
-            { 
+            {
                 int accessId = int.Parse(dataGridViewAccess.Rows[e.RowIndex].Cells[0].Value.ToString());
                 AppDbContext db = new AppDbContext();
                 AccessService accessService = new AccessService(db);
                 Access? access = accessService.findByMemberId(accessId);
-                if (access != null) { 
+                if (access != null)
+                {
                     comboboxMember.SelectedValue = access.MemberId;
                     string[] accessList = access.AccessList.Split(',');
-                    for (int i = 0; i < accessList.Length; i++) 
+                    for (int i = 0; i < accessList.Length; i++)
                     {
-                        if (accessList[i].Trim() == "Grant All") 
-                        checkedListBoxAccess.SetItemChecked(0, true);
+                        if (accessList[i].Trim() == "Grant All")
+                            checkedListBoxAccess.SetItemChecked(0, true);
 
-                        if (accessList[i].Trim() == "Loan") 
-                        checkedListBoxAccess.SetItemChecked(1, true);
-                        if (accessList[i].Trim() == "Saving") 
-                        checkedListBoxAccess.SetItemChecked(2, true);
-                        if (accessList[i].Trim() == "Transfer - Inhouse") 
-                        checkedListBoxAccess.SetItemChecked(3, true);
-                        if (accessList[i].Trim() == "Transfer - Accross") 
-                        checkedListBoxAccess.SetItemChecked(4, true);
-                        if (accessList[i].Trim() == "Exchange") 
-                        checkedListBoxAccess.SetItemChecked(5, true);
+                        if (accessList[i].Trim() == "Loan")
+                            checkedListBoxAccess.SetItemChecked(1, true);
+                        if (accessList[i].Trim() == "Saving")
+                            checkedListBoxAccess.SetItemChecked(2, true);
+                        if (accessList[i].Trim() == "Transfer - Inhouse")
+                            checkedListBoxAccess.SetItemChecked(3, true);
+                        if (accessList[i].Trim() == "Transfer - Accross")
+                            checkedListBoxAccess.SetItemChecked(4, true);
+                        if (accessList[i].Trim() == "Exchange")
+                            checkedListBoxAccess.SetItemChecked(5, true);
                     }
                 }
             }
+        }
+
+        private void AccessPage_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 
