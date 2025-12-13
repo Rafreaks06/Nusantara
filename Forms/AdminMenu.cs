@@ -14,10 +14,10 @@ using System.Windows.Forms;
 
 namespace Nusantara.Forms
 {
-    public partial class AdminMenu : UserControl
+    public partial class AdminMenu : Form
     {
 
-        public AdminMenu()
+        public AdminMenu(Models.Member loggedInUser)
         {
             InitializeComponent();
         }

@@ -44,7 +44,7 @@ namespace Nusantara.Forms
                 if (LoggedInUser.Level == "admin")
                 {
                     this.Hide();    
-                    AdminMenu form = new AdminMenu(LoggedInUser);
+                    var form = new AdminMenu(LoggedInUser);
                     form.ShowDialog();
                 }
                 else
