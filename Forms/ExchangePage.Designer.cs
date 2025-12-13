@@ -46,9 +46,10 @@
             // lblExchange
             // 
             lblExchange.AutoSize = true;
+            lblExchange.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblExchange.Location = new Point(125, 41);
             lblExchange.Name = "lblExchange";
-            lblExchange.Size = new Size(126, 25);
+            lblExchange.Size = new Size(148, 28);
             lblExchange.TabIndex = 0;
             lblExchange.Text = "Exchange USD";
             // 
