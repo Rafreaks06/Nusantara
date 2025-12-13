@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Nusantara.Forms
 {
-    public partial class ExchangePage: UserControl
+    public partial class ExchangePage : UserControl
     {
         Member LoggedMember;
         public ExchangePage(Member member)
@@ -33,5 +33,40 @@ namespace Nusantara.Forms
             txtRate.Text = config != null ? config.exchangeRate.ToString() : "0";
         }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        private void lblFee_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTotal_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblRate_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -46,117 +46,134 @@
             // lblExchange
             // 
             lblExchange.AutoSize = true;
-            lblExchange.Location = new Point(125, 41);
+            lblExchange.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblExchange.Location = new Point(88, 25);
+            lblExchange.Margin = new Padding(2, 0, 2, 0);
             lblExchange.Name = "lblExchange";
-            lblExchange.Size = new Size(126, 25);
+            lblExchange.Size = new Size(109, 20);
             lblExchange.TabIndex = 0;
             lblExchange.Text = "Exchange USD";
             // 
             // lblAmount
             // 
             lblAmount.AutoSize = true;
-            lblAmount.Location = new Point(23, 103);
+            lblAmount.Location = new Point(12, 74);
+            lblAmount.Margin = new Padding(2, 0, 2, 0);
             lblAmount.Name = "lblAmount";
-            lblAmount.Size = new Size(77, 25);
+            lblAmount.Size = new Size(51, 15);
             lblAmount.TabIndex = 1;
             lblAmount.Text = "Amount";
             // 
             // lblRate
             // 
             lblRate.AutoSize = true;
-            lblRate.Location = new Point(23, 157);
+            lblRate.Location = new Point(16, 100);
+            lblRate.Margin = new Padding(2, 0, 2, 0);
             lblRate.Name = "lblRate";
-            lblRate.Size = new Size(47, 25);
+            lblRate.Size = new Size(30, 15);
             lblRate.TabIndex = 2;
             lblRate.Text = "Rate";
+            lblRate.Click += lblRate_Click;
             // 
             // lblSub_Total
             // 
             lblSub_Total.AutoSize = true;
-            lblSub_Total.Location = new Point(23, 201);
+            lblSub_Total.Location = new Point(12, 129);
+            lblSub_Total.Margin = new Padding(2, 0, 2, 0);
             lblSub_Total.Name = "lblSub_Total";
-            lblSub_Total.Size = new Size(85, 25);
+            lblSub_Total.Size = new Size(55, 15);
             lblSub_Total.TabIndex = 3;
             lblSub_Total.Text = "Sub Total";
             // 
             // lblFee
             // 
             lblFee.AutoSize = true;
-            lblFee.Location = new Point(31, 249);
+            lblFee.Location = new Point(16, 156);
+            lblFee.Margin = new Padding(2, 0, 2, 0);
             lblFee.Name = "lblFee";
-            lblFee.Size = new Size(39, 25);
+            lblFee.Size = new Size(25, 15);
             lblFee.TabIndex = 4;
             lblFee.Text = "Fee";
+            lblFee.Click += lblFee_Click;
             // 
             // lblTotal
             // 
             lblTotal.AutoSize = true;
-            lblTotal.Location = new Point(31, 298);
+            lblTotal.Location = new Point(16, 187);
+            lblTotal.Margin = new Padding(2, 0, 2, 0);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(49, 25);
+            lblTotal.Size = new Size(32, 15);
             lblTotal.TabIndex = 5;
             lblTotal.Text = "Total";
+            lblTotal.Click += lblTotal_Click;
             // 
             // txtAmount
             // 
-            txtAmount.Location = new Point(125, 110);
+            txtAmount.Location = new Point(88, 66);
+            txtAmount.Margin = new Padding(2, 2, 2, 2);
             txtAmount.Name = "txtAmount";
-            txtAmount.Size = new Size(234, 31);
+            txtAmount.Size = new Size(165, 23);
             txtAmount.TabIndex = 6;
             // 
             // txtRate
             // 
-            txtRate.Location = new Point(125, 154);
+            txtRate.Location = new Point(88, 92);
+            txtRate.Margin = new Padding(2, 2, 2, 2);
             txtRate.Name = "txtRate";
             txtRate.ReadOnly = true;
-            txtRate.Size = new Size(234, 31);
+            txtRate.Size = new Size(165, 23);
             txtRate.TabIndex = 7;
             // 
             // txtSub_Total
             // 
-            txtSub_Total.Location = new Point(125, 202);
+            txtSub_Total.Location = new Point(88, 121);
+            txtSub_Total.Margin = new Padding(2, 2, 2, 2);
             txtSub_Total.Name = "txtSub_Total";
             txtSub_Total.ReadOnly = true;
-            txtSub_Total.Size = new Size(234, 31);
+            txtSub_Total.Size = new Size(165, 23);
             txtSub_Total.TabIndex = 8;
             // 
             // txtFee
             // 
-            txtFee.Location = new Point(125, 246);
+            txtFee.Location = new Point(88, 148);
+            txtFee.Margin = new Padding(2, 2, 2, 2);
             txtFee.Name = "txtFee";
             txtFee.ReadOnly = true;
-            txtFee.Size = new Size(234, 31);
+            txtFee.Size = new Size(165, 23);
             txtFee.TabIndex = 9;
             // 
             // txtTotal
             // 
-            txtTotal.Location = new Point(125, 298);
+            txtTotal.Location = new Point(88, 179);
+            txtTotal.Margin = new Padding(2, 2, 2, 2);
             txtTotal.Name = "txtTotal";
             txtTotal.ReadOnly = true;
-            txtTotal.Size = new Size(234, 31);
+            txtTotal.Size = new Size(165, 23);
             txtTotal.TabIndex = 10;
             // 
             // btnSubmite
             // 
-            btnSubmite.Location = new Point(81, 398);
+            btnSubmite.Location = new Point(57, 239);
+            btnSubmite.Margin = new Padding(2, 2, 2, 2);
             btnSubmite.Name = "btnSubmite";
-            btnSubmite.Size = new Size(112, 34);
+            btnSubmite.Size = new Size(78, 20);
             btnSubmite.TabIndex = 11;
-            btnSubmite.Text = "Submite";
+            btnSubmite.Text = "Submit";
             btnSubmite.UseVisualStyleBackColor = true;
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(234, 398);
+            btnClear.Location = new Point(164, 239);
+            btnClear.Margin = new Padding(2, 2, 2, 2);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(112, 34);
+            btnClear.Size = new Size(78, 20);
             btnClear.TabIndex = 12;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
             // 
             // ExchangePage
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(btnClear);
             Controls.Add(btnSubmite);
@@ -171,8 +188,9 @@
             Controls.Add(lblRate);
             Controls.Add(lblAmount);
             Controls.Add(lblExchange);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "ExchangePage";
-            Size = new Size(400, 474);
+            Size = new Size(280, 284);
             ResumeLayout(false);
             PerformLayout();
         }
