@@ -33,40 +33,21 @@ namespace Nusantara.Forms
             txtRate.Text = config != null ? config.exchangeRate.ToString() : "0";
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        private void lblFee_Click(object sender, EventArgs e)
+        private void txtAmount_TextChanged(object sender, EventArgs e)
         {
-
+            try
+            {
+                decimal amount = Convert.ToDecimal(txtAmount.Text);
+                decimal rate = Convert.ToDecimal(txtRate.Text);
+                decimal fee = Convert.ToDecimal(txtFee.Text);
+                decimal total = (amount * rate) + fee;
+                txtTotal.Text = total.ToString("0.00");
+            }
+            catch (Exception)
+            {
+                txtTotal.Text = "0.00";
+            }
         }
 
-        private void lblTotal_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblRate_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -190,7 +190,8 @@
             Controls.Add(lblExchange);
             Margin = new Padding(2, 2, 2, 2);
             Name = "ExchangePage";
-            Size = new Size(280, 284);
+            Size = new Size(400, 474);
+            Load += ExchangePage_Load_1;
             ResumeLayout(false);
             PerformLayout();
         }

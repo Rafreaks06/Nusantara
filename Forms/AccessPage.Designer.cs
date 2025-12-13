@@ -253,6 +253,7 @@
             Controls.Add(comboboxMember);
             Name = "AccessPage";
             Size = new Size(1568, 806);
+            Load += AccessPage_Load_1;
             GroupBox.ResumeLayout(false);
             GroupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewAccess).EndInit();
