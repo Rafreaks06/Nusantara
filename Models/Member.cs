@@ -33,7 +33,7 @@ namespace Nusantara.Models
         public ICollection<Saving> Savings { get; set; } = new List<Saving>();
         //public ICollection<Inhouse> OriginTransactions { get; set; } = new List<Inhouse>();
         //public ICollection<Inhouse> DestinationTransactions { get; set; } = new List<Inhouse>();
-        //public ICollection<Excange> Excanges { get; set; }
+        public ICollection<Exchange> Exchanges { get; set; }
 
 
 
