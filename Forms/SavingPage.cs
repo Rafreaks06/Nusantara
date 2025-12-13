@@ -46,6 +46,12 @@ namespace Nusantara.Forms
 
         }
 
+
+
+       
+
+
+
         private void btnBrowse_KK_Click(object sender, EventArgs e)
         {
             txtDocument_KK.Text = FileHelper.UploadDocument("KK");
@@ -95,9 +101,9 @@ namespace Nusantara.Forms
             txtDocument_KTP.Text = "";
             txtDocument_Slip_Gaji.Text = "";
             txtDue_Date.Text = "";
-	        txtAmount.Text = "";
+            txtAmount.Text = "";
             ResetDropDown();
-            txtLoanId.Text = RandomNumberGenetaror.GetString("123456790", 6);
+            txtLoanId.Text = RandomNumberGenerator.GetString("123456790", 6);
 
             lblID.Text = "";
         }
@@ -158,7 +164,24 @@ namespace Nusantara.Forms
             }
         }
 
+        private void btnApply_Saving_Click(object sender, EventArgs e)
+        {
+            SetDefaultField();
+            ResetField();
+            btnApply_Saving.Enabled = true;
+            cmbSaving_Type.SelectedIndex = 0;
+            cmbSaving_Type.Enabled = true;
+        }
 
+        private void btnReload_Click(object sender, EventArgs e)
+        {
+            AppDbContext db = new AppDbContext();
 
+            SetSavingDropDown(db);
+            SetDefaultField();
+            ResetField();
+
+            LoadSavingGrid(db);
+        }
     }
 }
