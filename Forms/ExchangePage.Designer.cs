@@ -144,6 +144,7 @@
             btnSubmite.TabIndex = 11;
             btnSubmite.Text = "Submite";
             btnSubmite.UseVisualStyleBackColor = true;
+            btnSubmite.Click += btnSubmite_Click;
             // 
             // btnClear
             // 
@@ -173,7 +174,6 @@
             Controls.Add(lblExchange);
             Name = "ExchangePage";
             Size = new Size(400, 474);
-            Load += ExchangePage_Load_1;
             ResumeLayout(false);
             PerformLayout();
         }
