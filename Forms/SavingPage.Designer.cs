@@ -444,6 +444,7 @@
             Controls.Add(lblSaving_ID);
             Name = "SavingPage";
             Size = new Size(1058, 663);
+            Load += SavingPage_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Nusantara.Data;
 
 namespace Nusantara.Forms
 {
@@ -36,5 +37,29 @@ namespace Nusantara.Forms
         {
 
         }
+
+        private void SavingPage_Load(object sender, EventArgs e)
+        {
+            private void buttonNewSaving_Click(object sender, EventArgs e)
+        {
+            SetDefaultField();
+            ResetField();
+            buttonApply.Enabled = true;
+            cmbSaving_Type.SelectedIndex = 0;
+            cmbSaving_Type.Enabled = true;
+        }
+
+        private void buttonReload_Click_1(object sender, EventArgs e)
+        {
+            AppDbContext db = new AppDbContext();
+
+            SetSavingDropDown(db);
+            SetDefaultField();
+            ResetField();
+
+            LoadSavingGrid(db);
+        }
+
     }
+}
 }
