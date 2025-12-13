@@ -115,7 +115,7 @@ namespace Nusantara.Forms
         private async void LoadSavingGrid(AppDbContext db)
         {
             SavingService savingService = new SavingService(db);
-            loanBindingSource.DataSource = await savingService.LoadSavingGrid(logged Member);
+            loanBindingSource.DataSource = await savingService.LoadSavingGrid(loggedmember Member);
             dgv_Saving.Columns[0].DataPropertyName = "id";
             dgv_Saving.Columns[1].DataPropertyName = "SavingId";
             dgv_Saving.Columns[2].DataPropertyName = "Amount";
@@ -156,6 +156,7 @@ namespace Nusantara.Forms
                 ResetDropDown();
             }
         }
+
 
 
 
