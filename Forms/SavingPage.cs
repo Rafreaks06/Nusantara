@@ -96,7 +96,7 @@ namespace Nusantara.Forms
             txtDue_Date.Text = "";
 	        txtAmount.Text = "";
             ResetDropDown();
-            txtLoanId.Text = RandomNumberGenetaror.GetString("123456790", 6);
+            txtLoanId.Text = RandomNumberGenetror.GetString("123456790", 6);
 
             lblID.Text = "";
         }
