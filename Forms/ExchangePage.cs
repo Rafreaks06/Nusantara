@@ -51,7 +51,37 @@ namespace Nusantara.Forms
 
         private void btnSubmite_Click(object sender, EventArgs e)
         {
+            Exchange exchange = new Exchange
+            {
+                MemberId = loggedMember.Id,
+                ExchangeId = Guid.NewGuid().ToString(),
+                Amount = Convert.ToDecimal(txtAmount.Text),
+                Rate = Convert.ToDecimal(txtRate.Text),
+                Fee = Convert.ToDecimal(txtFee.Text),
+                AmountExchanged = Convert.ToDecimal(txtAmount.Text)
+                           * Convert.ToDecimal(txtRate.Text),
+                ExchangeDate = DateTime.Now,
+                TotalAmountExchanged = Convert.ToDecimal(txtTotal.Text)
+            };
 
+            AppDbContext db = new AppDbContext();
+            ExchangeService exchangeService = new ExchangeService(db);
+            exchangeService.save(exchange);
+
+            txtAmount.Text = "0";
+
+            MessageBox.Show(
+                "Exchange submitted successfully!",
+                "Success",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtAmount.Text = "0";
+        }
+    }
     }
 }

@@ -73,7 +73,6 @@
             lblRate.Size = new Size(30, 15);
             lblRate.TabIndex = 2;
             lblRate.Text = "Rate";
-            lblRate.Click += lblRate_Click;
             // 
             // lblSub_Total
             // 
@@ -94,7 +93,7 @@
             lblFee.Size = new Size(25, 15);
             lblFee.TabIndex = 4;
             lblFee.Text = "Fee";
-            lblFee.Click += lblFee_Click;
+            //lblFee.Click += lblFee_Click;
             // 
             // lblTotal
             // 
@@ -105,7 +104,6 @@
             lblTotal.Size = new Size(32, 15);
             lblTotal.TabIndex = 5;
             lblTotal.Text = "Total";
-            lblTotal.Click += lblTotal_Click;
             // 
             // txtAmount
             // 
