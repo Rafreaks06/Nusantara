@@ -183,5 +183,10 @@ namespace Nusantara.Forms
                 }
             }
         }
+
+        private void AccessPage_Load_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

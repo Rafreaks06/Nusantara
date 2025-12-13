@@ -86,9 +86,10 @@ namespace Nusantara.Forms
 
         
 
-        private void btnSubmit_Click_1(object sender, EventArgs e)
+        private async void btnSubmit_Click_1(object sender, EventArgs e)
         {
-
+            await Task.Run(() => { });
+            btnSubmit_Click(sender, e);
         }
 
         private void LoginForm_Load(object sender, EventArgs e)
