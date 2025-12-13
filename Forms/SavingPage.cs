@@ -68,7 +68,7 @@ namespace Nusantara.Forms
         private void SetSavingDropDown(AppDbContext db)
         {
             ProductService productService = new ProductService(db);
-            LoanMasterBindingSource.DataSource = productService.SetDropDownSaving();
+            SavingMasterBindingSource.DataSource = productService.SetDropDownSaving();
             cmbSaving_Type.DisplayMember = "DisplayName";
             cmbSaving_Type.ValueMember = "Id";
         }
@@ -103,7 +103,7 @@ namespace Nusantara.Forms
             txtDue_Date.Text = "";
             txtAmount.Text = "";
             ResetDropDown();
-            txtLoanId.Text = RandomNumberGenerator.GetString("123456790", 6);
+            txtSaving_ID.Text = RandomNumberGenerator.GetString("123456790", 6);
 
             lblID.Text = "";
         }
@@ -122,7 +122,7 @@ namespace Nusantara.Forms
         private async void LoadSavingGrid(AppDbContext db)
         {
             SavingService savingService = new SavingService(db);
-            loanBindingSource.DataSource = await savingService.LoadSavingGrid(logged Member);
+            SavingBindingSource.DataSource = await savingService.LoadSavingGrid(loggedmember);
             dgv_Saving.Columns[0].DataPropertyName = "id";
             dgv_Saving.Columns[1].DataPropertyName = "SavingId";
             dgv_Saving.Columns[2].DataPropertyName = "Amount";
