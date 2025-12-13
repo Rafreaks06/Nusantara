@@ -29,7 +29,7 @@ namespace Nusantara.Forms
             ConfigurationService configService = new ConfigurationService(db);
             Configuration? config = await configService.GetConfig();
 
-            txtFee.Text = config != null ? config.transferAccessFee.ToString() : "0";
+            txtFee.Text = config != null ? config.transferAcrossFee.ToString() : "0";
             txtRate.Text = config != null ? config.exchangeRate.ToString() : "0";
         }
 
