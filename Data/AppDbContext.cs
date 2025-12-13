@@ -17,7 +17,7 @@ namespace Nusantara.Data
         public DbSet<Configuration> Configurations => Set<Configuration>();
         public DbSet<LoanMaster> LoanMaster => Set<LoanMaster>();
         public DbSet<Loan> Loans => Set<Loan>();
-        //public DbSet<Installment> Instalments => Set<Installment>();
+        public DbSet<Installment> Instalments => Set<Installment>();
         public DbSet<Saving> Savings => Set<Saving>();
         public DbSet<SavingMaster> SavingMasters => Set<SavingMaster>();
         //public DbSet<Inhouse> Inhouses => Set<Inhouse>();
@@ -25,13 +25,7 @@ namespace Nusantara.Data
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
         {
-            //var config = new ConfigurationBuilder()
-            //    .SetBasePath(AppContext.BaseDirectory)
-            //    .AddJsonFile("appsettings.json")
-            //    .Build();
-            //optionsBuilder.UseNpgsql(config.GetConnectionString("Default"));
-            optionsBuilder.UseNpgsql("Host=103.82.242.90;Port=5434;Database=vb2_nusantara;Username=postgres;Password=12Qpalzmxn");
-
+            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=vb2_nusantara;Username=postgres;Password=miftahulrizky");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,11 +34,11 @@ namespace Nusantara.Data
                 .WithMany(m => m.Loans)
                 .HasForeignKey(l => l.MemberId);
 
-            /*modelBuilder.Entity<Installment>()
+            modelBuilder.Entity<Installment>()
                 .HasOne(i => i.Loan)
-                .WithMany(l => l.Installment)
-                .HasForeignKey(i => i.LoanId);*/
-            
+                .WithMany(l => l.Installments)
+                .HasForeignKey(i => i.LoanId);
+
             modelBuilder.Entity<Access>()
                 .HasOne(a => a.Member)
                 .WithMany(m => m.Accesses)
@@ -75,9 +69,7 @@ namespace Nusantara.Data
                 var idrop = entity.FindProperty("id");
                 if (idrop != null)
                 {
-                    idrop.SetValueGenerationStrategy(
-                        Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlValueGenerationStrategy.SerialColumn
-                        );
+                    idrop.SetValueGenerationStrategy(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlValueGenerationStrategy.SerialColumn);
                 }
                                 
             }

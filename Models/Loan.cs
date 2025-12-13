@@ -4,26 +4,37 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Nusantara.Models
 {
     public class Loan
     {
-        public int id { get; set; }
-        [Required] public int MemberId { get; set; }
-        public Member? Member { get; set; } = null;
+        public int Id { get; set; }
+
+        [Required]
+        public int MemberId { get; set; }
+        public Member? Member { get; set; }
         [Required] public int LoanId { get; set; }
-        [Required] public decimal Amount { get; set; }
+
+        [Required]
+        public decimal Amount { get; set; }
+
         public decimal Outstanding { get; set; }
         public decimal Fine { get; set; }
-        public int Tenorleft { get; set; }
+        public int TenorLeft { get; set; }
+
         public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
-        [Required, MaxLength(20)] public string Status { get; set; } = "Pending";
+
+        [Required, MaxLength(20)]
+        public string Status { get; set; } = "Pending";
+
         public decimal Interest { get; set; }
         public decimal InterestFine { get; set; }
         public decimal Tenor { get; set; }
         public int DueDate { get; set; }
-        [Required] public decimal TotalAmount { get; set; }
+
+        [Required]
+        public decimal TotalAmount { get; set; }
+
         public bool IsApproved { get; set; } = false;
         public DateTime? ApprovedOn { get; set; }
         public decimal AdminFee { get; set; }
@@ -31,7 +42,8 @@ namespace Nusantara.Models
         public string? KtpPath { get; set; }
         public string? KkpPath { get; set; }
         public string? SlipGajiPath { get; set; }
-        // Installment type is missing, so comment out the property to fix CS0246
-        // public ICollection<Installment> Installments { get; set; } = new List<Installment>();
+
+        // FIX: gunakan nama jamak dan tipe yang konsisten
+        public ICollection<Installment> Installments { get; set; } = new List<Installment>();
     }
 }

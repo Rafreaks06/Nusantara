@@ -176,7 +176,7 @@ namespace Nusantara.Forms
                             txtAdminFee.Text = loan.AdminFee.ToString();
                             txtMinAmount.Text = "";
                             txtMaxAmount.Text = "";
-                            lblId.Text = loan.id.ToString();
+                            lblId.Text = loan.Id.ToString();
                             comboLoanType.SelectedIndex = 0;
                             comboLoanType.Enabled = false;
                             //if (installmentForm == null)
@@ -203,6 +203,14 @@ namespace Nusantara.Forms
         {
             AppDbContext db = new AppDbContext();
             LoanService loanService = new LoanService(db);
+            // Validation
+            if (string.IsNullOrEmpty(txtAmount.Text) ||
+                string.IsNullOrEmpty(txtMinAmount.Text) ||
+                string.IsNullOrEmpty(txtMaxAmount.Text))
+            {
+                MessageBox.Show("Please fill in all required fields.", "Validation", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             decimal amount = decimal.Parse(txtAmount.Text);
             decimal minAmount = decimal.Parse(txtMinAmount.Text);
             decimal maxAmount = decimal.Parse(txtMaxAmount.Text);
@@ -212,16 +220,20 @@ namespace Nusantara.Forms
             }
             else
             {
-                await loanService.saveOrUpdate( 
-                    LoggedMember,
+                await loanService.saveOrUpdate(
+                   LoggedMember,
                     txtAmount.Text,
-                    txtDocumentKK.Text,
                     txtDocumentKtp.Text,
+                    txtDocumentKK.Text,
                     txtDocumentGaji.Text,
                     txtDueDate.Text,
+                    txtInterest.Text,
+                    txtInterestFine.Text,
+                    lblId.Text,
                     txtTenor.Text,
                     txtAdminFee.Text
                 );
+                MessageBox.Show("Loan application submitted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadLoanGrid(db);
                 ResetField();
             }

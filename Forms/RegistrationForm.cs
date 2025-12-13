@@ -23,7 +23,7 @@ namespace Nusantara.Forms
         {
             using var db = new AppDbContext();
             var auth = new AuthService(db);
-            var member = auth.RegisterAsnyc(textAddress.Text, textCardId.Text, textEmail.Text, textFullname.Text,
+            var member = auth.RegisterAsync(textAddress.Text, textCardId.Text, textEmail.Text, textFullname.Text,
                 textPassword.Text, textPhone.Text, textPhoneAlt.Text, textReferenceId.Text,
                 textUsername.Text, textQuest1.Text, textQuest2.Text);
             if (member != null)

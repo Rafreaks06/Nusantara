@@ -1,5 +1,5 @@
-﻿using BraveHeroCooperation.Data;
-using BraveHeroCooperation.Models;
+﻿using Nusantara.Data;
+using Nusantara.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

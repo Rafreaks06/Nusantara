@@ -84,13 +84,40 @@ namespace Nusantara.Migrations
                     b.ToTable("Configurations");
                 });
 
-            modelBuilder.Entity("Nusantara.Models.Loan", b =>
+            modelBuilder.Entity("Nusantara.Models.Installment", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("id"));
+                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("numeric");
+
+                    b.Property<int>("LoanId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("PaymentDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("ProofPath")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LoanId");
+
+                    b.ToTable("Instalments");
+                });
+
+            modelBuilder.Entity("Nusantara.Models.Loan", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("AdminFee")
                         .HasColumnType("numeric");
@@ -98,10 +125,10 @@ namespace Nusantara.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("numeric");
 
-                    b.Property<DateTime?>("Approvedo0n")
+                    b.Property<DateTime?>("ApprovedOn")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime>("Createdo0n")
+                    b.Property<DateTime>("CreatedOn")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("DueDate")
@@ -116,7 +143,7 @@ namespace Nusantara.Migrations
                     b.Property<decimal>("InterestFine")
                         .HasColumnType("numeric");
 
-                    b.Property<bool>("IsAppoved")
+                    b.Property<bool>("IsApproved")
                         .HasColumnType("boolean");
 
                     b.Property<string>("KkpPath")
@@ -134,7 +161,7 @@ namespace Nusantara.Migrations
                     b.Property<decimal>("Outstanding")
                         .HasColumnType("numeric");
 
-                    b.Property<string>("Path")
+                    b.Property<string>("SlipGajiPath")
                         .HasColumnType("text");
 
                     b.Property<string>("Status")
@@ -145,13 +172,13 @@ namespace Nusantara.Migrations
                     b.Property<decimal>("Tenor")
                         .HasColumnType("numeric");
 
-                    b.Property<int>("Tenorleft")
+                    b.Property<int>("TenorLeft")
                         .HasColumnType("integer");
 
                     b.Property<decimal>("TotalAmount")
                         .HasColumnType("numeric");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("MemberId");
 
@@ -192,7 +219,7 @@ namespace Nusantara.Migrations
                     b.Property<int>("Tenor")
                         .HasColumnType("integer");
 
-                    b.Property<DateTime>("Update0n")
+                    b.Property<DateTime>("UpdateOn")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
@@ -228,7 +255,7 @@ namespace Nusantara.Migrations
                     b.Property<bool>("IsActive")
                         .HasColumnType("boolean");
 
-                    b.Property<DateTime>("JoinData")
+                    b.Property<DateTime>("JoinDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Level")
@@ -380,6 +407,17 @@ namespace Nusantara.Migrations
                     b.Navigation("Member");
                 });
 
+            modelBuilder.Entity("Nusantara.Models.Installment", b =>
+                {
+                    b.HasOne("Nusantara.Models.Loan", "Loan")
+                        .WithMany("Installments")
+                        .HasForeignKey("LoanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Loan");
+                });
+
             modelBuilder.Entity("Nusantara.Models.Loan", b =>
                 {
                     b.HasOne("Nusantara.Models.Member", "Member")
@@ -400,6 +438,11 @@ namespace Nusantara.Migrations
                         .IsRequired();
 
                     b.Navigation("Member");
+                });
+
+            modelBuilder.Entity("Nusantara.Models.Loan", b =>
+                {
+                    b.Navigation("Installments");
                 });
 
             modelBuilder.Entity("Nusantara.Models.Member", b =>

@@ -43,8 +43,8 @@ namespace Nusantara.Forms
 
                 if (LoggedInUser.Level == "admin")
                 {
-                    this.Hide();
-                    var form = new AdminForm(LoggedInUser);
+                    this.Hide();    
+                    var form = new AdminMenu(LoggedInUser);
                     form.ShowDialog();
                 }
                 else
@@ -74,19 +74,17 @@ namespace Nusantara.Forms
             }
         }
 
+       
+
         private void linkForgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
             var form = new ForgotPasswordForm();
             form.ShowDialog();
+            this.Show();
         }
 
-        private void buttonRegistration_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var form = new RegistrationForm();
-            form.ShowDialog();
-        }
+        
 
         private void btnSubmit_Click_1(object sender, EventArgs e)
         {
@@ -95,6 +93,23 @@ namespace Nusantara.Forms
 
         private void LoginForm_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private void linkForgetPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Hide();
+            var form = new ForgotPasswordForm();
+            form.ShowDialog();
+            this.Show();
+        }
+
+        private void btnRegistrasion_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            var form = new RegistrationForm();
+            form.ShowDialog();
+            this.Show();
 
         }
     }
