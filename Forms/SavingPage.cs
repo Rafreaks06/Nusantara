@@ -8,6 +8,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -86,5 +88,76 @@ namespace Nusantara.Forms
             btnBrowse_KK.Visible = false;
             btnBrowse.Visible = false;
         }
+        private void ResetField()
+        {
+            txtDocument_KK.Text = "";
+            txtDocument_KTP.Text = "";
+            txtDocument_Slip_Gaji.Text = "";
+            txtDue_Date.Text = "";
+	        txtAmount.Text = "";
+            ResetDropDown();
+            txtLoanId.Text = RandomNumberGenetaror.GetString("123456790", 6);
+
+            lblID.Text = "";
+        }
+
+        private void ResetDropDown()
+        {
+            txtInterest.Text = "";
+            txtInterest_Fine.Text = "";
+            txtTenor.Text = "";
+            txtAdmin_Fee.Text = "";
+            txtMin_Amount.Text = "";
+            txtMax_Amount.Text = "";
+
+        }
+
+        private async void LoadSavingGrid(AppDbContext db)
+        {
+            SavingService savingService = new SavingService(db);
+            loanBindingSource.DataSource = await savingService.LoadSavingGrid(logged Member);
+            dgv_Saving.Columns[0].DataPropertyName = "id";
+            dgv_Saving.Columns[1].DataPropertyName = "SavingId";
+            dgv_Saving.Columns[2].DataPropertyName = "Amount";
+            dgv_Saving.Columns[3].DataPropertyName = "Tenor";
+
+            dgv_Saving.Columns[0].Visible = false;
+            dgv_Saving.Columns[1].HeaderText = "Saving ID";
+            dgv_Saving.Columns[2].HeaderText = "Amount";
+            dgv_Saving.Columns[3].HeaderText = "Tenor";
+
+        }
+
+        private async void comboLoanMaster_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbSaving_Type.SelectedIndex == 0)
+                ResetDropDown();
+
+            if (cmbSaving_Type.SelectedIndex > 0)
+            {
+                int idLoanMaster = int.Parse(cmbSaving_Type.SelectedValue.ToString());
+
+                AppDbContext db = new AppDbContext();
+                ProductService productService = new ProductService(db);
+                LoanMaster? loanMaster = await productService.findLoanById(idLoanMaster);
+
+                if (loanMaster != null)
+                {
+                    txtInterest.Text = loanMaster.Interest.ToString();
+                    txtInterest_Fine.Text = loanMaster.Fine.ToString();
+                    txtTenor.Text = loanMaster.Tenor.ToString();
+                    txtAdmin_Fee.Text = loanMaster.AdminFee.ToString();
+                    txtMin_Amount.Text = loanMaster.MinAmount.ToString();
+                    txtMax_Amount.Text = loanMaster.MaxAmount.ToString();
+                }
+            }
+            else
+            {
+                ResetDropDown();
+            }
+        }
+
+
+
     }
 }
