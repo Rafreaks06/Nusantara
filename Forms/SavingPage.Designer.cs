@@ -355,6 +355,7 @@
             btnApply_Saving.TabIndex = 32;
             btnApply_Saving.Text = "Apply Saving";
             btnApply_Saving.UseVisualStyleBackColor = true;
+            btnApply_Saving.Click += btnApply_Saving_Click;
             // 
             // btnNew_Saving
             // 
@@ -391,6 +392,7 @@
             btnReload.TabIndex = 36;
             btnReload.Text = "Reload";
             btnReload.UseVisualStyleBackColor = true;
+            btnReload.Click += btnReload_Click;
             // 
             // lblID
             // 
