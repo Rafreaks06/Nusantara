@@ -29,7 +29,7 @@ namespace Nusantara.Forms
             ConfigurationService configService = new ConfigurationService(db);
             Configuration? config = await configService.GetConfig();
 
-            txtFee.Text = config != null ? config.transferAccessFee.ToString() : "0";
+            txtFee.Text = config != null ? config.transferAcrossFee.ToString() : "0";
             txtRate.Text = config != null ? config.exchangeRate.ToString() : "0";
         }
 
@@ -53,7 +53,7 @@ namespace Nusantara.Forms
         {
             Exchange exchange = new Exchange
             {
-                MemberId = loggedMember.Id,
+                MemberId = LoggedMember.Id,
                 ExchangeId = Guid.NewGuid().ToString(),
                 Amount = Convert.ToDecimal(txtAmount.Text),
                 Rate = Convert.ToDecimal(txtRate.Text),
@@ -65,7 +65,7 @@ namespace Nusantara.Forms
             };
 
             AppDbContext db = new AppDbContext();
-            ExchangeService exchangeService = new ExchangeService(db);
+            ExchangeServices exchangeService = new ExchangeServices(db);
             exchangeService.save(exchange);
 
             txtAmount.Text = "0";
@@ -82,6 +82,12 @@ namespace Nusantara.Forms
         {
             txtAmount.Text = "0";
         }
+        private void exchangeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
+
     }
-    }
+
 }
+
