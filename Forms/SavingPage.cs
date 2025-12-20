@@ -68,7 +68,9 @@ namespace Nusantara.Forms
         private void SetSavingDropDown(AppDbContext db)
         {
             ProductService productService = new ProductService(db);
-            SavingMasterBindingSource.DataSource = productService.SetDropDownSaving();
+            //SavingMasterBindingSource.DataSource = productService.SetDropDownSaving();
+            Object obj = productService.SetDropDownSaving();
+            cmbSaving_Type.DataSource = obj;
             cmbSaving_Type.DisplayMember = "DisplayName";
             cmbSaving_Type.ValueMember = "Id";
         }
@@ -122,11 +124,10 @@ namespace Nusantara.Forms
         private async void LoadSavingGrid(AppDbContext db)
         {
             SavingService savingService = new SavingService(db);
-            SavingBindingSource.DataSource = await savingService.LoadSavingGrid(loggedmember);
-            dgv_Saving.Columns[0].DataPropertyName = "id";
-            dgv_Saving.Columns[1].DataPropertyName = "SavingId";
-            dgv_Saving.Columns[2].DataPropertyName = "Amount";
-            dgv_Saving.Columns[3].DataPropertyName = "Tenor";
+            List<Saving> listSaving= await savingService. LoadSavingGrid(loggedmember.Id);
+            foreach (Saving s in listSaving) { 
+              dgv_Saving.Rows.Add(s.id, s.SavingId, s.Amount, s.Tenor);
+            }
 
             dgv_Saving.Columns[0].Visible = false;
             dgv_Saving.Columns[1].HeaderText = "Saving ID";

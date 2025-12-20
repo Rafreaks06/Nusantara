@@ -25,7 +25,7 @@ namespace Nusantara.Data
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=vb2_nusantara;Username=postgres;Password=miftahulrizky");
+            optionsBuilder.UseNpgsql("Host=103.82.242.90;Port=5434;Database=vb2_nusantara;Username=postgres;Password=12Qpalzmxn");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

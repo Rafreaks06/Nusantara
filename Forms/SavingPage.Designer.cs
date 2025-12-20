@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             lblSaving_ID = new Label();
             txtSaving_ID = new TextBox();
             lblSaving_Type = new Label();
@@ -66,7 +67,9 @@
             dgv_Saving = new DataGridView();
             btnReload = new Button();
             lblID = new Label();
+            bindingSource1 = new BindingSource(components);
             ((System.ComponentModel.ISupportInitialize)dgv_Saving).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             SuspendLayout();
             // 
             // lblSaving_ID
@@ -378,7 +381,7 @@
             // dgv_Saving
             // 
             dgv_Saving.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv_Saving.Location = new Point(540, 87);
+            dgv_Saving.Location = new Point(541, 61);
             dgv_Saving.Name = "dgv_Saving";
             dgv_Saving.RowHeadersWidth = 62;
             dgv_Saving.Size = new Size(490, 500);
@@ -448,6 +451,7 @@
             Name = "SavingPage";
             Size = new Size(1059, 663);
             ((System.ComponentModel.ISupportInitialize)dgv_Saving).EndInit();
+            ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -492,5 +496,6 @@
         private DataGridView dgv_Saving;
         private Button btnReload;
         private Label lblID;
+        private BindingSource bindingSource1;
     }
 }
