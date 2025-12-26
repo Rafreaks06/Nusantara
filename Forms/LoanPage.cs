@@ -180,8 +180,8 @@ namespace Nusantara.Forms
                             comboLoanType.SelectedIndex = 0;
                             comboLoanType.Enabled = false;
                             //if (installmentForm == null)
-                            //    installmentForm = new InstallmentForm(LoggedMember, loan.id);
-                            //installmentForm.SetLoan(loan.id);
+                            //    installmentForm = new InstallmentForm(LoggedMember, loan.Id);
+                            //installmentForm.SetLoan(loan.Id);
                             //installmentForm.Show();
                             //btnApplyLoan.Enabled = false;
                         }

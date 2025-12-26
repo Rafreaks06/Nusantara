@@ -23,11 +23,11 @@ namespace Nusantara.Services
             return await _db.Loans.FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        //public async Task<List<Installment>> LoadInstallmentsGrid(int loanId)
-        //{
-        //    return await _db.Installments.Where(x => x.LoanId == loanId)
-        //                                 .ToListAsync();
-        //}
+        public async Task<List<Installment>> LoadInstallmentsGrid(int loanId)
+        {
+            return await _db.Instalments.Where(x => x.LoanId == loanId)
+                                         .ToListAsync();
+        }
 
         public async Task<List<Loan>> LoadLoanGridByMemberIdAsync(int memberId)
         {
