@@ -20,7 +20,7 @@ namespace Nusantara.Data
         public DbSet<Installment> Instalments => Set<Installment>();
         public DbSet<Saving> Savings => Set<Saving>();
         public DbSet<SavingMaster> SavingMasters => Set<SavingMaster>();
-        //public DbSet<Inhouse> Inhouses => Set<Inhouse>();
+        public DbSet<Inhouse> Inhouses => Set<Inhouse>();
         public DbSet<Exchange> Exchanges => Set<Exchange>();
 
         protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
@@ -54,7 +54,7 @@ namespace Nusantara.Data
                .WithMany(m => m.Exchanges)
                .HasForeignKey(x => x.MemberId);
 
-            /*modelBuilder.Entity<Inhouse>()
+            modelBuilder.Entity<Inhouse>()
                 .HasOne(x => x.Origin)
                 .WithMany(m => m.OriginTransactions)
                 .HasForeignKey(x => x.Origin);
@@ -62,10 +62,10 @@ namespace Nusantara.Data
             modelBuilder.Entity<Inhouse>()
                 .HasOne(x => x.Destination)
                 .WithMany(m => m.DestionationTransactions)
-                .HasForeignKey(x => x.DestionationId);
+                .HasForeignKey(x => x.DestinationId);
             
            
-            */
+            
             foreach (var entity in modelBuilder.Model.GetEntityTypes())
             {
                 var idrop = entity.FindProperty("id");

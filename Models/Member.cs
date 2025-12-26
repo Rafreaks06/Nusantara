@@ -31,8 +31,8 @@ namespace Nusantara.Models
         public ICollection<Loan> Loans { get; set; } = new List<Loan>();
         public ICollection<Access> Accesses { get; set; } = new List<Access>();
         public ICollection<Saving> Savings { get; set; } = new List<Saving>();
-        //public ICollection<Inhouse> OriginTransactions { get; set; } = new List<Inhouse>();
-        //public ICollection<Inhouse> DestinationTransactions { get; set; } = new List<Inhouse>();
+        public ICollection<Inhouse> OriginTransactions { get; set; } = new List<Inhouse>();
+        public ICollection<Inhouse> DestionationTransactions { get; set; } = new List<Inhouse>();
         public ICollection<Exchange> Exchanges { get; set; }
 
 

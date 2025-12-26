@@ -70,28 +70,28 @@ namespace Nusantara.Services
             await _db.SaveChangesAsync();
         }
 
-        //public object LoadApproval()
-        //{
-        //    return _db.Loans.Where(x => x.ApprovedOn == null)
-        //        .Include(x => x.Member)
-        //        .OrderByDescending(x => x.CreatedOn)
-        //        .Select(x => new
-        //        {
-        //            x.id,
-        //            MemberData = x.Member.MemberId + " - " + x.Member.FullName,
-        //            JoinDate = x.Member.JoinDate.ToString("f"),
-        //            x.LoanId,
-        //            x.Amount,
-        //            x.Outstanding,
-        //            RequestDate = x.CreatedOn.ToString("f"),
-        //            x.Tenor,
-        //            x.Interest,
-        //            Kk = x.KkpPath,
-        //            Ktp = x.KtpPath,
-        //            Slip = x.SlipGajiPath
-        //        })
-        //        .ToList();
-        //}
+        public object LoadApproval()
+        {
+            return _db.Loans.Where(x => x.ApprovedOn == null)
+                .Include(x => x.Member)
+                .OrderByDescending(x => x.CreatedOn)
+                .Select(x => new
+                {
+                    x.Id,
+                    MemberData = x.Member.MemberId + " - " + x.Member.FullName,
+                    JoinDate = x.Member.JoinDate.ToString("f"),
+                    x.LoanId,
+                    x.Amount,
+                    x.Outstanding,
+                    RequestDate = x.CreatedOn.ToString("f"),
+                    x.Tenor,
+                    x.Interest,
+                    Kk = x.KkpPath,
+                    Ktp = x.KtpPath,
+                    Slip = x.SlipGajiPath
+                })
+                .ToList();
+        }
 
         public async Task<List<Loan>> LoadsApproval()
         {
