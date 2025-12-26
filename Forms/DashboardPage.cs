@@ -15,7 +15,7 @@ namespace Nusantara.Forms
     public partial class DashboardPage : UserControl
     {
         private Member loggedMember;
-        public DashboardPage(Member member)
+        public DashboardPage(Member? member)
         {
             InitializeComponent();
             loggedMember = member;
@@ -25,7 +25,7 @@ namespace Nusantara.Forms
 
         private void DashboardPage_Load(object sender, EventArgs e)
         {
-
+            AppDbContext db = new AppDbContext();
         }
     }
 
