@@ -28,146 +28,146 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lblLogin = new Label();
-            lblUsername = new Label();
-            txtUsername = new TextBox();
-            lblPassword = new Label();
-            txtPassword = new TextBox();
-            btnSubmit = new Button();
-            btnRegistrasion = new Button();
-            linkForgetPassword = new LinkLabel();
-            lblValidasi = new Label();
+            pictureBox1 = new PictureBox();
+            buttonRegistration = new Button();
+            linkForgotPassword = new LinkLabel();
+            buttonSubmit = new Button();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            textPassword = new TextBox();
+            textUsername = new TextBox();
+            labelSuccess = new Label();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
-            // lblLogin
+            // pictureBox1
             // 
-            lblLogin.AutoSize = true;
-            lblLogin.Font = new Font("Segoe UI Historic", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblLogin.Location = new Point(252, 34);
-            lblLogin.Margin = new Padding(2, 0, 2, 0);
-            lblLogin.Name = "lblLogin";
-            lblLogin.Size = new Size(88, 32);
-            lblLogin.TabIndex = 0;
-            lblLogin.Text = "LOGIN";
+            pictureBox1.Location = new Point(1, 1);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(301, 359);
+            pictureBox1.TabIndex = 17;
+            pictureBox1.TabStop = false;
             // 
-            // lblUsername
+            // buttonRegistration
             // 
-            lblUsername.AutoSize = true;
-            lblUsername.Location = new Point(203, 82);
-            lblUsername.Margin = new Padding(2, 0, 2, 0);
-            lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(60, 15);
-            lblUsername.TabIndex = 1;
-            lblUsername.Text = "Username";
+            buttonRegistration.Location = new Point(330, 314);
+            buttonRegistration.Name = "buttonRegistration";
+            buttonRegistration.Size = new Size(90, 23);
+            buttonRegistration.TabIndex = 16;
+            buttonRegistration.Text = "Registration";
+            buttonRegistration.UseVisualStyleBackColor = true;
+            buttonRegistration.Click += buttonRegistration_Click;
             // 
-            // txtUsername
+            // linkForgotPassword
             // 
-            txtUsername.Location = new Point(203, 106);
-            txtUsername.Margin = new Padding(2);
-            txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(179, 23);
-            txtUsername.TabIndex = 2;
+            linkForgotPassword.AutoSize = true;
+            linkForgotPassword.Location = new Point(498, 232);
+            linkForgotPassword.Name = "linkForgotPassword";
+            linkForgotPassword.Size = new Size(95, 15);
+            linkForgotPassword.TabIndex = 15;
+            linkForgotPassword.TabStop = true;
+            linkForgotPassword.Text = "Forgot Password";
+            linkForgotPassword.VisitedLinkColor = Color.Blue;
+            linkForgotPassword.LinkClicked += linkForgotPassword_LinkClicked;
             // 
-            // lblPassword
+            // buttonSubmit
             // 
-            lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(203, 135);
-            lblPassword.Margin = new Padding(2, 0, 2, 0);
-            lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(57, 15);
-            lblPassword.TabIndex = 3;
-            lblPassword.Text = "Password";
+            buttonSubmit.Location = new Point(330, 228);
+            buttonSubmit.Name = "buttonSubmit";
+            buttonSubmit.Size = new Size(75, 23);
+            buttonSubmit.TabIndex = 14;
+            buttonSubmit.Text = "Submit";
+            buttonSubmit.UseVisualStyleBackColor = true;
+            buttonSubmit.Click += buttonSubmit_Click;
             // 
-            // txtPassword
+            // label3
             // 
-            txtPassword.Location = new Point(203, 159);
-            txtPassword.Margin = new Padding(2);
-            txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(179, 23);
-            txtPassword.TabIndex = 4;
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            label3.Location = new Point(417, 65);
+            label3.Name = "label3";
+            label3.Size = new Size(80, 30);
+            label3.TabIndex = 13;
+            label3.Text = "LOGIN";
             // 
-            // btnSubmit
+            // label2
             // 
-            btnSubmit.BackColor = SystemColors.Highlight;
-            btnSubmit.ForeColor = SystemColors.ButtonHighlight;
-            btnSubmit.Location = new Point(202, 196);
-            btnSubmit.Margin = new Padding(2);
-            btnSubmit.Name = "btnSubmit";
-            btnSubmit.Size = new Size(105, 20);
-            btnSubmit.TabIndex = 5;
-            btnSubmit.Text = "Submit";
-            btnSubmit.UseVisualStyleBackColor = false;
-            btnSubmit.Click += btnSubmit_Click_1;
+            label2.AutoSize = true;
+            label2.Location = new Point(333, 170);
+            label2.Name = "label2";
+            label2.Size = new Size(57, 15);
+            label2.TabIndex = 12;
+            label2.Text = "Password";
             // 
-            // btnRegistrasion
+            // label1
             // 
-            btnRegistrasion.BackColor = SystemColors.WindowFrame;
-            btnRegistrasion.ForeColor = SystemColors.ButtonHighlight;
-            btnRegistrasion.Location = new Point(203, 229);
-            btnRegistrasion.Margin = new Padding(2);
-            btnRegistrasion.Name = "btnRegistrasion";
-            btnRegistrasion.Size = new Size(104, 20);
-            btnRegistrasion.TabIndex = 6;
-            btnRegistrasion.Text = "Registrasion";
-            btnRegistrasion.UseVisualStyleBackColor = false;
-            btnRegistrasion.Click += btnRegistrasion_Click;
+            label1.AutoSize = true;
+            label1.Location = new Point(333, 115);
+            label1.Name = "label1";
+            label1.Size = new Size(60, 15);
+            label1.TabIndex = 11;
+            label1.Text = "Username";
             // 
-            // linkForgetPassword
+            // textPassword
             // 
-            linkForgetPassword.AutoSize = true;
-            linkForgetPassword.Location = new Point(360, 196);
-            linkForgetPassword.Margin = new Padding(2, 0, 2, 0);
-            linkForgetPassword.Name = "linkForgetPassword";
-            linkForgetPassword.Size = new Size(94, 15);
-            linkForgetPassword.TabIndex = 7;
-            linkForgetPassword.TabStop = true;
-            linkForgetPassword.Text = "Forget Password";
-            linkForgetPassword.LinkClicked += linkForgetPassword_LinkClicked;
+            textPassword.Location = new Point(330, 188);
+            textPassword.Name = "textPassword";
+            textPassword.Size = new Size(265, 23);
+            textPassword.TabIndex = 10;
             // 
-            // lblValidasi
+            // textUsername
             // 
-            lblValidasi.AutoSize = true;
-            lblValidasi.Location = new Point(203, 5);
-            lblValidasi.Margin = new Padding(2, 0, 2, 0);
-            lblValidasi.Name = "lblValidasi";
-            lblValidasi.Size = new Size(16, 15);
-            lblValidasi.TabIndex = 8;
-            lblValidasi.Text = "...";
+            textUsername.Location = new Point(330, 133);
+            textUsername.Name = "textUsername";
+            textUsername.Size = new Size(265, 23);
+            textUsername.TabIndex = 9;
+            // 
+            // labelSuccess
+            // 
+            labelSuccess.AutoSize = true;
+            labelSuccess.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            labelSuccess.ForeColor = Color.Green;
+            labelSuccess.Location = new Point(330, 22);
+            labelSuccess.Name = "labelSuccess";
+            labelSuccess.Size = new Size(22, 21);
+            labelSuccess.TabIndex = 18;
+            labelSuccess.Text = "...";
+            labelSuccess.Visible = false;
             // 
             // LoginForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.AppWorkspace;
-            ClientSize = new Size(560, 270);
-            Controls.Add(lblValidasi);
-            Controls.Add(linkForgetPassword);
-            Controls.Add(btnRegistrasion);
-            Controls.Add(btnSubmit);
-            Controls.Add(txtPassword);
-            Controls.Add(lblPassword);
-            Controls.Add(txtUsername);
-            Controls.Add(lblUsername);
-            Controls.Add(lblLogin);
-            ForeColor = SystemColors.ActiveCaptionText;
-            Margin = new Padding(2);
+            ClientSize = new Size(632, 361);
+            Controls.Add(labelSuccess);
+            Controls.Add(pictureBox1);
+            Controls.Add(buttonRegistration);
+            Controls.Add(linkForgotPassword);
+            Controls.Add(buttonSubmit);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(textPassword);
+            Controls.Add(textUsername);
             Name = "LoginForm";
             Text = "LoginForm";
-            Load += LoginForm_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label lblLogin;
-        private Label lblUsername;
-        private TextBox txtUsername;
-        private Label lblPassword;
-        private TextBox txtPassword;
-        private Button btnSubmit;
-        private Button btnRegistrasion;
-        private LinkLabel linkForgetPassword;
-        private Label lblValidasi;
+        private PictureBox pictureBox1;
+        private Button buttonRegistration;
+        private LinkLabel linkForgotPassword;
+        private Button buttonSubmit;
+        private Label label3;
+        private Label label2;
+        private Label label1;
+        private TextBox textPassword;
+        private TextBox textUsername;
+        private Label labelSuccess;
     }
 }

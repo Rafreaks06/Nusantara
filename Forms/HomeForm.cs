@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using Nusantara.Api.Connectors;
+using Nusantara.Api.Models;
 using Nusantara.Data;
+using Nusantara.Forms.MemberMenus;
+using Nusantara.Forms.PublicMenus;
 using Nusantara.Models;
 using Nusantara.Services;
 
@@ -18,21 +12,24 @@ namespace Nusantara.Forms
     {
         Member loggedMember;
         string title;
+        private System.Threading.Timer? balanceTimer;
+        private bool isSyncRunning = false;
         public HomeForm(Member member)
         {
             loggedMember = member;
             InitializeComponent();
-            this.Text = this.Text + "- User :" + loggedMember.FullName + "(" + loggedMember.MemberId + ")";
+            this.Text = this.Text + " - User: " + loggedMember.FullName + " (" + loggedMember.MemberId + ")";
             title = this.Text;
-
-            route(new DashboardPage(loggedMember));
+            route(new DashboardPage(member));
         }
+
         public void route(System.Windows.Forms.Control control)
         {
-            this.PanelDisplay.Controls.Clear();
-            this.PanelDisplay.Dock = DockStyle.Fill;
-            this.PanelDisplay.Controls.Add(control);
+            this.panelDisplay.Controls.Clear();
+            this.panelDisplay.Dock = DockStyle.Fill;
+            this.panelDisplay.Controls.Add(control);
         }
+
         public void autoDisableMenu()
         {
             loanToolStripMenuItem.Enabled = false;
@@ -40,15 +37,16 @@ namespace Nusantara.Forms
             transferToolStripMenuItem.Enabled = false;
             exchangeToolStripMenuItem.Enabled = false;
             inhouseToolStripMenuItem.Enabled = false;
-            accrossToolStripMenuItem.Enabled = false;
+            acrossCooperationToolStripMenuItem.Enabled = false;
 
-            loanToolStripMenuItem.ToolTipText = "Disable";
-            savingToolStripMenuItem.ToolTipText = "Disable";
-            transferToolStripMenuItem.ToolTipText = "Disable";
-            exchangeToolStripMenuItem.ToolTipText = "Disable";
-            inhouseToolStripMenuItem.ToolTipText = "Disable";
-            accrossToolStripMenuItem.ToolTipText = "Disable";
+            loanToolStripMenuItem.ToolTipText = "Disabled";
+            savingToolStripMenuItem.ToolTipText = "Disabled";
+            transferToolStripMenuItem.ToolTipText = "Disabled";
+            exchangeToolStripMenuItem.ToolTipText = "Disabled";
+            inhouseToolStripMenuItem.ToolTipText = "Disabled";
+            acrossCooperationToolStripMenuItem.ToolTipText = "Disabled";
         }
+
         public void grantAllMenu()
         {
             loanToolStripMenuItem.Enabled = true;
@@ -56,46 +54,51 @@ namespace Nusantara.Forms
             transferToolStripMenuItem.Enabled = true;
             exchangeToolStripMenuItem.Enabled = true;
             inhouseToolStripMenuItem.Enabled = true;
-            accrossToolStripMenuItem.Enabled = true;
+            acrossCooperationToolStripMenuItem.Enabled = true;
         }
+
         public void grantAccess()
         {
             AppDbContext db = new AppDbContext();
             AccessService accessService = new AccessService(db);
-            Access? access = accessService.findByMemberId(Convert.ToInt32(loggedMember.MemberId));
+            Access? access = accessService.findByMember(loggedMember.Id);
             if (access != null)
             {
-                var listaccess = access.AccessList.Split(',');
-                for (int i = 0; i < listaccess.Length; i++)
+                var listAccess = access.AccessList.Split(",");
+
+                for (int i = 0; i < listAccess.Length; i++)
                 {
-                    var accessName = listaccess[i];
+                    var accessName = listAccess[i];
                     var accessSegment = accessName.Trim();
+
                     if (accessSegment == "Grant All")
                     {
                         grantAllMenu();
                         break;
                     }
+
                     if (accessSegment.Contains("-"))
                     {
-                        var parts = accessSegment.Split('-');
+                        var parts = accessSegment.Split("-");
                         if (parts.Length > 1)
                             accessSegment = parts[1].Trim();
                     }
-                    foreach (ToolStripMenuItem menuItem in MenuHome.Items)
+
+                    foreach (ToolStripMenuItem menu in menuHome.Items)
                     {
-                        if (menuItem.Text != null && menuItem.Text.Contains(accessSegment))
+                        if (menu.Text != null && menu.Text.Contains(accessSegment))
                         {
-                            menuItem.Enabled = true;
-                            menuItem.ToolTipText = "";
+                            menu.Enabled = true;
+                            menu.ToolTipText = "";
                         }
                         else
                         {
-                            foreach (ToolStripMenuItem subItem in menuItem.DropDownItems)
+                            foreach (ToolStripMenuItem submenu in menu.DropDownItems)
                             {
-                                if (subItem.Text != null && subItem.Text.Contains(accessSegment))
+                                if (submenu.Text != null && submenu.Text.Contains(accessSegment))
                                 {
-                                    subItem.Enabled = true;
-                                    subItem.ToolTipText = "";
+                                    submenu.Enabled = true;
+                                    submenu.ToolTipText = "";
                                 }
                             }
                         }
@@ -104,24 +107,28 @@ namespace Nusantara.Forms
             }
         }
 
-
         private void definitionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             route(new TerminologiPage(loggedMember));
         }
+
         private void manualToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
+
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
         }
-        private void HomeForm_load(object sender, EventArgs e)
+
+        private void HomeForm_Load(object sender, EventArgs e)
         {
             autoDisableMenu();
             grantAccess();
+            //StartBackgroundScheduler();
         }
+
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             loggedMember = null;
@@ -129,26 +136,77 @@ namespace Nusantara.Forms
             LoginForm loginForm = new LoginForm();
             loginForm.ShowDialog();
         }
+
         private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Text = title;
             route(new DashboardPage(loggedMember));
         }
+
         private void profileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Text = title + "<< Profile Page >>";
+            this.Text = title + " << Profile Page >>";
             route(new ProfilePage(loggedMember));
         }
+
         private void loanToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Text = title + "<< Loan Page >>";
+            this.Text = title + " << Loan Page >>";
             route(new LoanPage(loggedMember));
         }
 
-        private void HomeForm_Load_1(object sender, EventArgs e)
+        private void acrossCooperationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.Text = title + " << Across Transfer Page >>";
+            route(new AcrossTransferPage(loggedMember));
         }
+
+        //private void StartBackgroundScheduler()
+        //{
+        //    if (isSyncRunning) return;
+
+        //    // Timer jalan tiap 3 detik (3000 ms)
+        //    balanceTimer = new System.Threading.Timer(async _ => await SyncBalanceAsync(), null, 0, 3000);
+        //    isSyncRunning = true;
+        //}
+
+        private void StopBackgroundScheduler()
+        {
+            balanceTimer?.Dispose();
+            isSyncRunning = false;
+        }
+
+        //private async Task SyncBalanceAsync()
+        //{
+        //    try
+        //    {
+        //        AppDbContext db = new AppDbContext();
+        //        BalanceService balanceService = new BalanceService(db);
+        //        Balance? balance = await balanceService.getBalance(loggedMember.MemberId);
+        //        if (balance != null)
+        //        {
+        //            Console.WriteLine($"Syncing balance for member {loggedMember.MemberId}: {balance.Amount}");
+        //            ConnectorPost connector = new ConnectorPost();
+        //            BalanceApiResponse? response = await connector.BalanceUpdateAsync(new BalancePayload
+        //            {
+        //                amount = Double.Parse(balance.Amount.ToString()),
+        //                memberCode = loggedMember.MemberId
+        //            });
+        //            if (response != null && response.ResponseCode == "00")
+        //            {
+        //                Console.WriteLine($"Balance sync successful for member {loggedMember.MemberId}");
+        //            }
+        //            else
+        //            {
+        //                Console.WriteLine($"Balance sync failed for member {loggedMember.MemberId}: {response?.ResponseMessage}");
+        //            }
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine($"Error sync:" + ex.Message);
+        //    }
+        //}
 
         private void exchangeToolStripMenuItem_Click(object sender, EventArgs e)
         {

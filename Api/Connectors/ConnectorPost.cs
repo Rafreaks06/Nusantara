@@ -1,142 +1,102 @@
-﻿using System;
+﻿using Nusantara.Api.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Nusantara.Api.Models;
 
 namespace Nusantara.Api.Connectors
 {
     public class ConnectorPost
     {
         private readonly HttpClient _httpClient = new HttpClient();
-        private string _baseUrl = "http://localhost:20254/";
+        private String _baseUrl = "http://103.82.242.90:20254/";
 
         public async Task<CoopApiResponse?> CoopRegistrationAsync(CoopPayload data)
         {
-            var options = new JsonSerializerOptions
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            };
-
+            var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
             string json = JsonSerializer.Serialize(data, options);
 
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response =
-                await _httpClient.PostAsync(_baseUrl + "coop/save", content);
-
+            HttpResponseMessage response = await _httpClient.PostAsync(_baseUrl + "coop/save", content);
             response.EnsureSuccessStatusCode();
 
             string responseJson = await response.Content.ReadAsStringAsync();
 
-            return JsonSerializer.Deserialize<CoopApiResponse>(responseJson,
-                new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
-
+            return JsonSerializer.Deserialize<CoopApiResponse>(responseJson, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
         }
-
 
         public async Task<MemberApiResponse?> MemberRegistrationAsync(MemberPayload data)
         {
-            var options = new JsonSerializerOptions
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            };
+           
+                var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+                string json = JsonSerializer.Serialize(data, options);
 
-            string json = JsonSerializer.Serialize(data, options);
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                try {
+                    HttpResponseMessage response = await _httpClient.PostAsync(_baseUrl + "member/save", content);
+                    response.EnsureSuccessStatusCode();
 
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    string responseJson = await response.Content.ReadAsStringAsync();
 
-            HttpResponseMessage response =
-                await _httpClient.PostAsync(_baseUrl + "member/save", content);
-
-            response.EnsureSuccessStatusCode();
-
-            string responseJson = await response.Content.ReadAsStringAsync();
-
-            return JsonSerializer.Deserialize<MemberApiResponse>(responseJson,
-                new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
+                    return JsonSerializer.Deserialize<MemberApiResponse>(responseJson, 
+                        new JsonSerializerOptions
+                    {
+                        PropertyNameCaseInsensitive = true
+                    });
+                } catch (Exception ex) {
+                    throw new Exception("Error during Member Registration: " + ex.Message);
+                 }
         }
 
         public async Task<BalanceApiResponse?> BalanceUpdateAsync(BalancePayload data)
         {
-            var options = new JsonSerializerOptions
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            };
-
+            var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
             string json = JsonSerializer.Serialize(data, options);
 
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response =
-                await _httpClient.PostAsync(_baseUrl + "balance/update", content);
-
+            HttpResponseMessage response = await _httpClient.PostAsync(_baseUrl + "balance/sync", content);
             response.EnsureSuccessStatusCode();
 
             string responseJson = await response.Content.ReadAsStringAsync();
 
-            return JsonSerializer.Deserialize<BalanceApiResponse>(responseJson,
-                new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
-        }
-        public async Task<BalanceApiResponse?> BalanceAsync(BalancePayload data)
-        {
-            var options = new JsonSerializerOptions
+            return JsonSerializer.Deserialize<BalanceApiResponse>(responseJson, new JsonSerializerOptions
             {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            };
-
-            string json = JsonSerializer.Serialize(data, options);
-
-            var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            HttpResponseMessage response =
-                await _httpClient.PostAsync(_baseUrl + "balance/sync", content);
-
-            response.EnsureSuccessStatusCode();
-
-            string responseJson = await response.Content.ReadAsStringAsync();
-
-            return JsonSerializer.Deserialize<BalanceApiResponse>(responseJson,
-                new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
+                PropertyNameCaseInsensitive = true
+            });
         }
 
         public async Task<TransferApiResponse?> TransferAsync(TransferPayload data)
         {
-            var options = new JsonSerializerOptions
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            };
-
+            var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
             string json = JsonSerializer.Serialize(data, options);
 
             var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-            HttpResponseMessage response =
-                await _httpClient.PostAsync(_baseUrl + "transfer/save", content);
+            var requestUrl = $"{_baseUrl.TrimEnd('/')}/transfer/save";
 
-            response.EnsureSuccessStatusCode();
+            HttpResponseMessage response = await _httpClient.PostAsync(requestUrl, content);
+            if (response.IsSuccessStatusCode)
+            {
+                MessageBox.Show("HTTP Success: " + response.StatusCode);
+            } else
+            {
+                MessageBox.Show("HTTP Error: " + response.StatusCode);
+            }// perlu handle disini
 
-            string responseJson = await response.Content.ReadAsStringAsync();
+                string responseJson = await response.Content.ReadAsStringAsync();
 
-            return JsonSerializer.Deserialize<TransferApiResponse>(responseJson,
-                new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true
-                });
+            return JsonSerializer.Deserialize<TransferApiResponse>(responseJson, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
         }
     }
 }

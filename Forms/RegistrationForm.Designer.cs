@@ -28,316 +28,306 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textQuest1 = new TextBox();
-            textEmail = new TextBox();
-            textCardId = new TextBox();
             textFullname = new TextBox();
-            textQuest2 = new TextBox();
-            textReferenceId = new TextBox();
-            textPhone = new TextBox();
+            label1 = new Label();
+            label2 = new Label();
             textUsername = new TextBox();
-            textPhoneAlt = new TextBox();
+            label3 = new Label();
             textPassword = new TextBox();
-            lblFullName = new Label();
-            lblCardID = new Label();
-            lblEmail = new Label();
-            lblColor = new Label();
-            lblUsername = new Label();
-            lblPhone = new Label();
-            lblRefID = new Label();
-            label8 = new Label();
-            lblArtist = new Label();
-            lblPassword = new Label();
-            lblPhoneAlt = new Label();
-            buttonSummit = new Button();
-            buttonBack = new Button();
-            labelError = new Label();
-            lblAddress = new Label();
+            label4 = new Label();
+            textPhoneAlt = new TextBox();
+            label5 = new Label();
+            textPhone = new TextBox();
+            label6 = new Label();
+            textCardId = new TextBox();
+            label7 = new Label();
             textAddress = new TextBox();
+            label8 = new Label();
+            textReferenceId = new TextBox();
+            label9 = new Label();
+            textEmail = new TextBox();
+            buttonSubmit = new Button();
+            buttonBack = new Button();
+            label10 = new Label();
+            textQuest2 = new TextBox();
+            label11 = new Label();
+            textQuest1 = new TextBox();
+            labelError = new Label();
             SuspendLayout();
-            // 
-            // textQuest1
-            // 
-            textQuest1.Location = new Point(51, 323);
-            textQuest1.Name = "textQuest1";
-            textQuest1.Size = new Size(434, 31);
-            textQuest1.TabIndex = 7;
-            // 
-            // textEmail
-            // 
-            textEmail.Location = new Point(51, 239);
-            textEmail.Name = "textEmail";
-            textEmail.Size = new Size(434, 31);
-            textEmail.TabIndex = 6;
-            // 
-            // textCardId
-            // 
-            textCardId.Location = new Point(51, 155);
-            textCardId.Name = "textCardId";
-            textCardId.Size = new Size(434, 31);
-            textCardId.TabIndex = 5;
             // 
             // textFullname
             // 
-            textFullname.Location = new Point(51, 71);
+            textFullname.Location = new Point(25, 44);
             textFullname.Name = "textFullname";
-            textFullname.Size = new Size(434, 31);
-            textFullname.TabIndex = 4;
+            textFullname.Size = new Size(218, 23);
+            textFullname.TabIndex = 0;
             // 
-            // textQuest2
+            // label1
             // 
-            textQuest2.Location = new Point(616, 323);
-            textQuest2.Name = "textQuest2";
-            textQuest2.Size = new Size(434, 31);
-            textQuest2.TabIndex = 11;
+            label1.AutoSize = true;
+            label1.Location = new Point(28, 26);
+            label1.Name = "label1";
+            label1.Size = new Size(61, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Full Name";
             // 
-            // textReferenceId
+            // label2
             // 
-            textReferenceId.Location = new Point(616, 239);
-            textReferenceId.Name = "textReferenceId";
-            textReferenceId.Size = new Size(434, 31);
-            textReferenceId.TabIndex = 10;
-            // 
-            // textPhone
-            // 
-            textPhone.Location = new Point(616, 155);
-            textPhone.Name = "textPhone";
-            textPhone.Size = new Size(434, 31);
-            textPhone.TabIndex = 9;
+            label2.AutoSize = true;
+            label2.Location = new Point(257, 26);
+            label2.Name = "label2";
+            label2.Size = new Size(60, 15);
+            label2.TabIndex = 3;
+            label2.Text = "Username";
             // 
             // textUsername
             // 
-            textUsername.Location = new Point(616, 71);
+            textUsername.Location = new Point(254, 44);
             textUsername.Name = "textUsername";
-            textUsername.Size = new Size(434, 31);
-            textUsername.TabIndex = 8;
+            textUsername.Size = new Size(218, 23);
+            textUsername.TabIndex = 2;
             // 
-            // textPhoneAlt
+            // label3
             // 
-            textPhoneAlt.Location = new Point(1165, 155);
-            textPhoneAlt.Name = "textPhoneAlt";
-            textPhoneAlt.Size = new Size(434, 31);
-            textPhoneAlt.TabIndex = 13;
+            label3.AutoSize = true;
+            label3.Location = new Point(487, 26);
+            label3.Name = "label3";
+            label3.Size = new Size(57, 15);
+            label3.TabIndex = 5;
+            label3.Text = "Password";
             // 
             // textPassword
             // 
-            textPassword.Location = new Point(1165, 71);
+            textPassword.Location = new Point(484, 44);
             textPassword.Name = "textPassword";
-            textPassword.Size = new Size(434, 31);
-            textPassword.TabIndex = 12;
+            textPassword.Size = new Size(218, 23);
+            textPassword.TabIndex = 4;
             // 
-            // lblFullName
+            // label4
             // 
-            lblFullName.AutoSize = true;
-            lblFullName.Location = new Point(51, 33);
-            lblFullName.Name = "lblFullName";
-            lblFullName.Size = new Size(91, 25);
-            lblFullName.TabIndex = 14;
-            lblFullName.Text = "Full Name";
+            label4.AutoSize = true;
+            label4.Location = new Point(487, 78);
+            label4.Name = "label4";
+            label4.Size = new Size(59, 15);
+            label4.TabIndex = 11;
+            label4.Text = "Phone Alt";
             // 
-            // lblCardID
+            // textPhoneAlt
             // 
-            lblCardID.AutoSize = true;
-            lblCardID.Location = new Point(51, 115);
-            lblCardID.Name = "lblCardID";
-            lblCardID.Size = new Size(72, 25);
-            lblCardID.TabIndex = 15;
-            lblCardID.Text = "Card ID";
+            textPhoneAlt.Location = new Point(484, 96);
+            textPhoneAlt.Name = "textPhoneAlt";
+            textPhoneAlt.Size = new Size(218, 23);
+            textPhoneAlt.TabIndex = 10;
             // 
-            // lblEmail
+            // label5
             // 
-            lblEmail.AutoSize = true;
-            lblEmail.Location = new Point(51, 201);
-            lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(54, 25);
-            lblEmail.TabIndex = 16;
-            lblEmail.Text = "Email";
+            label5.AutoSize = true;
+            label5.Location = new Point(257, 78);
+            label5.Name = "label5";
+            label5.Size = new Size(41, 15);
+            label5.TabIndex = 9;
+            label5.Text = "Phone";
             // 
-            // lblColor
+            // textPhone
             // 
-            lblColor.AutoSize = true;
-            lblColor.Location = new Point(51, 284);
-            lblColor.Name = "lblColor";
-            lblColor.Size = new Size(198, 25);
-            lblColor.TabIndex = 17;
-            lblColor.Text = "What is Your Fav Color?";
+            textPhone.Location = new Point(254, 96);
+            textPhone.Name = "textPhone";
+            textPhone.Size = new Size(218, 23);
+            textPhone.TabIndex = 8;
             // 
-            // lblUsername
+            // label6
             // 
-            lblUsername.AutoSize = true;
-            lblUsername.Location = new Point(616, 33);
-            lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(91, 25);
-            lblUsername.TabIndex = 18;
-            lblUsername.Text = "Username";
+            label6.AutoSize = true;
+            label6.Location = new Point(28, 78);
+            label6.Name = "label6";
+            label6.Size = new Size(46, 15);
+            label6.TabIndex = 7;
+            label6.Text = "Card ID";
             // 
-            // lblPhone
+            // textCardId
             // 
-            lblPhone.AutoSize = true;
-            lblPhone.Location = new Point(616, 115);
-            lblPhone.Name = "lblPhone";
-            lblPhone.Size = new Size(62, 25);
-            lblPhone.TabIndex = 19;
-            lblPhone.Text = "Phone";
+            textCardId.Location = new Point(25, 96);
+            textCardId.Name = "textCardId";
+            textCardId.Size = new Size(218, 23);
+            textCardId.TabIndex = 6;
             // 
-            // lblRefID
+            // label7
             // 
-            lblRefID.AutoSize = true;
-            lblRefID.Location = new Point(616, 201);
-            lblRefID.Name = "lblRefID";
-            lblRefID.Size = new Size(111, 25);
-            lblRefID.TabIndex = 20;
-            lblRefID.Text = "Reference ID";
+            label7.AutoSize = true;
+            label7.Location = new Point(487, 126);
+            label7.Name = "label7";
+            label7.Size = new Size(49, 15);
+            label7.TabIndex = 17;
+            label7.Text = "Address";
+            // 
+            // textAddress
+            // 
+            textAddress.Location = new Point(484, 144);
+            textAddress.Multiline = true;
+            textAddress.Name = "textAddress";
+            textAddress.Size = new Size(218, 73);
+            textAddress.TabIndex = 16;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(816, 387);
+            label8.Location = new Point(257, 126);
             label8.Name = "label8";
-            label8.Size = new Size(0, 25);
-            label8.TabIndex = 21;
+            label8.Size = new Size(73, 15);
+            label8.TabIndex = 15;
+            label8.Text = "Reference ID";
             // 
-            // lblArtist
+            // textReferenceId
             // 
-            lblArtist.AutoSize = true;
-            lblArtist.Location = new Point(616, 284);
-            lblArtist.Name = "lblArtist";
-            lblArtist.Size = new Size(254, 25);
-            lblArtist.TabIndex = 22;
-            lblArtist.Text = "What is Your Fav Artist/Singer?";
+            textReferenceId.Location = new Point(254, 144);
+            textReferenceId.Name = "textReferenceId";
+            textReferenceId.ReadOnly = true;
+            textReferenceId.Size = new Size(218, 23);
+            textReferenceId.TabIndex = 14;
             // 
-            // lblPassword
+            // label9
             // 
-            lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(1165, 33);
-            lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(87, 25);
-            lblPassword.TabIndex = 23;
-            lblPassword.Text = "Password";
+            label9.AutoSize = true;
+            label9.Location = new Point(28, 126);
+            label9.Name = "label9";
+            label9.Size = new Size(36, 15);
+            label9.TabIndex = 13;
+            label9.Text = "Email";
             // 
-            // lblPhoneAlt
+            // textEmail
             // 
-            lblPhoneAlt.AutoSize = true;
-            lblPhoneAlt.Location = new Point(1165, 115);
-            lblPhoneAlt.Name = "lblPhoneAlt";
-            lblPhoneAlt.Size = new Size(89, 25);
-            lblPhoneAlt.TabIndex = 24;
-            lblPhoneAlt.Text = "Phone Alt";
+            textEmail.Location = new Point(25, 144);
+            textEmail.Name = "textEmail";
+            textEmail.Size = new Size(218, 23);
+            textEmail.TabIndex = 12;
             // 
-            // buttonSummit
+            // buttonSubmit
             // 
-            buttonSummit.BackColor = Color.Lime;
-            buttonSummit.Location = new Point(58, 396);
-            buttonSummit.Name = "buttonSummit";
-            buttonSummit.Size = new Size(125, 34);
-            buttonSummit.TabIndex = 25;
-            buttonSummit.Text = "Submit";
-            buttonSummit.UseVisualStyleBackColor = false;
+            buttonSubmit.Location = new Point(25, 228);
+            buttonSubmit.Name = "buttonSubmit";
+            buttonSubmit.Size = new Size(75, 23);
+            buttonSubmit.TabIndex = 18;
+            buttonSubmit.Text = "Submit";
+            buttonSubmit.UseVisualStyleBackColor = true;
+            buttonSubmit.Click += buttonSubmit_Click;
             // 
             // buttonBack
             // 
-            buttonBack.BackColor = Color.Red;
-            buttonBack.Location = new Point(207, 396);
+            buttonBack.Location = new Point(106, 228);
             buttonBack.Name = "buttonBack";
-            buttonBack.Size = new Size(142, 34);
-            buttonBack.TabIndex = 26;
+            buttonBack.Size = new Size(75, 23);
+            buttonBack.TabIndex = 19;
             buttonBack.Text = "Back";
-            buttonBack.UseVisualStyleBackColor = false;
+            buttonBack.UseVisualStyleBackColor = true;
             buttonBack.Click += buttonBack_Click;
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(257, 176);
+            label10.Name = "label10";
+            label10.Size = new Size(165, 15);
+            label10.TabIndex = 23;
+            label10.Text = "Who is Your Fav Artist/Singer?";
+            // 
+            // textQuest2
+            // 
+            textQuest2.Location = new Point(254, 194);
+            textQuest2.Name = "textQuest2";
+            textQuest2.Size = new Size(218, 23);
+            textQuest2.TabIndex = 22;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(28, 176);
+            label11.Name = "label11";
+            label11.Size = new Size(131, 15);
+            label11.TabIndex = 21;
+            label11.Text = "What is Your Fav Color?";
+            // 
+            // textQuest1
+            // 
+            textQuest1.Location = new Point(25, 194);
+            textQuest1.Name = "textQuest1";
+            textQuest1.Size = new Size(218, 23);
+            textQuest1.TabIndex = 20;
             // 
             // labelError
             // 
             labelError.AutoSize = true;
+            labelError.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             labelError.ForeColor = Color.Red;
-            labelError.Location = new Point(461, 405);
+            labelError.Location = new Point(213, 232);
             labelError.Name = "labelError";
-            labelError.Size = new Size(24, 25);
-            labelError.TabIndex = 27;
+            labelError.Size = new Size(22, 21);
+            labelError.TabIndex = 24;
             labelError.Text = "...";
-            // 
-            // lblAddress
-            // 
-            lblAddress.AutoSize = true;
-            lblAddress.Location = new Point(1165, 201);
-            lblAddress.Name = "lblAddress";
-            lblAddress.Size = new Size(77, 25);
-            lblAddress.TabIndex = 28;
-            lblAddress.Text = "Address";
-            // 
-            // textAddress
-            // 
-            textAddress.Location = new Point(1165, 239);
-            textAddress.Multiline = true;
-            textAddress.Name = "textAddress";
-            textAddress.Size = new Size(434, 115);
-            textAddress.TabIndex = 29;
+            labelError.Visible = false;
             // 
             // RegistrationForm
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.Gainsboro;
-            ClientSize = new Size(1723, 798);
-            Controls.Add(textAddress);
-            Controls.Add(lblAddress);
+            ClientSize = new Size(727, 285);
+            ControlBox = false;
             Controls.Add(labelError);
-            Controls.Add(buttonBack);
-            Controls.Add(buttonSummit);
-            Controls.Add(lblPhoneAlt);
-            Controls.Add(lblPassword);
-            Controls.Add(lblArtist);
-            Controls.Add(label8);
-            Controls.Add(lblRefID);
-            Controls.Add(lblPhone);
-            Controls.Add(lblUsername);
-            Controls.Add(lblColor);
-            Controls.Add(lblEmail);
-            Controls.Add(lblCardID);
-            Controls.Add(lblFullName);
-            Controls.Add(textPhoneAlt);
-            Controls.Add(textPassword);
+            Controls.Add(label10);
             Controls.Add(textQuest2);
-            Controls.Add(textReferenceId);
-            Controls.Add(textPhone);
-            Controls.Add(textUsername);
+            Controls.Add(label11);
             Controls.Add(textQuest1);
+            Controls.Add(buttonBack);
+            Controls.Add(buttonSubmit);
+            Controls.Add(label7);
+            Controls.Add(textAddress);
+            Controls.Add(label8);
+            Controls.Add(textReferenceId);
+            Controls.Add(label9);
             Controls.Add(textEmail);
+            Controls.Add(label4);
+            Controls.Add(textPhoneAlt);
+            Controls.Add(label5);
+            Controls.Add(textPhone);
+            Controls.Add(label6);
             Controls.Add(textCardId);
+            Controls.Add(label3);
+            Controls.Add(textPassword);
+            Controls.Add(label2);
+            Controls.Add(textUsername);
+            Controls.Add(label1);
             Controls.Add(textFullname);
             Name = "RegistrationForm";
-            Text = "RegistrationForm";
-            Load += RegistrationForm_Load;
+            Text = "Registration";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private TextBox textQuest1;
-        private TextBox textEmail;
-        private TextBox textCardId;
         private TextBox textFullname;
-        private TextBox textQuest2;
-        private TextBox textReferenceId;
-        private TextBox textPhone;
+        private Label label1;
+        private Label label2;
         private TextBox textUsername;
-        private TextBox textPhoneAlt;
+        private Label label3;
         private TextBox textPassword;
-        private Label lblFullName;
-        private Label lblCardID;
-        private Label lblEmail;
-        private Label lblColor;
-        private Label lblUsername;
-        private Label lblPhone;
-        private Label lblRefID;
-        private Label label8;
-        private Label lblArtist;
-        private Label lblPassword;
-        private Label lblPhoneAlt;
-        private Button buttonSummit;
-        private Button buttonBack;
-        private Label labelError;
-        private Label lblAddress;
+        private Label label4;
+        private TextBox textPhoneAlt;
+        private Label label5;
+        private TextBox textPhone;
+        private Label label6;
+        private TextBox textCardId;
+        private Label label7;
         private TextBox textAddress;
+        private Label label8;
+        private TextBox textReferenceId;
+        private Label label9;
+        private TextBox textEmail;
+        private Button buttonSubmit;
+        private Button buttonBack;
+        private Label label10;
+        private TextBox textQuest2;
+        private Label label11;
+        private TextBox textQuest1;
+        private Label labelError;
     }
 }

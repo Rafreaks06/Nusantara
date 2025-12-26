@@ -1,117 +1,75 @@
 ﻿using Nusantara.Data;
 using Nusantara.Models;
 using Nusantara.Services;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics.Eventing.Reader;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace Nusantara.Forms
 {
     public partial class LoginForm : Form
     {
         public Member? LoggedInUser { get; private set; }
-
         public LoginForm()
         {
             InitializeComponent();
         }
 
-        public void SetSuccessAlert(string message)
+        public void setSuccessAlert(String message)
         {
-            lblValidasi.Text = message;
-            lblValidasi.Visible = true;
+            labelSuccess.Text = message;
+            labelSuccess.Visible = true;
         }
 
-        private async void btnSubmit_Click(object sender, EventArgs e)
+        private async void buttonSubmit_Click(object sender, EventArgs e)
         {
-            lblValidasi.Visible = false;
-
+            labelSuccess.Visible = false;
             using var db = new AppDbContext();
             var auth = new AuthService(db);
-            var user = await auth.LoginAsync(txtUsername.Text, txtPassword.Text);
-
+            var user = await auth.LoginAsync(textUsername.Text, textPassword.Text);
             if (user != null)
             {
                 LoggedInUser = user;
-
-                if (LoggedInUser.Level == "admin")
+                if (LoggedInUser.level == "admin")
                 {
-                    this.Hide();    
-                    var form = new AdminMenu(LoggedInUser);
+                    this.Hide(); // this = form login
+                    AdminForm form = new AdminForm(LoggedInUser);
                     form.ShowDialog();
-                }
-                else
+                } else
                 {
-                    var accessService = new AccessService(db);
-                    var access = await accessService.GetAccess(user.Id);
-
+                    AccessService accessService = new AccessService(db);
+                    Access access = await accessService.GetAccess(user.Id);
                     if (access == null)
                     {
-                        lblValidasi.Text = "Access Is Not Granted By Admin!";
-                        lblValidasi.ForeColor = Color.Red;
-                        lblValidasi.Visible = true;
+                        labelSuccess.Text = "Access Is Not Granted By Admin!";
+                        labelSuccess.ForeColor = Color.Red;
+                        labelSuccess.Visible = true;
                     }
                     else
                     {
                         this.Hide();
-                        var form = new HomeForm(LoggedInUser);
+                        HomeForm form = new HomeForm(LoggedInUser);
                         form.ShowDialog();
                     }
-                }
+                }       
             }
             else
             {
-                lblValidasi.Text = "Invalid Credentials";
-                lblValidasi.ForeColor = Color.Red;
-                lblValidasi.Visible = true;
+                labelSuccess.Text = "Invalid Credentials";
+                labelSuccess.ForeColor = Color.Red;
+                labelSuccess.Visible = true;
             }
         }
-
-       
 
         private void linkForgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
-            var form = new ForgotPasswordForm();
+            ForgotPasswordForm form = new ForgotPasswordForm();
             form.ShowDialog();
-            this.Show();
         }
 
-        
-
-        private async void btnSubmit_Click_1(object sender, EventArgs e)
-        {
-            await Task.Run(() => { });
-            btnSubmit_Click(sender, e);
-        }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void linkForgetPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void buttonRegistration_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var form = new ForgotPasswordForm();
+            RegistrationForm form = new RegistrationForm();
             form.ShowDialog();
-            this.Show();
-        }
-
-        private void btnRegistrasion_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            var form = new RegistrationForm();
-            form.ShowDialog();
-            this.Show();
-
         }
     }
 }

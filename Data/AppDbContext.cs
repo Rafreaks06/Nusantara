@@ -1,32 +1,31 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+﻿using System.Security.Cryptography.X509Certificates;
 using Nusantara.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Nusantara.Data
-{
-    // Rafi
+{ 
     public class AppDbContext : DbContext
     {
         public DbSet<Member> Members => Set<Member>();
         public DbSet<Access> Accesses => Set<Access>();
         public DbSet<Configuration> Configurations => Set<Configuration>();
-        public DbSet<LoanMaster> LoanMaster => Set<LoanMaster>();
-        public DbSet<Loan> Loans => Set<Loan>();
-        public DbSet<Installment> Instalments => Set<Installment>();
-        public DbSet<Saving> Savings => Set<Saving>();
+        public DbSet<LoanMaster> LoanMasters => Set<LoanMaster>();
         public DbSet<SavingMaster> SavingMasters => Set<SavingMaster>();
+        public DbSet<Loan> Loans => Set<Loan>();
+        public DbSet<Installment> Installments => Set<Installment>();
+        public DbSet<Saving> Savings => Set<Saving>();
         public DbSet<Inhouse> Inhouses => Set<Inhouse>();
         public DbSet<Exchange> Exchanges => Set<Exchange>();
+        public DbSet<Balance> Balances => Set<Balance>();
+        public DbSet<BalanceHistory> BalanceHistories => Set<BalanceHistory>();
 
-        protected override void OnConfiguring (DbContextOptionsBuilder optionsBuilder)
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=103.82.242.90;Port=5434;Database=vb2_nusantara;Username=postgres;Password=12Qpalzmxn");
+            optionsBuilder.UseNpgsql("Host=103.82.242.90;Port=5434;Database=vb2_harmoni;Username=postgres;Password=12Qpalzmxn");
         }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Loan>()
@@ -43,39 +42,41 @@ namespace Nusantara.Data
                 .HasOne(a => a.Member)
                 .WithMany(m => m.Accesses)
                 .HasForeignKey(a => a.MemberId);
-            
+
             modelBuilder.Entity<Saving>()
                 .HasOne(s => s.Member)
                 .WithMany(m => m.Savings)
                 .HasForeignKey(s => s.MemberId);
 
-            modelBuilder.Entity<Exchange>()
-               .HasOne(x => x.Member)
-               .WithMany(m => m.Exchanges)
-               .HasForeignKey(x => x.MemberId);
-
             modelBuilder.Entity<Inhouse>()
                 .HasOne(x => x.Origin)
                 .WithMany(m => m.OriginTransactions)
                 .HasForeignKey(x => x.OriginId);
-            
+
             modelBuilder.Entity<Inhouse>()
                 .HasOne(x => x.Destination)
-                .WithMany(m => m.DestionationTransactions)
+                .WithMany(m => m.DestinationTransactions)
                 .HasForeignKey(x => x.DestinationId);
-            
-           
-            
+
+            modelBuilder.Entity<Exchange>()
+                .HasOne(x => x.Member)
+                .WithMany(m => m.Exchanges)
+                .HasForeignKey(x => x.MemberId);
+
+            modelBuilder.Entity<BalanceHistory>()
+                .HasNoKey();
+
             foreach (var entity in modelBuilder.Model.GetEntityTypes())
             {
-                var idrop = entity.FindProperty("id");
-                if (idrop != null)
+                var idProp = entity.FindProperty("Id");
+                if (idProp != null)
                 {
-                    idrop.SetValueGenerationStrategy(Npgsql.EntityFrameworkCore.PostgreSQL.Metadata.NpgsqlValueGenerationStrategy.SerialColumn);
+                    idProp.SetValueGenerationStrategy(
+                        NpgsqlValueGenerationStrategy.SerialColumn
+                    );
                 }
-                                
             }
-            modelBuilder.UseSerialColumns();
+
             base.OnModelCreating(modelBuilder);
         }
     }

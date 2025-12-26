@@ -1,7 +1,5 @@
 ﻿using Nusantara.Data;
 using Nusantara.Models;
-using Nusantara.Data;
-using Nusantara.Models;
 
 namespace Nusantara.Services
 {
@@ -9,7 +7,6 @@ namespace Nusantara.Services
     {
         private readonly AppDbContext _db;
         public MemberService(AppDbContext db) => _db = db;
-
         public List<object> SetDropdown()
         {
             var list = _db.Members.OrderBy(m => m.FullName)
@@ -29,13 +26,14 @@ namespace Nusantara.Services
 
         public List<Member> SetGrid()
         {
-            return _db.Members.OrderByDescending(m => m.ModDate).ToList<Member>();
+            return 
+                _db.Members.OrderByDescending(m=> m.ModDate).ToList<Member>();
         }
 
-        public async void Update(Member member)
+        public void Update(Member member)
         {
             _db.Members.Update(member);
-            await _db.SaveChangesAsync();
+            _db.SaveChanges();
         }
     }
 }

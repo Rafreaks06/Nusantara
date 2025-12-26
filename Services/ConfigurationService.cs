@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Nusantara.Data;
+﻿using Nusantara.Data;
 using Nusantara.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Nusantara.Services
 {
@@ -20,35 +15,35 @@ namespace Nusantara.Services
             return config;
         }
 
-        public async Task addOrUpdate(string terminologi1, string terminologi2, string terminologi3, decimal exchangeRate, decimal inhouseFee, decimal accrrossFee)
+        public async Task addOrUpdate(String terminologi1, string terminologi2,
+            string terminologi3, decimal exchangeRate, decimal inhouseFee,
+            decimal accrossFee)
         {
             Boolean isNew = false;
             var config = await _db.Configurations.FirstOrDefaultAsync(x => x.Id == 1);
-
             if (config == null)
             {
                 isNew = true;
                 config = new Configuration();
             }
-
             config.terminologi1 = terminologi1;
             config.terminologi2 = terminologi2;
             config.terminologi3 = terminologi3;
             config.exchangeRate = exchangeRate;
             config.transferInhouseFee = inhouseFee;
-            config.transferAcrossFee = accrrossFee;
+            config.transferAcrossFee = accrossFee;
 
             if (isNew)
             {
-                _db.Configurations.Add(config);
+                _db.Add(config);
             }
             else
             {
-                _db.Configurations.Update(config);
+                _db.Update(config);
             }
-
             await _db.SaveChangesAsync();
         }
+
         public async void Update(Configuration config)
         {
             _db.Configurations.Update(config);

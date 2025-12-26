@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Nusantara.Data;
 using Nusantara.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Nusantara.Services
 {
@@ -14,14 +13,14 @@ namespace Nusantara.Services
     {
         private readonly AppDbContext _db;
         public AccessService(AppDbContext db) => _db = db;
-        
+
         public async Task<Access?> GetAccess(int memberId)
         {
             var access = await _db.Accesses.FirstOrDefaultAsync(
-                 x => x.MemberId == memberId);
-                return access;
-
+                x => x.MemberId == memberId);
+            return access;
         }
+
         public object setGridView()
         {
             var grid = _db.Accesses.OrderBy(x => x.MemberId)
@@ -34,27 +33,36 @@ namespace Nusantara.Services
                 }).ToList();
             return grid;
         }
-        public Access? findByMemberId(int id)
-        { 
-            return _db.Accesses.FirstOrDefault(x => x.MemberId == id);
+
+        public Access? findByMember(int id)
+        {
+           return _db.Accesses.FirstOrDefault(x => x.MemberId == id);
         }
-        public async Task update(Access access, string accessList)
+
+        public async Task update(Access access, String accessList)
         {
             access.AccessList = accessList;
-            access.updateOn = DateTime.Now;
-            _db.Accesses.Update(access);
+            access.updateOn = DateTime.UtcNow;
+            _db.Update(access);
             await _db.SaveChangesAsync();
         }
+
         public async Task newOne(Access? access, Member member, String accessList)
-        { 
+        {
             var a = new Access
             {
-                MemberId = member.Id,
+                Member = member,
                 AccessList = accessList,
-                updateOn = DateTime.Now
+                MemberId = member.Id,
+                updateOn = DateTime.UtcNow
             };
             _db.Add(a);
             await _db.SaveChangesAsync();
+        }
+
+        public Access? findById(int id)
+        {
+            return _db.Accesses.FirstOrDefault(x => x.Id == id);
         }
     }
 }
