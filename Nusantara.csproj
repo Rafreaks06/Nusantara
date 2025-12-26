@@ -13,10 +13,6 @@
     <EmbeddedResource Remove="Form\**" />
     <None Remove="Form\**" />
   </ItemGroup>
- 
-  <ItemGroup>
-    <Compile Remove="Services\BalanceService.cs" />
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
@@ -33,15 +29,6 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="9.0.9" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.9" />
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Api\Connectors\" />
-    <Folder Include="Api\Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="Services\BalanceService.cs" />
   </ItemGroup>
 
 
