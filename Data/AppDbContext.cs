@@ -23,7 +23,7 @@ namespace Nusantara.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseNpgsql("Host=103.82.242.90;Port=5434;Database=vb2_harmoni;Username=postgres;Password=12Qpalzmxn");
+            optionsBuilder.UseNpgsql("Host=103.82.242.90;Port=5434;Database=vb2_nusantara_baru;Username=postgres;Password=12Qpalzmxn");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
