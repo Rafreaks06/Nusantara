@@ -47,7 +47,7 @@ namespace Nusantara.Forms.AdminMenus
                     {
                         CoopApiResponse? coopApiResponse = await connectorPost.CoopRegistrationAsync(
                             new CoopPayload {
-                                name = "Koperasi BadBoy",
+                                name = "Koperasi Engineering",
                                 address = "Tangerang",
                                 code = ""
                             });

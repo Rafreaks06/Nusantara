@@ -26,11 +26,16 @@ namespace Nusantara.Forms.MemberMenus
 
         private async void AcrossTransferPage_Load(object sender, EventArgs e)
         {
+            SetupOutgoingGrid();
+            SetupIncomingGrid();
+            String dateUtc = DateTime.UtcNow.ToString();
+            textTransRef.Text = dateUtc.Substring(0, 10);
+
             timerInbox.Enabled = false;
             if (loggedMember.ReferenceId == null || loggedMember.ReferenceId == "" || loggedMember.ReferenceId == "-")
             {
                 DialogResult result = MessageBox.Show(
-                    "You do not have a privilege to Use Across Transfer. Registration Now?", 
+                    "You do not have a privilege to Use Across Transfer. Registration Now?",
                     "Invalid", MessageBoxButtons.YesNo);
                 if (result == DialogResult.Yes)
                 {
@@ -39,11 +44,21 @@ namespace Nusantara.Forms.MemberMenus
                     {
                         message = await MemberRegistration(db);
                     }
+                    textBalance.Text = "0";
                     labelMyBenef.Text = "My Benef: " + loadMyBenef();
                     MessageBox.Show(message, "Registration Info", MessageBoxButtons.OK);
                 }
-            } else
+            }
+            else
             {
+                var db = new AppDbContext();
+                BalanceService balanceService = new BalanceService(db);
+                Balance? balance = await balanceService.getBalance(loggedMember.MemberId);
+                if (balance != null)
+                {
+                    textBalance.Text = balance.Amount.ToString();
+                }
+
                 labelMyBenef.Text = "My Benef: " + loadMyBenef();
                 timerInbox.Enabled = true;
             }
@@ -108,6 +123,7 @@ namespace Nusantara.Forms.MemberMenus
             ConnectorPost connectorPost = new ConnectorPost();
             Double transferAmount = Double.Parse(textAmount.Text);
 
+            String timeUtc = DateTime.UtcNow.ToString().Substring(10, 6);
             TransferApiResponse? response = await connectorPost.TransferAsync(new TransferPayload
             {
                 amount = transferAmount,
@@ -116,7 +132,7 @@ namespace Nusantara.Forms.MemberMenus
                 memberCode = loggedMember.MemberId,
                 fee = Double.Parse(config?.transferAcrossFee.ToString()),
                 remarks = textRemarks.Text,
-                transferRef = textTransRef.Text,
+                transferRef = textTransRef.Text + timeUtc,
             });
 
             if (response != null && response.ResponseCode == "00")
@@ -126,10 +142,12 @@ namespace Nusantara.Forms.MemberMenus
                 if (balance != null)
                 {
                     balance.Amount -= Decimal.Parse(transferAmount.ToString());
-                    balance.UpdateOn = DateTime.Now;
+                    balance.UpdateOn = DateTime.UtcNow;
                     balance.TransactionName = "Across Transfer";
                     balance.Flow = "OUT";
-                     balanceService.Update(balance);
+                    balanceService.Update(balance);
+
+                    textBalance.Text = balance.Amount.ToString();
 
                     BalanceApiResponse? balanceApiResponse = await connectorPost.BalanceUpdateAsync(new BalancePayload
                     {
@@ -139,67 +157,185 @@ namespace Nusantara.Forms.MemberMenus
 
                     if (balanceApiResponse != null && balanceApiResponse.ResponseCode == "00")
                     {
-                        MessageBox.Show("Transfer Successful", "Success");
+                        clearForm();
+                        MessageBox.Show("Transfer Successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
+            } else
+            {
+                MessageBox.Show("Transfer Failed\n" + response.ResponseMessage, "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private async void timerInbox_Tick(object sender, EventArgs e)
         {
             timerInbox.Stop();
-            try
-            {
-                //timerInbox.Start();
-                Console.WriteLine("Retrieving...");
-                ConnectorGet connectorGet = new ConnectorGet(); 
-                TransferApiResponse? responseOutgoing = await connectorGet.GetOutgoingByMemberAsync(loggedMember.MemberId);
-                if (responseOutgoing != null && responseOutgoing.ResponseCode == "00")
-                {
-                    dgvOutgoing.DataSource = responseOutgoing.TransferList;
-                    dgvOutgoing.Columns["Id"].Visible = false;
-                    dgvOutgoing.Columns["MemberCode"].Visible = false;
-                    dgvOutgoing.Columns["BenefCode"].HeaderText = "Beneficiary";
-                    dgvOutgoing.Columns["CoopCode"].Visible = false;
-                    dgvOutgoing.Columns["updateOn"].Visible = false;
-                    dgvOutgoing.Columns["TransferRef"].HeaderText = "Reference";
-                    dgvOutgoing.Columns["TransferDate"].HeaderText = "Date";
-                    dgvOutgoing.Columns["Amount"].HeaderText = "Amount";
-                    dgvOutgoing.Columns["Fee"].HeaderText = "Fee";
-                    dgvOutgoing.Columns["Remarks"].HeaderText = "Remarks";
-                    dgvOutgoing.Columns["TransactionCode"].HeaderText = "Transaction Code";
-                }
-                String benefCode = loggedMember.ReferenceId + "-" + loggedMember.MemberId;
-                TransferApiResponse? responseIncoming = await connectorGet.GetIncomingByMemberAsync(loggedMember.MemberId);
-                if (responseIncoming != null && responseIncoming.ResponseCode == "00")
-                {
-                    dgvIncoming.Columns["Id"].Visible = false;
-                    dgvIncoming.Columns["MemberCode"].HeaderText = "Member Code";
-                    dgvIncoming.Columns["BenefCode"].Visible = false;
-                    dgvIncoming.Columns["CoopCode"].HeaderText = "Coop Code";
-                    dgvIncoming.Columns["updateOn"].Visible = false;
-                    dgvIncoming.Columns["TransferRef"].HeaderText = "Reference";
-                    dgvIncoming.Columns["TransferDate"].HeaderText = "Date";
-                    dgvIncoming.Columns["Amount"].HeaderText = "Amount";
-                    dgvIncoming.Columns["Fee"].HeaderText = "Fee";
-                    dgvIncoming.Columns["Remarks"].HeaderText = "Remarks";
-                    dgvIncoming.Columns["TransactionCode"].HeaderText = "Transaction Code";
-                }
-                
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            }
-            finally
-            {
-                timerInbox.Start(); // restart setelah selesai
-            }
+            await LoadInboxAsync();
+            timerInbox.Start(); // restart setelah selesai
         }
 
         private String loadMyBenef()
         {
             return loggedMember.ReferenceId + "-" + loggedMember.MemberId;
+        }
+
+        private async Task LoadInboxAsync()
+        {
+            try
+            {
+                //timerInbox.Start();
+                Console.WriteLine("Retrieving...");
+                ConnectorGet connectorGet = new ConnectorGet();
+                var responseOutgoing = await connectorGet.GetOutgoingByMemberAsync(loggedMember.MemberId);
+                if (responseOutgoing?.ResponseCode == "00")
+                {
+                    dgvOutgoing.DataSource = null;
+                    dgvOutgoing.DataSource = responseOutgoing.TransferList;
+                }
+
+                String benefCode = $"{loggedMember.ReferenceId}-{loggedMember.MemberId}";
+                var responseIncoming = await connectorGet.GetIncomingByMemberAsync(benefCode);
+                if (responseIncoming?.ResponseCode == "00")
+                {
+                    dgvIncoming.DataSource = null;
+                    dgvIncoming.DataSource = responseIncoming.TransferList;
+                }
+
+                BalanceApiResponse? responseBalance = await connectorGet.GetBalanceByMemberAsync(loggedMember.MemberId);
+                if (responseBalance?.ResponseCode == "00")
+                {
+                    textBalance.Text = responseBalance.Balance.ToString();
+                    var db = new AppDbContext();
+                    BalanceService balanceService = new BalanceService(db);
+                    Balance? balance = await balanceService.getBalance(loggedMember.MemberId);
+                    if (balance != null)
+                    {
+                        balance.Amount = Decimal.Parse(responseBalance.Balance.ToString());
+                        balance.UpdateOn = DateTime.UtcNow;
+                        balanceService.Update(balance!);
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+        }
+
+        private void SetupOutgoingGrid()
+        {
+            dgvOutgoing.AutoGenerateColumns = false;
+            dgvOutgoing.Columns.Clear();
+
+            dgvOutgoing.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "CodeBenef",
+                HeaderText = "Beneficiary",
+                Name = "CodeBenef"
+            });
+
+            dgvOutgoing.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "TransferRef",
+                HeaderText = "Time",
+                Name = "TransferRef"
+            });
+
+            dgvOutgoing.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Remarks",
+                HeaderText = "Remarks",
+                Name = "Remarks"
+            });
+
+            dgvOutgoing.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Amount",
+                HeaderText = "Amount",
+                Name = "Amount"
+            });
+
+            dgvOutgoing.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Fee",
+                HeaderText = "Fee",
+                Name = "Fee"
+            });
+
+            dgvOutgoing.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "TotalAmount",
+                HeaderText = "Total",
+                Name = "TotalAmount"
+            });
+        }
+
+        private void SetupIncomingGrid()
+        {
+            dgvIncoming.AutoGenerateColumns = false;
+            dgvIncoming.Columns.Clear();
+
+            dgvIncoming.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "CodeOrigin",
+                HeaderText = "Transfer From",
+                Name = "CodeOrigin"
+            });
+
+            dgvIncoming.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "CoopCode",
+                HeaderText = "Coop",
+                Name = "CoopCode"
+            });
+
+            dgvIncoming.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "TransferRef",
+                HeaderText = "Time",
+                Name = "TransferRef"
+            });
+
+            dgvIncoming.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Remarks",
+                HeaderText = "Remarks",
+                Name = "Remarks"
+            });
+
+            dgvIncoming.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Amount",
+                HeaderText = "Amount",
+                Name = "Amount"
+            });
+
+            dgvIncoming.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "Fee",
+                HeaderText = "Fee",
+                Name = "Fee"
+            });
+
+            dgvIncoming.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                DataPropertyName = "TotalAmount",
+                HeaderText = "Total",
+                Name = "TotalAmount"
+            });
+        }
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            clearForm();
+        }
+
+        private void clearForm()
+        {
+            textAmount.Text = "";
+            textBenef.Text = "";
+            textRemarks.Text = "";
         }
     }
 }
