@@ -37,10 +37,10 @@ namespace Nusantara.Services
             return await _db.Balances.FirstOrDefaultAsync(b => b.MemberCode == memberCode);
         }
 
-        public async Task Update(Balance balance)
+        public void Update(Balance balance)
         {
             _db.Balances.Update(balance);
-            await _db.SaveChangesAsync();
+            _db.SaveChanges();
         }
     }
 }

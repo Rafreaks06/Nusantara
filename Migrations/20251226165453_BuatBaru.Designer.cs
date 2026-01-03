@@ -12,8 +12,8 @@ using Nusantara.Data;
 namespace Nusantara.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20251220060843_update-2")]
-    partial class update2
+    [Migration("20251226165453_BuatBaru")]
+    partial class BuatBaru
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,7 +23,7 @@ namespace Nusantara.Migrations
                 .HasAnnotation("ProductVersion", "9.0.9")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            NpgsqlModelBuilderExtensions.UseSerialColumns(modelBuilder);
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("Nusantara.Models.Access", b =>
                 {
@@ -48,6 +48,42 @@ namespace Nusantara.Migrations
                     b.HasIndex("MemberId");
 
                     b.ToTable("Accesses");
+                });
+
+            modelBuilder.Entity("Nusantara.Models.Balance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("Amount")
+                        .HasColumnType("numeric");
+
+                    b.Property<string>("Flow")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("MemberCode")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("TransactionName")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdateOn")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Balances");
+                });
+
+            modelBuilder.Entity("Nusantara.Models.BalanceHistory", b =>
+                {
+                    b.ToTable("BalanceHistories");
                 });
 
             modelBuilder.Entity("Nusantara.Models.Configuration", b =>
@@ -127,7 +163,7 @@ namespace Nusantara.Migrations
                     b.ToTable("Exchanges");
                 });
 
-            modelBuilder.Entity("Nusantara.Models.Installment", b =>
+            modelBuilder.Entity("Nusantara.Models.Inhouse", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -138,6 +174,43 @@ namespace Nusantara.Migrations
                     b.Property<decimal>("Amount")
                         .HasColumnType("numeric");
 
+                    b.Property<int>("DestinationId")
+                        .HasColumnType("integer");
+
+                    b.Property<decimal>("Fee")
+                        .HasColumnType("numeric");
+
+                    b.Property<int>("OriginId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Remarks")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("TransferDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("TransferId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DestinationId");
+
+                    b.HasIndex("OriginId");
+
+                    b.ToTable("Inhouses");
+                });
+
+            modelBuilder.Entity("Nusantara.Models.Installment", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
+
                     b.Property<int>("LoanId")
                         .HasColumnType("integer");
 
@@ -147,11 +220,14 @@ namespace Nusantara.Migrations
                     b.Property<string>("ProofPath")
                         .HasColumnType("text");
 
+                    b.Property<decimal>("amount")
+                        .HasColumnType("numeric");
+
                     b.HasKey("Id");
 
                     b.HasIndex("LoanId");
 
-                    b.ToTable("Instalments");
+                    b.ToTable("Installments");
                 });
 
             modelBuilder.Entity("Nusantara.Models.Loan", b =>
@@ -189,7 +265,7 @@ namespace Nusantara.Migrations
                     b.Property<bool>("IsApproved")
                         .HasColumnType("boolean");
 
-                    b.Property<string>("KkpPath")
+                    b.Property<string>("KkPath")
                         .HasColumnType("text");
 
                     b.Property<string>("KtpPath")
@@ -267,7 +343,7 @@ namespace Nusantara.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("LoanMaster");
+                    b.ToTable("LoanMasters");
                 });
 
             modelBuilder.Entity("Nusantara.Models.Member", b =>
@@ -301,10 +377,6 @@ namespace Nusantara.Migrations
                     b.Property<DateTime>("JoinDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("Level")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<string>("MemberId")
                         .IsRequired()
                         .HasColumnType("text");
@@ -337,6 +409,10 @@ namespace Nusantara.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
+                    b.Property<string>("level")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("quest1")
                         .IsRequired()
                         .HasMaxLength(100)
@@ -354,11 +430,11 @@ namespace Nusantara.Migrations
 
             modelBuilder.Entity("Nusantara.Models.Saving", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("id"));
+                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("AdminFee")
                         .HasColumnType("numeric");
@@ -425,7 +501,7 @@ namespace Nusantara.Migrations
                     b.Property<DateTime>("WithdrawDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("MemberId");
 
@@ -434,17 +510,34 @@ namespace Nusantara.Migrations
 
             modelBuilder.Entity("Nusantara.Models.SavingMaster", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("id"));
+                    NpgsqlPropertyBuilderExtensions.UseSerialColumn(b.Property<int>("Id"));
 
                     b.Property<decimal>("AdminFee")
                         .HasColumnType("numeric");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<decimal>("Fine")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("Interest")
+                        .HasColumnType("numeric");
+
+                    b.Property<decimal>("MaxAmount")
+                        .HasColumnType("numeric");
+
                     b.Property<decimal>("MinAmount")
                         .HasColumnType("numeric");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int>("Tenor")
                         .HasColumnType("integer");
@@ -452,24 +545,7 @@ namespace Nusantara.Migrations
                     b.Property<DateTime>("UpdateOn")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("description")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<decimal>("fine")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal>("interest")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal>("maxAmount")
-                        .HasColumnType("numeric");
-
-                    b.Property<string>("name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("SavingMasters");
                 });
@@ -494,6 +570,25 @@ namespace Nusantara.Migrations
                         .IsRequired();
 
                     b.Navigation("Member");
+                });
+
+            modelBuilder.Entity("Nusantara.Models.Inhouse", b =>
+                {
+                    b.HasOne("Nusantara.Models.Member", "Destination")
+                        .WithMany("DestinationTransactions")
+                        .HasForeignKey("DestinationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Nusantara.Models.Member", "Origin")
+                        .WithMany("OriginTransactions")
+                        .HasForeignKey("OriginId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Destination");
+
+                    b.Navigation("Origin");
                 });
 
             modelBuilder.Entity("Nusantara.Models.Installment", b =>
@@ -538,9 +633,13 @@ namespace Nusantara.Migrations
                 {
                     b.Navigation("Accesses");
 
+                    b.Navigation("DestinationTransactions");
+
                     b.Navigation("Exchanges");
 
                     b.Navigation("Loans");
+
+                    b.Navigation("OriginTransactions");
 
                     b.Navigation("Savings");
                 });

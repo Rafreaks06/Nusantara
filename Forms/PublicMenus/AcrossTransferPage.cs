@@ -129,7 +129,7 @@ namespace Nusantara.Forms.MemberMenus
                     balance.UpdateOn = DateTime.Now;
                     balance.TransactionName = "Across Transfer";
                     balance.Flow = "OUT";
-                    await balanceService.Update(balance);
+                     balanceService.Update(balance);
 
                     BalanceApiResponse? balanceApiResponse = await connectorPost.BalanceUpdateAsync(new BalancePayload
                     {
