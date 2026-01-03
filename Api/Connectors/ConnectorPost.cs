@@ -61,8 +61,8 @@ namespace Nusantara.Api.Connectors
             string json = JsonSerializer.Serialize(data, options);
 
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-            HttpResponseMessage response = await _httpClient.PostAsync(_baseUrl + "balance/sync", content);
+            var requestUrl = $"{_baseUrl.TrimEnd('/')}/balance/sync";
+            HttpResponseMessage response = await _httpClient.PostAsync(requestUrl, content);
             response.EnsureSuccessStatusCode();
 
             string responseJson = await response.Content.ReadAsStringAsync();
@@ -79,19 +79,11 @@ namespace Nusantara.Api.Connectors
             string json = JsonSerializer.Serialize(data, options);
 
             var content = new StringContent(json, Encoding.UTF8, "application/json");
-
             var requestUrl = $"{_baseUrl.TrimEnd('/')}/transfer/save";
-
             HttpResponseMessage response = await _httpClient.PostAsync(requestUrl, content);
-            if (response.IsSuccessStatusCode)
-            {
-                MessageBox.Show("HTTP Success: " + response.StatusCode);
-            } else
-            {
-                MessageBox.Show("HTTP Error: " + response.StatusCode);
-            }// perlu handle disini
+            response.EnsureSuccessStatusCode();
 
-                string responseJson = await response.Content.ReadAsStringAsync();
+            string responseJson = await response.Content.ReadAsStringAsync();
 
             return JsonSerializer.Deserialize<TransferApiResponse>(responseJson, new JsonSerializerOptions
             {

@@ -38,7 +38,7 @@ namespace Nusantara.Api.Models
         public DateTime ResponseTime { get; set; }
         public string? MemberCode { get; set; }
         public string? CoopCode { get; set; }
-        public BalanceAcross? Balance { get; set; }
+        public Double? Balance { get; set; }
         [JsonPropertyName("balanceList")]
         public List<BalanceAcross> BalanceList { get; set; } = new();
     }
@@ -50,7 +50,7 @@ namespace Nusantara.Api.Models
         public DateTime ResponseTime { get; set; }
         public string? TransactionCode { get; set; }
         public TransferAcross? Transfer { get; set; }
-        [JsonPropertyName("memberList")]
+        [JsonPropertyName("transferList")]
         public List<TransferAcross> TransferList { get; set; } = new();
     }
 }
