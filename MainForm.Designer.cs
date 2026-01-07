@@ -39,6 +39,7 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Brave Hero Cooperation";
+            Load += MainForm_Load;
             ResumeLayout(false);
         }
 
