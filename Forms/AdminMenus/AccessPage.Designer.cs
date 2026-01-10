@@ -69,10 +69,12 @@
             dataGridViewAccess.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewAccess.Columns.AddRange(new DataGridViewColumn[] { Id, memberDataGridViewTextBoxColumn, accessListDataGridViewTextBoxColumn, updateOnDataGridViewTextBoxColumn });
             dataGridViewAccess.DataSource = accessBindingSource;
-            dataGridViewAccess.Location = new Point(265, 38);
+            dataGridViewAccess.Location = new Point(379, 63);
+            dataGridViewAccess.Margin = new Padding(4, 5, 4, 5);
             dataGridViewAccess.Name = "dataGridViewAccess";
             dataGridViewAccess.ReadOnly = true;
-            dataGridViewAccess.Size = new Size(476, 344);
+            dataGridViewAccess.RowHeadersWidth = 62;
+            dataGridViewAccess.Size = new Size(680, 573);
             dataGridViewAccess.TabIndex = 0;
             dataGridViewAccess.CellContentClick += dataGridViewAccess_CellContentClick;
             // 
@@ -80,29 +82,37 @@
             // 
             Id.DataPropertyName = "Id";
             Id.HeaderText = "Id";
+            Id.MinimumWidth = 8;
             Id.Name = "Id";
             Id.ReadOnly = true;
+            Id.Width = 150;
             // 
             // memberDataGridViewTextBoxColumn
             // 
             memberDataGridViewTextBoxColumn.DataPropertyName = "Member";
             memberDataGridViewTextBoxColumn.HeaderText = "Member";
+            memberDataGridViewTextBoxColumn.MinimumWidth = 8;
             memberDataGridViewTextBoxColumn.Name = "memberDataGridViewTextBoxColumn";
             memberDataGridViewTextBoxColumn.ReadOnly = true;
+            memberDataGridViewTextBoxColumn.Width = 150;
             // 
             // accessListDataGridViewTextBoxColumn
             // 
             accessListDataGridViewTextBoxColumn.DataPropertyName = "AccessList";
             accessListDataGridViewTextBoxColumn.HeaderText = "AccessList";
+            accessListDataGridViewTextBoxColumn.MinimumWidth = 8;
             accessListDataGridViewTextBoxColumn.Name = "accessListDataGridViewTextBoxColumn";
             accessListDataGridViewTextBoxColumn.ReadOnly = true;
+            accessListDataGridViewTextBoxColumn.Width = 150;
             // 
             // updateOnDataGridViewTextBoxColumn
             // 
             updateOnDataGridViewTextBoxColumn.DataPropertyName = "updateOn";
             updateOnDataGridViewTextBoxColumn.HeaderText = "updateOn";
+            updateOnDataGridViewTextBoxColumn.MinimumWidth = 8;
             updateOnDataGridViewTextBoxColumn.Name = "updateOnDataGridViewTextBoxColumn";
             updateOnDataGridViewTextBoxColumn.ReadOnly = true;
+            updateOnDataGridViewTextBoxColumn.Width = 150;
             // 
             // accessBindingSource
             // 
@@ -113,9 +123,10 @@
             comboMember.DataSource = memberBindingSource;
             comboMember.DisplayMember = "memberId";
             comboMember.FormattingEnabled = true;
-            comboMember.Location = new Point(3, 38);
+            comboMember.Location = new Point(4, 63);
+            comboMember.Margin = new Padding(4, 5, 4, 5);
             comboMember.Name = "comboMember";
-            comboMember.Size = new Size(175, 23);
+            comboMember.Size = new Size(248, 33);
             comboMember.TabIndex = 1;
             comboMember.SelectedIndexChanged += comboMember_SelectedIndexChanged;
             // 
@@ -127,27 +138,30 @@
             // 
             listBoxAccess.FormattingEnabled = true;
             listBoxAccess.Items.AddRange(new object[] { "Grant All", "Loan", "Saving", "Transfer - Inhouse", "Transfer - Accross", "Exchange" });
-            listBoxAccess.Location = new Point(3, 67);
+            listBoxAccess.Location = new Point(4, 112);
+            listBoxAccess.Margin = new Padding(4, 5, 4, 5);
             listBoxAccess.Name = "listBoxAccess";
-            listBoxAccess.Size = new Size(256, 112);
+            listBoxAccess.Size = new Size(364, 172);
             listBoxAccess.TabIndex = 2;
             listBoxAccess.SelectedIndexChanged += listBoxAccess_SelectedIndexChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(6, 20);
+            label1.Location = new Point(9, 33);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(52, 15);
+            label1.Size = new Size(79, 25);
             label1.TabIndex = 3;
             label1.Text = "Member";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(268, 20);
+            label2.Location = new Point(383, 33);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(43, 15);
+            label2.Size = new Size(65, 25);
             label2.TabIndex = 4;
             label2.Text = "Access";
             // 
@@ -165,9 +179,11 @@
             groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label3);
-            groupBox1.Location = new Point(5, 185);
+            groupBox1.Location = new Point(7, 308);
+            groupBox1.Margin = new Padding(4, 5, 4, 5);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(254, 197);
+            groupBox1.Padding = new Padding(4, 5, 4, 5);
+            groupBox1.Size = new Size(363, 328);
             groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "Details";
@@ -175,116 +191,129 @@
             // labelAddress
             // 
             labelAddress.AutoSize = true;
-            labelAddress.Location = new Point(105, 151);
+            labelAddress.Location = new Point(150, 252);
+            labelAddress.Margin = new Padding(4, 0, 4, 0);
             labelAddress.Name = "labelAddress";
-            labelAddress.Size = new Size(16, 15);
+            labelAddress.Size = new Size(24, 25);
             labelAddress.TabIndex = 11;
             labelAddress.Text = "...";
             // 
             // labelPhoneAlt
             // 
             labelPhoneAlt.AutoSize = true;
-            labelPhoneAlt.Location = new Point(105, 125);
+            labelPhoneAlt.Location = new Point(150, 208);
+            labelPhoneAlt.Margin = new Padding(4, 0, 4, 0);
             labelPhoneAlt.Name = "labelPhoneAlt";
-            labelPhoneAlt.Size = new Size(16, 15);
+            labelPhoneAlt.Size = new Size(24, 25);
             labelPhoneAlt.TabIndex = 10;
             labelPhoneAlt.Text = "...";
             // 
             // labelPhone
             // 
             labelPhone.AutoSize = true;
-            labelPhone.Location = new Point(105, 100);
+            labelPhone.Location = new Point(150, 167);
+            labelPhone.Margin = new Padding(4, 0, 4, 0);
             labelPhone.Name = "labelPhone";
-            labelPhone.Size = new Size(16, 15);
+            labelPhone.Size = new Size(24, 25);
             labelPhone.TabIndex = 9;
             labelPhone.Text = "...";
             // 
             // labelEmail
             // 
             labelEmail.AutoSize = true;
-            labelEmail.Location = new Point(105, 74);
+            labelEmail.Location = new Point(150, 123);
+            labelEmail.Margin = new Padding(4, 0, 4, 0);
             labelEmail.Name = "labelEmail";
-            labelEmail.Size = new Size(16, 15);
+            labelEmail.Size = new Size(24, 25);
             labelEmail.TabIndex = 8;
             labelEmail.Text = "...";
             // 
             // labelJoinDate
             // 
             labelJoinDate.AutoSize = true;
-            labelJoinDate.Location = new Point(105, 49);
+            labelJoinDate.Location = new Point(150, 82);
+            labelJoinDate.Margin = new Padding(4, 0, 4, 0);
             labelJoinDate.Name = "labelJoinDate";
-            labelJoinDate.Size = new Size(16, 15);
+            labelJoinDate.Size = new Size(24, 25);
             labelJoinDate.TabIndex = 7;
             labelJoinDate.Text = "...";
             // 
             // labelFullName
             // 
             labelFullName.AutoSize = true;
-            labelFullName.Location = new Point(105, 23);
+            labelFullName.Location = new Point(150, 38);
+            labelFullName.Margin = new Padding(4, 0, 4, 0);
             labelFullName.Name = "labelFullName";
-            labelFullName.Size = new Size(16, 15);
+            labelFullName.Size = new Size(24, 25);
             labelFullName.TabIndex = 6;
             labelFullName.Text = "...";
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(6, 151);
+            label7.Location = new Point(9, 252);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(49, 15);
+            label7.Size = new Size(77, 25);
             label7.TabIndex = 5;
             label7.Text = "Address";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(6, 125);
+            label8.Location = new Point(9, 208);
+            label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(59, 15);
+            label8.Size = new Size(89, 25);
             label8.TabIndex = 4;
             label8.Text = "Phone Alt";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(6, 100);
+            label5.Location = new Point(9, 167);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(41, 15);
+            label5.Size = new Size(62, 25);
             label5.TabIndex = 3;
             label5.Text = "Phone";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(6, 74);
+            label6.Location = new Point(9, 123);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(36, 15);
+            label6.Size = new Size(54, 25);
             label6.TabIndex = 2;
             label6.Text = "Email";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(6, 49);
+            label4.Location = new Point(9, 82);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(55, 15);
+            label4.Size = new Size(85, 25);
             label4.TabIndex = 1;
             label4.Text = "Join Date";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(6, 23);
+            label3.Location = new Point(9, 38);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(61, 15);
+            label3.Size = new Size(91, 25);
             label3.TabIndex = 0;
             label3.Text = "Full Name";
             // 
             // buttonSubmit
             // 
-            buttonSubmit.Location = new Point(184, 38);
+            buttonSubmit.Location = new Point(263, 63);
+            buttonSubmit.Margin = new Padding(4, 5, 4, 5);
             buttonSubmit.Name = "buttonSubmit";
-            buttonSubmit.Size = new Size(75, 23);
+            buttonSubmit.Size = new Size(107, 38);
             buttonSubmit.TabIndex = 6;
             buttonSubmit.Text = "Submit";
             buttonSubmit.UseVisualStyleBackColor = true;
@@ -292,8 +321,9 @@
             // 
             // AccessPage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
             Controls.Add(buttonSubmit);
             Controls.Add(groupBox1);
             Controls.Add(label2);
@@ -301,8 +331,9 @@
             Controls.Add(listBoxAccess);
             Controls.Add(comboMember);
             Controls.Add(dataGridViewAccess);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "AccessPage";
-            Size = new Size(744, 398);
+            Size = new Size(1063, 663);
             Load += AccessPage_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewAccess).EndInit();
             ((System.ComponentModel.ISupportInitialize)accessBindingSource).EndInit();

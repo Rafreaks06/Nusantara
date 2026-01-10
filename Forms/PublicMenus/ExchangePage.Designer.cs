@@ -48,87 +48,97 @@
             // 
             // txtAmount
             // 
-            txtAmount.Location = new Point(107, 82);
+            txtAmount.Location = new Point(153, 137);
+            txtAmount.Margin = new Padding(4, 5, 4, 5);
             txtAmount.Name = "txtAmount";
-            txtAmount.Size = new Size(180, 23);
+            txtAmount.Size = new Size(255, 31);
             txtAmount.TabIndex = 0;
             txtAmount.TextChanged += txtAmount_TextChanged;
             // 
             // txtRate
             // 
-            txtRate.Location = new Point(107, 131);
+            txtRate.Location = new Point(153, 218);
+            txtRate.Margin = new Padding(4, 5, 4, 5);
             txtRate.Name = "txtRate";
             txtRate.ReadOnly = true;
-            txtRate.Size = new Size(180, 23);
+            txtRate.Size = new Size(255, 31);
             txtRate.TabIndex = 1;
             // 
             // txtFee
             // 
-            txtFee.Location = new Point(107, 225);
+            txtFee.Location = new Point(153, 375);
+            txtFee.Margin = new Padding(4, 5, 4, 5);
             txtFee.Name = "txtFee";
             txtFee.ReadOnly = true;
-            txtFee.Size = new Size(180, 23);
+            txtFee.Size = new Size(255, 31);
             txtFee.TabIndex = 2;
             // 
             // txtTotal
             // 
-            txtTotal.Location = new Point(107, 276);
+            txtTotal.Location = new Point(153, 460);
+            txtTotal.Margin = new Padding(4, 5, 4, 5);
             txtTotal.Name = "txtTotal";
             txtTotal.ReadOnly = true;
-            txtTotal.Size = new Size(180, 23);
+            txtTotal.Size = new Size(255, 31);
             txtTotal.TabIndex = 3;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            label1.Location = new Point(107, 20);
+            label1.Location = new Point(153, 33);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(141, 25);
+            label1.Size = new Size(206, 38);
             label1.TabIndex = 4;
             label1.Text = "Exchange USD";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(24, 85);
+            label2.Location = new Point(34, 142);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(51, 15);
+            label2.Size = new Size(77, 25);
             label2.TabIndex = 5;
             label2.Text = "Amount";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(24, 134);
+            label3.Location = new Point(34, 223);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(30, 15);
+            label3.Size = new Size(47, 25);
             label3.TabIndex = 6;
             label3.Text = "Rate";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(24, 228);
+            label4.Location = new Point(34, 380);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(25, 15);
+            label4.Size = new Size(39, 25);
             label4.TabIndex = 7;
             label4.Text = "Fee";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(24, 279);
+            label5.Location = new Point(34, 465);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(32, 15);
+            label5.Size = new Size(49, 25);
             label5.TabIndex = 8;
             label5.Text = "Total";
             // 
             // btnSubmit
             // 
-            btnSubmit.Location = new Point(107, 326);
+            btnSubmit.Location = new Point(153, 543);
+            btnSubmit.Margin = new Padding(4, 5, 4, 5);
             btnSubmit.Name = "btnSubmit";
-            btnSubmit.Size = new Size(75, 23);
+            btnSubmit.Size = new Size(107, 38);
             btnSubmit.TabIndex = 9;
             btnSubmit.Text = "Submit";
             btnSubmit.UseVisualStyleBackColor = true;
@@ -136,9 +146,10 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(212, 326);
+            btnClear.Location = new Point(303, 543);
+            btnClear.Margin = new Padding(4, 5, 4, 5);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(75, 23);
+            btnClear.Size = new Size(107, 38);
             btnClear.TabIndex = 10;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
@@ -150,25 +161,28 @@
             // 
             // txtSubTotal
             // 
-            txtSubTotal.Location = new Point(107, 178);
+            txtSubTotal.Location = new Point(153, 297);
+            txtSubTotal.Margin = new Padding(4, 5, 4, 5);
             txtSubTotal.Name = "txtSubTotal";
             txtSubTotal.ReadOnly = true;
-            txtSubTotal.Size = new Size(180, 23);
+            txtSubTotal.Size = new Size(255, 31);
             txtSubTotal.TabIndex = 13;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(24, 181);
+            label7.Location = new Point(34, 302);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(55, 15);
+            label7.Size = new Size(85, 25);
             label7.TabIndex = 14;
             label7.Text = "Sub Total";
             // 
             // ExchangePage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
             Controls.Add(label7);
             Controls.Add(txtSubTotal);
             Controls.Add(btnClear);
@@ -182,8 +196,9 @@
             Controls.Add(txtFee);
             Controls.Add(txtRate);
             Controls.Add(txtAmount);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "ExchangePage";
-            Size = new Size(345, 387);
+            Size = new Size(493, 645);
             Load += ExchangePage_Load;
             ((System.ComponentModel.ISupportInitialize)exchangeBindingSource).EndInit();
             ResumeLayout(false);

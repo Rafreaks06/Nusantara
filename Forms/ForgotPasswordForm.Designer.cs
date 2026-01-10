@@ -42,57 +42,64 @@
             // 
             // textUsername
             // 
-            textUsername.Location = new Point(37, 48);
+            textUsername.Location = new Point(53, 80);
+            textUsername.Margin = new Padding(4, 5, 4, 5);
             textUsername.Name = "textUsername";
-            textUsername.Size = new Size(230, 23);
+            textUsername.Size = new Size(327, 31);
             textUsername.TabIndex = 0;
             // 
             // textQuest1
             // 
-            textQuest1.Location = new Point(37, 100);
+            textQuest1.Location = new Point(53, 167);
+            textQuest1.Margin = new Padding(4, 5, 4, 5);
             textQuest1.Name = "textQuest1";
-            textQuest1.Size = new Size(230, 23);
+            textQuest1.Size = new Size(327, 31);
             textQuest1.TabIndex = 1;
             // 
             // textQuest2
             // 
-            textQuest2.Location = new Point(285, 100);
+            textQuest2.Location = new Point(407, 167);
+            textQuest2.Margin = new Padding(4, 5, 4, 5);
             textQuest2.Name = "textQuest2";
-            textQuest2.Size = new Size(230, 23);
+            textQuest2.Size = new Size(327, 31);
             textQuest2.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(40, 30);
+            label1.Location = new Point(57, 50);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(60, 15);
+            label1.Size = new Size(91, 25);
             label1.TabIndex = 3;
             label1.Text = "Username";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(40, 82);
+            label2.Location = new Point(57, 137);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(131, 15);
+            label2.Size = new Size(198, 25);
             label2.TabIndex = 4;
             label2.Text = "What is Your Fav Color?";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(288, 82);
+            label3.Location = new Point(411, 137);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(165, 15);
+            label3.Size = new Size(250, 25);
             label3.TabIndex = 5;
             label3.Text = "Who is Your Fav Artist/Singer?";
             // 
             // buttonSubmit
             // 
-            buttonSubmit.Location = new Point(37, 131);
+            buttonSubmit.Location = new Point(53, 218);
+            buttonSubmit.Margin = new Padding(4, 5, 4, 5);
             buttonSubmit.Name = "buttonSubmit";
-            buttonSubmit.Size = new Size(75, 23);
+            buttonSubmit.Size = new Size(107, 38);
             buttonSubmit.TabIndex = 6;
             buttonSubmit.Text = "Submit";
             buttonSubmit.UseVisualStyleBackColor = true;
@@ -100,9 +107,10 @@
             // 
             // buttonBack
             // 
-            buttonBack.Location = new Point(118, 131);
+            buttonBack.Location = new Point(169, 218);
+            buttonBack.Margin = new Padding(4, 5, 4, 5);
             buttonBack.Name = "buttonBack";
-            buttonBack.Size = new Size(75, 23);
+            buttonBack.Size = new Size(107, 38);
             buttonBack.TabIndex = 7;
             buttonBack.Text = "Back";
             buttonBack.UseVisualStyleBackColor = true;
@@ -111,25 +119,28 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(40, 173);
+            label4.Location = new Point(57, 288);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(57, 15);
+            label4.Size = new Size(87, 25);
             label4.TabIndex = 9;
             label4.Text = "Password";
             // 
             // textPassword
             // 
-            textPassword.Location = new Point(37, 191);
+            textPassword.Location = new Point(53, 318);
+            textPassword.Margin = new Padding(4, 5, 4, 5);
             textPassword.Name = "textPassword";
             textPassword.ReadOnly = true;
-            textPassword.Size = new Size(333, 23);
+            textPassword.Size = new Size(474, 31);
             textPassword.TabIndex = 8;
             // 
             // ForgotPasswordForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(547, 249);
+            BackColor = SystemColors.ActiveCaption;
+            ClientSize = new Size(781, 415);
             Controls.Add(label4);
             Controls.Add(textPassword);
             Controls.Add(buttonBack);
@@ -140,6 +151,7 @@
             Controls.Add(textQuest2);
             Controls.Add(textQuest1);
             Controls.Add(textUsername);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "ForgotPasswordForm";
             Text = "Forgot Password";
             Load += ForgotPasswordForm_Load;

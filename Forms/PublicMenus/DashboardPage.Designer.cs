@@ -59,9 +59,10 @@
             // pictureBoxLoan
             // 
             pictureBoxLoan.BackColor = SystemColors.ActiveCaption;
-            pictureBoxLoan.Location = new Point(23, 110);
+            pictureBoxLoan.Location = new Point(33, 183);
+            pictureBoxLoan.Margin = new Padding(4, 5, 4, 5);
             pictureBoxLoan.Name = "pictureBoxLoan";
-            pictureBoxLoan.Size = new Size(149, 87);
+            pictureBoxLoan.Size = new Size(213, 145);
             pictureBoxLoan.TabIndex = 0;
             pictureBoxLoan.TabStop = false;
             // 
@@ -70,9 +71,10 @@
             label1.AutoSize = true;
             label1.BackColor = SystemColors.ActiveCaption;
             label1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(32, 122);
+            label1.Location = new Point(46, 203);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(63, 20);
+            label1.Size = new Size(97, 31);
             label1.TabIndex = 1;
             label1.Text = "Balance";
             // 
@@ -81,9 +83,10 @@
             labelCardBalance.AutoSize = true;
             labelCardBalance.BackColor = SystemColors.ActiveCaption;
             labelCardBalance.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelCardBalance.Location = new Point(142, 168);
+            labelCardBalance.Location = new Point(203, 280);
+            labelCardBalance.Margin = new Padding(4, 0, 4, 0);
             labelCardBalance.Name = "labelCardBalance";
-            labelCardBalance.Size = new Size(18, 20);
+            labelCardBalance.Size = new Size(27, 31);
             labelCardBalance.TabIndex = 2;
             labelCardBalance.Text = "0";
             labelCardBalance.TextAlign = ContentAlignment.BottomRight;
@@ -93,9 +96,10 @@
             labelCardLoan.AutoSize = true;
             labelCardLoan.BackColor = Color.DarkOrange;
             labelCardLoan.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelCardLoan.Location = new Point(307, 168);
+            labelCardLoan.Location = new Point(439, 280);
+            labelCardLoan.Margin = new Padding(4, 0, 4, 0);
             labelCardLoan.Name = "labelCardLoan";
-            labelCardLoan.Size = new Size(18, 20);
+            labelCardLoan.Size = new Size(27, 31);
             labelCardLoan.TabIndex = 5;
             labelCardLoan.Text = "0";
             labelCardLoan.TextAlign = ContentAlignment.BottomRight;
@@ -105,18 +109,20 @@
             label3.AutoSize = true;
             label3.BackColor = Color.DarkOrange;
             label3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(197, 122);
+            label3.Location = new Point(281, 203);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(43, 20);
+            label3.Size = new Size(66, 31);
             label3.TabIndex = 4;
             label3.Text = "Loan";
             // 
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.DarkOrange;
-            pictureBox1.Location = new Point(188, 110);
+            pictureBox1.Location = new Point(269, 183);
+            pictureBox1.Margin = new Padding(4, 5, 4, 5);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(149, 87);
+            pictureBox1.Size = new Size(213, 145);
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
@@ -125,9 +131,10 @@
             labelCardSaving.AutoSize = true;
             labelCardSaving.BackColor = Color.SeaGreen;
             labelCardSaving.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelCardSaving.Location = new Point(471, 168);
+            labelCardSaving.Location = new Point(673, 280);
+            labelCardSaving.Margin = new Padding(4, 0, 4, 0);
             labelCardSaving.Name = "labelCardSaving";
-            labelCardSaving.Size = new Size(18, 20);
+            labelCardSaving.Size = new Size(27, 31);
             labelCardSaving.TabIndex = 8;
             labelCardSaving.Text = "0";
             labelCardSaving.TextAlign = ContentAlignment.BottomRight;
@@ -137,18 +144,20 @@
             label5.AutoSize = true;
             label5.BackColor = Color.SeaGreen;
             label5.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.Location = new Point(361, 122);
+            label5.Location = new Point(516, 203);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(55, 20);
+            label5.Size = new Size(86, 31);
             label5.TabIndex = 7;
             label5.Text = "Saving";
             // 
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.SeaGreen;
-            pictureBox2.Location = new Point(352, 110);
+            pictureBox2.Location = new Point(503, 183);
+            pictureBox2.Margin = new Padding(4, 5, 4, 5);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(149, 87);
+            pictureBox2.Size = new Size(213, 145);
             pictureBox2.TabIndex = 6;
             pictureBox2.TabStop = false;
             // 
@@ -157,9 +166,10 @@
             labelCardInhouse.AutoSize = true;
             labelCardInhouse.BackColor = Color.Teal;
             labelCardInhouse.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelCardInhouse.Location = new Point(142, 272);
+            labelCardInhouse.Location = new Point(203, 453);
+            labelCardInhouse.Margin = new Padding(4, 0, 4, 0);
             labelCardInhouse.Name = "labelCardInhouse";
-            labelCardInhouse.Size = new Size(18, 20);
+            labelCardInhouse.Size = new Size(27, 31);
             labelCardInhouse.TabIndex = 11;
             labelCardInhouse.Text = "0";
             labelCardInhouse.TextAlign = ContentAlignment.BottomRight;
@@ -169,18 +179,20 @@
             label7.AutoSize = true;
             label7.BackColor = Color.Teal;
             label7.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label7.Location = new Point(32, 226);
+            label7.Location = new Point(46, 377);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(97, 40);
+            label7.Size = new Size(147, 62);
             label7.TabIndex = 10;
             label7.Text = "Inhouse\r\nTransactions";
             // 
             // pictureBox3
             // 
             pictureBox3.BackColor = Color.Teal;
-            pictureBox3.Location = new Point(23, 214);
+            pictureBox3.Location = new Point(33, 357);
+            pictureBox3.Margin = new Padding(4, 5, 4, 5);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(149, 87);
+            pictureBox3.Size = new Size(213, 145);
             pictureBox3.TabIndex = 9;
             pictureBox3.TabStop = false;
             // 
@@ -189,9 +201,10 @@
             labelCardAccross.AutoSize = true;
             labelCardAccross.BackColor = Color.SlateBlue;
             labelCardAccross.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelCardAccross.Location = new Point(307, 272);
+            labelCardAccross.Location = new Point(439, 453);
+            labelCardAccross.Margin = new Padding(4, 0, 4, 0);
             labelCardAccross.Name = "labelCardAccross";
-            labelCardAccross.Size = new Size(18, 20);
+            labelCardAccross.Size = new Size(27, 31);
             labelCardAccross.TabIndex = 14;
             labelCardAccross.Text = "0";
             labelCardAccross.TextAlign = ContentAlignment.BottomRight;
@@ -201,18 +214,20 @@
             label9.AutoSize = true;
             label9.BackColor = Color.SlateBlue;
             label9.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(197, 226);
+            label9.Location = new Point(281, 377);
+            label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(97, 40);
+            label9.Size = new Size(147, 62);
             label9.TabIndex = 13;
             label9.Text = "Accross\r\nTransactions";
             // 
             // pictureBox4
             // 
             pictureBox4.BackColor = Color.SlateBlue;
-            pictureBox4.Location = new Point(188, 214);
+            pictureBox4.Location = new Point(269, 357);
+            pictureBox4.Margin = new Padding(4, 5, 4, 5);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(149, 87);
+            pictureBox4.Size = new Size(213, 145);
             pictureBox4.TabIndex = 12;
             pictureBox4.TabStop = false;
             // 
@@ -221,9 +236,10 @@
             labelCardExchange.AutoSize = true;
             labelCardExchange.BackColor = Color.MediumVioletRed;
             labelCardExchange.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            labelCardExchange.Location = new Point(471, 272);
+            labelCardExchange.Location = new Point(673, 453);
+            labelCardExchange.Margin = new Padding(4, 0, 4, 0);
             labelCardExchange.Name = "labelCardExchange";
-            labelCardExchange.Size = new Size(18, 20);
+            labelCardExchange.Size = new Size(27, 31);
             labelCardExchange.TabIndex = 17;
             labelCardExchange.Text = "0";
             labelCardExchange.TextAlign = ContentAlignment.BottomRight;
@@ -233,33 +249,37 @@
             label11.AutoSize = true;
             label11.BackColor = Color.MediumVioletRed;
             label11.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label11.Location = new Point(361, 226);
+            label11.Location = new Point(516, 377);
+            label11.Margin = new Padding(4, 0, 4, 0);
             label11.Name = "label11";
-            label11.Size = new Size(75, 20);
+            label11.Size = new Size(116, 31);
             label11.TabIndex = 16;
             label11.Text = "Exchange";
             // 
             // pictureBox5
             // 
             pictureBox5.BackColor = Color.MediumVioletRed;
-            pictureBox5.Location = new Point(352, 214);
+            pictureBox5.Location = new Point(503, 357);
+            pictureBox5.Margin = new Padding(4, 5, 4, 5);
             pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(149, 87);
+            pictureBox5.Size = new Size(213, 145);
             pictureBox5.TabIndex = 15;
             pictureBox5.TabStop = false;
             // 
             // pictureBox6
             // 
-            pictureBox6.Location = new Point(23, 23);
+            pictureBox6.Location = new Point(33, 38);
+            pictureBox6.Margin = new Padding(4, 5, 4, 5);
             pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(478, 59);
+            pictureBox6.Size = new Size(683, 98);
             pictureBox6.TabIndex = 18;
             pictureBox6.TabStop = false;
             // 
             // DashboardPage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
             Controls.Add(pictureBox6);
             Controls.Add(labelCardExchange);
             Controls.Add(label11);
@@ -279,8 +299,9 @@
             Controls.Add(labelCardBalance);
             Controls.Add(label1);
             Controls.Add(pictureBoxLoan);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "DashboardPage";
-            Size = new Size(525, 323);
+            Size = new Size(750, 538);
             Load += DashboardPage_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBoxLoan).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

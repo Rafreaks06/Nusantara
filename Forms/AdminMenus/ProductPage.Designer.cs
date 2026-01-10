@@ -76,10 +76,12 @@
             dataGridViewLoan.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewLoan.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, nameDataGridViewTextBoxColumn, interestDataGridViewTextBoxColumn, tenorDataGridViewTextBoxColumn });
             dataGridViewLoan.DataSource = loanMasterBindingSource;
-            dataGridViewLoan.Location = new Point(13, 182);
+            dataGridViewLoan.Location = new Point(19, 303);
+            dataGridViewLoan.Margin = new Padding(4, 5, 4, 5);
             dataGridViewLoan.Name = "dataGridViewLoan";
             dataGridViewLoan.ReadOnly = true;
-            dataGridViewLoan.Size = new Size(374, 203);
+            dataGridViewLoan.RowHeadersWidth = 62;
+            dataGridViewLoan.Size = new Size(534, 338);
             dataGridViewLoan.TabIndex = 0;
             dataGridViewLoan.CellClick += dataGridViewLoan_CellClick;
             // 
@@ -87,29 +89,37 @@
             // 
             idDataGridViewTextBoxColumn.DataPropertyName = "Id";
             idDataGridViewTextBoxColumn.HeaderText = "Id";
+            idDataGridViewTextBoxColumn.MinimumWidth = 8;
             idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             idDataGridViewTextBoxColumn.ReadOnly = true;
+            idDataGridViewTextBoxColumn.Width = 150;
             // 
             // nameDataGridViewTextBoxColumn
             // 
             nameDataGridViewTextBoxColumn.DataPropertyName = "Name";
             nameDataGridViewTextBoxColumn.HeaderText = "Name";
+            nameDataGridViewTextBoxColumn.MinimumWidth = 8;
             nameDataGridViewTextBoxColumn.Name = "nameDataGridViewTextBoxColumn";
             nameDataGridViewTextBoxColumn.ReadOnly = true;
+            nameDataGridViewTextBoxColumn.Width = 150;
             // 
             // interestDataGridViewTextBoxColumn
             // 
             interestDataGridViewTextBoxColumn.DataPropertyName = "Interest";
             interestDataGridViewTextBoxColumn.HeaderText = "Interest";
+            interestDataGridViewTextBoxColumn.MinimumWidth = 8;
             interestDataGridViewTextBoxColumn.Name = "interestDataGridViewTextBoxColumn";
             interestDataGridViewTextBoxColumn.ReadOnly = true;
+            interestDataGridViewTextBoxColumn.Width = 150;
             // 
             // tenorDataGridViewTextBoxColumn
             // 
             tenorDataGridViewTextBoxColumn.DataPropertyName = "Tenor";
             tenorDataGridViewTextBoxColumn.HeaderText = "Tenor";
+            tenorDataGridViewTextBoxColumn.MinimumWidth = 8;
             tenorDataGridViewTextBoxColumn.Name = "tenorDataGridViewTextBoxColumn";
             tenorDataGridViewTextBoxColumn.ReadOnly = true;
+            tenorDataGridViewTextBoxColumn.Width = 150;
             // 
             // loanMasterBindingSource
             // 
@@ -123,10 +133,12 @@
             dataGridViewSaving.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewSaving.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn1, nameDataGridViewTextBoxColumn1, interestDataGridViewTextBoxColumn1, tenorDataGridViewTextBoxColumn1 });
             dataGridViewSaving.DataSource = savingMasterBindingSource;
-            dataGridViewSaving.Location = new Point(394, 182);
+            dataGridViewSaving.Location = new Point(563, 303);
+            dataGridViewSaving.Margin = new Padding(4, 5, 4, 5);
             dataGridViewSaving.Name = "dataGridViewSaving";
             dataGridViewSaving.ReadOnly = true;
-            dataGridViewSaving.Size = new Size(370, 203);
+            dataGridViewSaving.RowHeadersWidth = 62;
+            dataGridViewSaving.Size = new Size(529, 338);
             dataGridViewSaving.TabIndex = 1;
             dataGridViewSaving.CellClick += dataGridViewSaving_CellClick;
             // 
@@ -134,29 +146,37 @@
             // 
             idDataGridViewTextBoxColumn1.DataPropertyName = "Id";
             idDataGridViewTextBoxColumn1.HeaderText = "Id";
+            idDataGridViewTextBoxColumn1.MinimumWidth = 8;
             idDataGridViewTextBoxColumn1.Name = "idDataGridViewTextBoxColumn1";
             idDataGridViewTextBoxColumn1.ReadOnly = true;
+            idDataGridViewTextBoxColumn1.Width = 150;
             // 
             // nameDataGridViewTextBoxColumn1
             // 
             nameDataGridViewTextBoxColumn1.DataPropertyName = "Name";
             nameDataGridViewTextBoxColumn1.HeaderText = "Name";
+            nameDataGridViewTextBoxColumn1.MinimumWidth = 8;
             nameDataGridViewTextBoxColumn1.Name = "nameDataGridViewTextBoxColumn1";
             nameDataGridViewTextBoxColumn1.ReadOnly = true;
+            nameDataGridViewTextBoxColumn1.Width = 150;
             // 
             // interestDataGridViewTextBoxColumn1
             // 
             interestDataGridViewTextBoxColumn1.DataPropertyName = "Interest";
             interestDataGridViewTextBoxColumn1.HeaderText = "Interest";
+            interestDataGridViewTextBoxColumn1.MinimumWidth = 8;
             interestDataGridViewTextBoxColumn1.Name = "interestDataGridViewTextBoxColumn1";
             interestDataGridViewTextBoxColumn1.ReadOnly = true;
+            interestDataGridViewTextBoxColumn1.Width = 150;
             // 
             // tenorDataGridViewTextBoxColumn1
             // 
             tenorDataGridViewTextBoxColumn1.DataPropertyName = "Tenor";
             tenorDataGridViewTextBoxColumn1.HeaderText = "Tenor";
+            tenorDataGridViewTextBoxColumn1.MinimumWidth = 8;
             tenorDataGridViewTextBoxColumn1.Name = "tenorDataGridViewTextBoxColumn1";
             tenorDataGridViewTextBoxColumn1.ReadOnly = true;
+            tenorDataGridViewTextBoxColumn1.Width = 150;
             // 
             // savingMasterBindingSource
             // 
@@ -164,17 +184,19 @@
             // 
             // textBoxName
             // 
-            textBoxName.Location = new Point(13, 35);
+            textBoxName.Location = new Point(19, 58);
+            textBoxName.Margin = new Padding(4, 5, 4, 5);
             textBoxName.Name = "textBoxName";
-            textBoxName.Size = new Size(184, 23);
+            textBoxName.Size = new Size(261, 31);
             textBoxName.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(16, 17);
+            label1.Location = new Point(23, 28);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(39, 15);
+            label1.Size = new Size(59, 25);
             label1.TabIndex = 3;
             label1.Text = "Name";
             // 
@@ -182,131 +204,147 @@
             // 
             comboMode.FormattingEnabled = true;
             comboMode.Items.AddRange(new object[] { "--Choose--", "Loan", "Saving" });
-            comboMode.Location = new Point(203, 35);
+            comboMode.Location = new Point(290, 58);
+            comboMode.Margin = new Padding(4, 5, 4, 5);
             comboMode.Name = "comboMode";
-            comboMode.Size = new Size(185, 23);
+            comboMode.Size = new Size(263, 33);
             comboMode.TabIndex = 4;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(206, 17);
+            label2.Location = new Point(294, 28);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(38, 15);
+            label2.Size = new Size(59, 25);
             label2.TabIndex = 5;
             label2.Text = "Mode";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(397, 17);
+            label3.Location = new Point(567, 28);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(46, 15);
+            label3.Size = new Size(71, 25);
             label3.TabIndex = 7;
             label3.Text = "Interest";
             // 
             // textInterest
             // 
-            textInterest.Location = new Point(394, 35);
+            textInterest.Location = new Point(563, 58);
+            textInterest.Margin = new Padding(4, 5, 4, 5);
             textInterest.Name = "textInterest";
-            textInterest.Size = new Size(180, 23);
+            textInterest.Size = new Size(255, 31);
             textInterest.TabIndex = 6;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(583, 17);
+            label4.Location = new Point(833, 28);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(71, 15);
+            label4.Size = new Size(108, 25);
             label4.TabIndex = 9;
             label4.Text = "Interest Fine";
             // 
             // textFine
             // 
-            textFine.Location = new Point(580, 35);
+            textFine.Location = new Point(829, 58);
+            textFine.Margin = new Padding(4, 5, 4, 5);
             textFine.Name = "textFine";
-            textFine.Size = new Size(184, 23);
+            textFine.Size = new Size(261, 31);
             textFine.TabIndex = 8;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(16, 64);
+            label5.Location = new Point(23, 107);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(36, 15);
+            label5.Size = new Size(55, 25);
             label5.TabIndex = 11;
             label5.Text = "Tenor";
             // 
             // textTenor
             // 
-            textTenor.Location = new Point(13, 82);
+            textTenor.Location = new Point(19, 137);
+            textTenor.Margin = new Padding(4, 5, 4, 5);
             textTenor.Name = "textTenor";
-            textTenor.Size = new Size(184, 23);
+            textTenor.Size = new Size(261, 31);
             textTenor.TabIndex = 10;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(206, 64);
+            label6.Location = new Point(294, 107);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(64, 15);
+            label6.Size = new Size(97, 25);
             label6.TabIndex = 13;
             label6.Text = "Admin Fee";
             // 
             // textAdminFee
             // 
-            textAdminFee.Location = new Point(203, 82);
+            textAdminFee.Location = new Point(290, 137);
+            textAdminFee.Margin = new Padding(4, 5, 4, 5);
             textAdminFee.Name = "textAdminFee";
-            textAdminFee.Size = new Size(184, 23);
+            textAdminFee.Size = new Size(261, 31);
             textAdminFee.TabIndex = 12;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(396, 64);
+            label7.Location = new Point(566, 107);
+            label7.Margin = new Padding(4, 0, 4, 0);
             label7.Name = "label7";
-            label7.Size = new Size(107, 15);
+            label7.Size = new Size(158, 25);
             label7.TabIndex = 15;
             label7.Text = "Minimum Amount";
             // 
             // textMinAmount
             // 
-            textMinAmount.Location = new Point(393, 82);
+            textMinAmount.Location = new Point(561, 137);
+            textMinAmount.Margin = new Padding(4, 5, 4, 5);
             textMinAmount.Name = "textMinAmount";
-            textMinAmount.Size = new Size(184, 23);
+            textMinAmount.Size = new Size(261, 31);
             textMinAmount.TabIndex = 14;
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(586, 64);
+            label8.Location = new Point(837, 107);
+            label8.Margin = new Padding(4, 0, 4, 0);
             label8.Name = "label8";
-            label8.Size = new Size(109, 15);
+            label8.Size = new Size(161, 25);
             label8.TabIndex = 17;
             label8.Text = "Maximum Amount";
             // 
             // textMaxAmount
             // 
-            textMaxAmount.Location = new Point(583, 82);
+            textMaxAmount.Location = new Point(833, 137);
+            textMaxAmount.Margin = new Padding(4, 5, 4, 5);
             textMaxAmount.Name = "textMaxAmount";
-            textMaxAmount.Size = new Size(184, 23);
+            textMaxAmount.Size = new Size(261, 31);
             textMaxAmount.TabIndex = 16;
             // 
             // labelId
             // 
             labelId.AutoSize = true;
-            labelId.Location = new Point(203, 125);
+            labelId.Location = new Point(290, 208);
+            labelId.Margin = new Padding(4, 0, 4, 0);
             labelId.Name = "labelId";
-            labelId.Size = new Size(16, 15);
+            labelId.Size = new Size(24, 25);
             labelId.TabIndex = 18;
             labelId.Text = "...";
             labelId.Visible = false;
             // 
             // buttonSubmit
             // 
-            buttonSubmit.Location = new Point(12, 121);
+            buttonSubmit.Location = new Point(17, 202);
+            buttonSubmit.Margin = new Padding(4, 5, 4, 5);
             buttonSubmit.Name = "buttonSubmit";
-            buttonSubmit.Size = new Size(75, 23);
+            buttonSubmit.Size = new Size(107, 38);
             buttonSubmit.TabIndex = 19;
             buttonSubmit.Text = "Submit";
             buttonSubmit.UseVisualStyleBackColor = true;
@@ -314,9 +352,10 @@
             // 
             // buttonNew
             // 
-            buttonNew.Location = new Point(93, 121);
+            buttonNew.Location = new Point(133, 202);
+            buttonNew.Margin = new Padding(4, 5, 4, 5);
             buttonNew.Name = "buttonNew";
-            buttonNew.Size = new Size(75, 23);
+            buttonNew.Size = new Size(107, 38);
             buttonNew.TabIndex = 20;
             buttonNew.Text = "New";
             buttonNew.UseVisualStyleBackColor = true;
@@ -325,25 +364,28 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(16, 164);
+            label9.Location = new Point(23, 273);
+            label9.Margin = new Padding(4, 0, 4, 0);
             label9.Name = "label9";
-            label9.Size = new Size(72, 15);
+            label9.Size = new Size(109, 25);
             label9.TabIndex = 21;
             label9.Text = "Master Loan";
             // 
             // label10
             // 
             label10.AutoSize = true;
-            label10.Location = new Point(397, 164);
+            label10.Location = new Point(567, 273);
+            label10.Margin = new Padding(4, 0, 4, 0);
             label10.Name = "label10";
-            label10.Size = new Size(81, 15);
+            label10.Size = new Size(124, 25);
             label10.TabIndex = 22;
             label10.Text = "Master Saving";
             // 
             // ProductPage
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
             Controls.Add(label10);
             Controls.Add(label9);
             Controls.Add(buttonNew);
@@ -367,8 +409,9 @@
             Controls.Add(textBoxName);
             Controls.Add(dataGridViewSaving);
             Controls.Add(dataGridViewLoan);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "ProductPage";
-            Size = new Size(781, 399);
+            Size = new Size(1116, 665);
             Load += ProductPage_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridViewLoan).EndInit();
             ((System.ComponentModel.ISupportInitialize)loanMasterBindingSource).EndInit();
