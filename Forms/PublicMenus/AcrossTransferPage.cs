@@ -123,6 +123,12 @@ namespace Nusantara.Forms.MemberMenus
             ConnectorPost connectorPost = new ConnectorPost();
             Double transferAmount = Double.Parse(textAmount.Text);
 
+            if (transferAmount < 1)
+            {
+                MessageBox.Show("Please check your amount !" , "Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             String timeUtc = DateTime.UtcNow.ToString().Substring(10, 6);
             TransferApiResponse? response = await connectorPost.TransferAsync(new TransferPayload
             {
@@ -149,12 +155,15 @@ namespace Nusantara.Forms.MemberMenus
 
                     textBalance.Text = balance.Amount.ToString();
 
+                    
+
                     BalanceApiResponse? balanceApiResponse = await connectorPost.BalanceUpdateAsync(new BalancePayload
                     {
                         amount = Double.Parse(balance.Amount.ToString()),
                         memberCode = loggedMember.MemberId,
                     });
 
+                    //success
                     if (balanceApiResponse != null && balanceApiResponse.ResponseCode == "00")
                     {
                         clearForm();
